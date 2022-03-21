@@ -8,6 +8,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: #1a1a1a;
 }
 
 a {
@@ -17,4 +18,20 @@ a {
 
 * {
   box-sizing: border-box;
+}
+.header-background {
+  background: url("/header.gif");
+  background-position: center bottom;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+@layer components {
+  .flex-center {
+    @apply flex items-center justify-between;
+  }
+
+  .content-container {
+    @apply max-w-content md:px-content;
+  }
 }

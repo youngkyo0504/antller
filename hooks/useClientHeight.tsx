@@ -9,7 +9,7 @@ const useElementClientHeight: <T extends HTMLElement>() => [
   useEffect(() => {
     if (elementRef.current)
       setElementClientHeight(elementRef.current.clientHeight);
-  });
+  }, [elementRef.current]);
 
   return [elementRef, elementClientHeight];
 };

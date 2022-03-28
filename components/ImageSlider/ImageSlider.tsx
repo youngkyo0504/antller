@@ -73,7 +73,6 @@ const ImageSlider: FC<ImageSliderProps> = () => {
             setIsEndAnimation(true);
           }}
           className="w-full  absolute"
-          key={page}
           src={images[page]}
           custom={direction}
           variants={variants}

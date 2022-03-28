@@ -1,40 +1,42 @@
-import React from "react";
+import { AnimatePresence, motion, MotionStyle } from "framer-motion";
+import React, { FC } from "react";
+import { sliderVariants } from "../../data/variants";
+import "twin.macro";
 interface ImageContainerProps {
-  imageRef;
-  definition;
-  setIsEndAnimation;
-  page;
-  direction;
-  sliderVariants;
+  setIsEndAnimation: React.Dispatch<React.SetStateAction<boolean>>;
+  direction: number;
+  style?: MotionStyle | undefined;
+  duration: number;
+  imageRef: React.RefObject<HTMLDivElement>;
 }
-export function ImageContainer({
-  imageRef,
-  definition,
+export const ImageContainer: FC<ImageContainerProps> = ({
   setIsEndAnimation,
-  page,
   direction,
-  sliderVariants,
-}) {
+  style,
+  duration,
+  children,
+  imageRef,
+}) => {
   return (
     <motion.div
       ref={imageRef}
       onAnimationComplete={(definition) => {
         setIsEndAnimation(true);
+        console.log("애니메이션 끝");
       }}
-      style={{
-        translateY,
-      }}
-      tw="z-[1] top-0 absolute h-full w-full bg-cover bg-no-repeat"
-      key={page}
+      style={{ ...style }}
+      tw="z-[1] top-0 absolute h-full w-full bg-cover bg-no-repeat "
       custom={direction}
       variants={sliderVariants}
       initial="enter"
       animate="center"
       exit="exit"
       transition={{
-        duration: SLIDER_DURATION,
+        duration: duration,
         ease: "easeInOut",
       }}
-    ></motion.div>
+    >
+      {children}
+    </motion.div>
   );
-}
+};

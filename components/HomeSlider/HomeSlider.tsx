@@ -12,8 +12,8 @@ import {
 } from "framer-motion";
 import usePreloadImage from "../../hooks/usePreloadImage";
 import "twin.macro";
-import ProgressText from "./progressText";
 import ProjectDescription from "./ProjectDescription";
+import ProgressText from "./ProgressText";
 interface HomeSliderProps {}
 
 // TODO
@@ -54,6 +54,7 @@ const HomeSlider: FC<HomeSliderProps> = () => {
         />
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
+            key={page}
             ref={imageRef}
             onAnimationComplete={(definition) => {
               setIsEndAnimation(true);
@@ -78,11 +79,11 @@ const HomeSlider: FC<HomeSliderProps> = () => {
                 desc: "Industrial design of IPU and Rack Mount Chassis for a machine learning start-up",
               }}
             />
-            <ProgressText
-              isEndAnimation={isEndAnimation}
-              duration={SLIDER_DURATION}
-            />
           </motion.div>
+          <ProgressText
+            isEndAnimation={isEndAnimation}
+            duration={SLIDER_DURATION}
+          />
         </AnimatePresence>
 
         <PaginationBtns

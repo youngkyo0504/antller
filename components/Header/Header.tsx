@@ -19,16 +19,24 @@ const Header: FC<HeaderProps> = () => (
       <nav>
         <ul className="flex text-xl font-semibold text-white">
           <li className="mr-8 leading-loose">
-            <Link href={"/work"}>WORK</Link>
+            <Link href={"/work"}>
+              <a>WORK</a>
+            </Link>
           </li>
           <li className="mr-8 leading-loose">
-            <Link href={"/about"}>ABOUT</Link>
+            <Link href={"/about"}>
+              <a>ABOUT</a>
+            </Link>
           </li>
           <li className="mr-8 leading-loose">
-            <Link href={"/news"}>NEWS</Link>
+            <Link href={"/news"}>
+              <a>NEWS</a>
+            </Link>
           </li>
           <li className="last:mr-0 mr-8 leading-loose">
-            <Link href={"/contact"}>CONTACT</Link>
+            <Link href={"/contact"}>
+              <a>CONTACT</a>
+            </Link>
           </li>
         </ul>
       </nav>

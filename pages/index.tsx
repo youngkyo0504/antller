@@ -1,6 +1,9 @@
+import { useTransform, useViewportScroll } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Header from "../components/Header/Header";
+import HomeSlider from "../components/HomeSlider/HomeSlider";
+import ImageSlider from "../components/ImageSlider/ImageSlider";
 import Tab from "../components/Tab/Tab";
 
 const Home: NextPage = () => {
@@ -13,11 +16,10 @@ const Home: NextPage = () => {
       </Head>
       <Header />
       <main>
-        <header className="w-full header-background bg-black h-screen flex flex-col justify-end  ">
-          <h1 className="text-3xl text-white">sdfsdf sdfsdf dsf dsf</h1>
-        </header>
+        <HomeSlider />
         <div>
-          <section className="w-full h-screen mt-96 text-white"></section>
+          <section className="w-full h-screen   text-white"></section>
+          <ImageSlider />
         </div>
       </main>
     </>

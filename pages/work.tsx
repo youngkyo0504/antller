@@ -1,10 +1,10 @@
+import { AnimateSharedLayout } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Header from "../components/Header/Header";
-import HomeSlider from "../components/HomeSlider/HomeSlider";
-import ImageSlider from "../components/ImageSlider/ImageSlider";
+import Portfolio from "../components/WorkStore/Portfolio";
 
-const Home: NextPage = () => {
+const WorkPage: NextPage = () => {
   return (
     <>
       <Head>
@@ -14,14 +14,14 @@ const Home: NextPage = () => {
       </Head>
       <Header />
       <main>
-        <HomeSlider />
-        <div>
-          <section className="w-full h-screen   text-white"></section>
-          <ImageSlider />
-        </div>
+        {" "}
+        <AnimateSharedLayout>
+          <Header />
+          <Portfolio />
+        </AnimateSharedLayout>
       </main>
     </>
   );
 };
 
-export default Home;
+export default WorkPage;

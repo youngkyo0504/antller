@@ -12,7 +12,7 @@ import {
 import usePreloadImage from "../../hooks/usePreloadImage";
 import "twin.macro";
 import ProjectDescription from "./ProjectDescription";
-import ProgressText from "./progressText";
+import ProgressText from "./ProgressText";
 interface HomeSliderProps {}
 
 // TODO

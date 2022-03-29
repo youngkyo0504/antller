@@ -1,8 +1,7 @@
 import { ImageContainer } from "./ImageContainer";
-import { PaginationBtns } from "./PaginationBtn";
+import PaginationBtn from "./PaginationBtn";
 import React, { FC, useEffect, useRef, useState } from "react";
 import sliderImagesInfo from "../../data/imagesInfo/imageSlider";
-import { sliderVariants } from "../../data/variants";
 import { useElementClientHeight, useSliderPagination } from "../../hooks";
 import {
   AnimatePresence,
@@ -13,7 +12,7 @@ import {
 import usePreloadImage from "../../hooks/usePreloadImage";
 import "twin.macro";
 import ProjectDescription from "./ProjectDescription";
-import ProgressText from "./ProgressText";
+import ProgressText from "./progressText";
 interface HomeSliderProps {}
 
 // TODO
@@ -76,7 +75,7 @@ const HomeSlider: FC<HomeSliderProps> = () => {
           />
         </AnimatePresence>
 
-        <PaginationBtns
+        <PaginationBtn
           isEndAnimation={isEndAnimation}
           paginate={paginate}
           setIsEndAnimation={setIsEndAnimation}

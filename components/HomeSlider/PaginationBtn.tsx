@@ -25,9 +25,10 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({
           }
         }}
       >
-        <ChevronRightIcon tw="mr-6 h-10 ease-in group-hover:(block opacity-100)  opacity-0" />
+        <ChevronRightIcon tw="mr-6 h-10 transition-all ease-in group-hover:(opacity-100)  opacity-0" />
       </div>
       <div
+        tw=""
         className="prev group"
         onClick={() => {
           if (isEndAnimation) {
@@ -36,7 +37,7 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({
           }
         }}
       >
-        <ChevronLeftIcon tw="ml-6 h-10  ease-in group-hover:(block opacity-100)  opacity-0" />
+        <ChevronLeftIcon tw="ml-6 h-10  transition-all ease-in group-hover:(opacity-100)  opacity-0" />
       </div>
       <style jsx>{`
         .next,
@@ -45,6 +46,7 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({
           width: 13vw;
           // top: calc(50% - 20px);
           top: 0;
+
           position: absolute;
           // background: black;
           color: white;
@@ -59,12 +61,12 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({
           z-index: 3;
         }
         .next {
-          right: 0px;
+          right: 20px;
           justify-content: end;
         }
 
         .prev {
-          left: 0px;
+          left: 20px;
         }
       `}</style>
     </>

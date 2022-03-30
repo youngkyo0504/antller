@@ -21,7 +21,7 @@ interface HomeSliderProps {}
 //      - []
 // - [O] 코드 깔끔하게
 
-const SLIDER_DURATION = 0.5;
+const SLIDER_DURATION = 0.8;
 
 const HomeSlider: FC<HomeSliderProps> = () => {
   usePreloadImage(sliderImagesInfo);

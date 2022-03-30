@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import { items } from "../../data/simple-work.data";
 import "twin.macro";
 import Image from "next/image";
+import tw from "twin.macro";
 
 interface CardProps {
   id: string;
@@ -14,44 +15,42 @@ interface CardProps {
   theme?: string;
   setId: Function;
 }
+
 function Card({ setId, id, title, category, theme }: CardProps) {
   return (
     <li
-      className={``}
-      tw="relative w-[calc((((100vw - 320px)/ 12) * 4) + 60px)]  h-auto p-6 "
+      tw=" flex flex-col justify-between h-auto  mb-6  "
+      onClick={() => {
+        setId(id);
+      }}
     >
       {/* Title Container */}
-      <motion.div tw="z-[3] mb-2" layoutId={`title-container-${id}`}>
-        <span tw="text-white text-sm uppercase">{category}</span>
-        <h2 tw="text-white text-xl">{title}</h2>
+      <motion.div tw="mb-4 z-[3] " layoutId={`title-container-${id}`}>
+        {/* <span tw="text-white text-sm uppercase">{category}</span> */}
+        <h2 tw="text-2xl font-bold">{title}</h2>
       </motion.div>
 
       {/* Image Container */}
-      <div tw="w-full  relative block">
+      <div tw="w-full  relative block ">
         <motion.div
-          tw=" bg-[#1c1c1e] overflow-hidden w-full mx-auto"
+          // bg-[#1c1c1e]
+          tw="  overflow-hidden w-full mx-auto "
           layoutId={`card-container-${id}`}
         >
           <motion.div
-            tw=" overflow-hidden aspect-ratio[16/9]"
+            tw=" overflow-hidden aspect-ratio[1.6/1] "
             layoutId={`card-image-container-${id}`}
           >
             <Image
               width={600}
               layout={"fill"}
-              tw=" bg-[rgb(238, 234, 231)] rounded-2xl  "
+              tw=" bg-[rgb(238, 234, 231)] rounded-xl  "
               src={`/images/${id}.jpeg`}
               alt=""
             />
           </motion.div>
         </motion.div>
       </div>
-      <button
-        onClick={() => {
-          setId(id);
-        }}
-        className={`card-open-link`}
-      />
     </li>
   );
 }
@@ -65,7 +64,7 @@ const PortfolioList: FC<PortfolioListProps> = ({ selectedId, setId }) => {
   const imageHasLoaded = true;
 
   return (
-    <ul tw="flex flex-wrap max-w-content mx-auto px-content mt-header ">
+    <ul tw="  max-w-content mx-auto px-content gap-6 md:grid-cols-2 grid  grid-cols-1 lg:grid-cols-3 pt-16">
       {items.map((card) => (
         <Card
           key={card.id}

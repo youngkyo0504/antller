@@ -1,66 +1,82 @@
 import { motion } from "framer-motion";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { items } from "../../data/simple-work.data";
 import { LoremIpsum, Avatar } from "react-lorem-ipsum";
 import "twin.macro";
 import Image from "next/image";
+import tw, { styled } from "twin.macro";
 interface PortfolioItemProps {
   id: string;
   setId: Function;
 }
+interface OverlayProps {
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+}
+const Overlay = ({ onClick }: OverlayProps) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.15 } }}
+      transition={{ duration: 0.2, delay: 0.15 }}
+      style={{ pointerEvents: "auto" }}
+      tw="z-[3] fixed bg-black/80 will-change[opacity] top-0 bottom-0 left-1/2 -translate-x-1/2 w-full "
+      onClick={onClick}
+    ></motion.div>
+  );
+};
+
+const ContentContainer = tw(motion.div)`px-8 py-8`;
+const CardImageContainer = tw(
+  motion.div
+)`w-full aspect-ratio[16/9] overflow-hidden relative`;
+const TitleContainer = tw(
+  motion.div
+)`  z-[3] absolute top-4 left-4 max-w-[300px]`;
 
 const PortfolioItem: FC<PortfolioItemProps> = ({ id, setId }) => {
   const item = items.find((item) => item.id === id)!;
   const { category, title } = item;
-
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
+  }, []);
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0, transition: { duration: 0.15 } }}
-        transition={{ duration: 0.2, delay: 0.15 }}
-        style={{ pointerEvents: "auto" }}
-        className="overlay"
-      ></motion.div>
-
-      <div
-        className="card-content-container open"
-        onClick={(e) => {
-          console.log(e.currentTarget);
+      <Overlay
+        onClick={() => {
           setId(null);
         }}
-      >
-        <motion.div className="card-content" layoutId={`card-container-${id}`}>
-          <motion.div
-            // tw="w-[calc((((100vw - 320px)/ 12) * 4) + 60px)]  aspect-ratio[1.6/1]"
-            tw="w-full aspect-ratio[16/9] overflow-hidden absolute top-0 left-0"
-            className="card-image-container"
-            layoutId={`card-image-container-${id}`}
-          >
+      />
+      <div tw="text-white max-w-3xl w-full z-[3] left-1/2 -translate-x-1/2 bottom-0 fixed top-0 my-8 ">
+        <motion.div
+          tw="relative rounded-3xl bg-[#1c1c1e] overflow-hidden w-full h-full mx-auto "
+          layoutId={`card-container-${id}`}
+        >
+          <CardImageContainer layoutId={`card-image-container-${id}`}>
             <Image
               width={600}
               height={200}
               layout="fill"
-              className="card-image w-full"
+              tw="bg-[rgb(238, 234, 231)]"
+              className="w-full  "
               src={`/images/${id}.jpeg`}
               alt=""
             />
-          </motion.div>
-          <motion.div
-            className="title-container"
-            layoutId={`title-container-${id}`}
-          >
-            <span className="category">{category}</span>
-            <h2>{title}</h2>
-          </motion.div>
-          <motion.div className="content-container" animate>
+          </CardImageContainer>
+          <TitleContainer layoutId={`title-container-${id}`}>
+            <span tw=" text-sm uppercase">{category}</span>
+            <h2 tw="">{title}</h2>
+          </TitleContainer>
+          <ContentContainer>
             <LoremIpsum
               p={6}
               avgWordsPerSentence={6}
               avgSentencesPerParagraph={4}
             />
-          </motion.div>
+          </ContentContainer>
         </motion.div>
       </div>
     </>

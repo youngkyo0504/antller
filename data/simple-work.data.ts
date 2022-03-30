@@ -11,7 +11,7 @@ export const items = [
   {
     id: "f",
     category: "How to",
-    title: "Arrange Your Apple Devices for the Gram",
+    title: "Banking & Finance",
     pointOfInterest: 120,
     backgroundColor: "#959684",
   },
@@ -65,8 +65,8 @@ export const items = [
   },
   {
     id: "1",
-    category: "Newso",
-    title: "Newso Letter",
+    category: "우시장",
+    title: "우시장 플러스",
     pointOfInterest: 260,
     backgroundColor: "#CC555B",
   },

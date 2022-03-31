@@ -1,11 +1,5 @@
-import {
-  AnimatePresence,
-  motion,
-  useTransform,
-  useViewportScroll,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { FC, useState } from "react";
-import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/outline";
 
 interface ImageSliderProps {}
 
@@ -51,7 +45,6 @@ export const images = [
 const ImageSlider: FC<ImageSliderProps> = () => {
   const [[page, direction], setPage] = useState([0, 0]);
   const [isEndAnimation, setIsEndAnimation] = useState(true);
-  // const imageIndex = wrap(0, images.length, page);
   const paginate = (newDirection: number) => {
     setPage(([page, direction]) => {
       console.log(page, direction);

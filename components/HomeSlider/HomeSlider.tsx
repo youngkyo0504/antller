@@ -1,7 +1,7 @@
 import { ImageContainer } from "./ImageContainer";
 import PaginationBtn from "./PaginationBtn";
 import React, { FC, useEffect, useRef, useState } from "react";
-import sliderImagesInfo from "../../data/imagesInfo/imageSlider";
+import sliderImagesInfo from "../../data/imagesInfo/imageSliderData";
 import { useElementClientHeight, useSliderPagination } from "../../hooks";
 import {
   AnimatePresence,
@@ -69,6 +69,8 @@ const HomeSlider: FC<HomeSliderProps> = () => {
             />
           </ImageContainer>
           <ProgressText
+            page={page}
+            pagesLength={sliderImagesInfo.length}
             isEndAnimation={isEndAnimation}
             duration={SLIDER_DURATION}
             style={{ translateY }}

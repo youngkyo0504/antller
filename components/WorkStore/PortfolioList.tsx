@@ -19,7 +19,7 @@ interface CardProps {
 function Card({ setId, id, title, category, theme }: CardProps) {
   return (
     <li
-      tw=" flex flex-col justify-between h-auto  mb-6  "
+      tw=" flex flex-col justify-between h-auto  mb-6 cursor-pointer "
       onClick={() => {
         setId(id);
       }}
@@ -38,12 +38,14 @@ function Card({ setId, id, title, category, theme }: CardProps) {
           layoutId={`card-container-${id}`}
         >
           <motion.div
-            tw=" overflow-hidden aspect-ratio[1.6/1] "
+            tw=" overflow-hidden  "
             layoutId={`card-image-container-${id}`}
           >
+            {/* <img src={`/images/${id}.jpeg`}></img> */}
             <Image
-              width={600}
-              layout={"fill"}
+              width={484}
+              height={303}
+              // layout={"fill"}
               tw=" bg-[rgb(238, 234, 231)] rounded-xl  "
               src={`/images/${id}.jpeg`}
               alt=""

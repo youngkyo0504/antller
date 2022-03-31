@@ -18,9 +18,9 @@ const Overlay = ({ onClick }: OverlayProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.15 } }}
-      transition={{ duration: 0.2, delay: 0.15 }}
+      transition={{ duration: 0.2 }}
       style={{ pointerEvents: "auto" }}
-      tw="z-[3] fixed bg-black/80 will-change[opacity] top-0 bottom-0 left-1/2 -translate-x-1/2 w-full "
+      tw="z-[4] fixed bg-black/80 will-change[opacity] top-0 bottom-0 left-1/2 -translate-x-1/2 w-full  "
       onClick={onClick}
     ></motion.div>
   );
@@ -50,16 +50,16 @@ const PortfolioItem: FC<PortfolioItemProps> = ({ id, setId }) => {
           setId(null);
         }}
       />
-      <div tw="text-white max-w-3xl w-full z-[3] left-1/2 -translate-x-1/2 bottom-0 fixed top-0 my-8 ">
+      <div tw="text-white max-w-3xl w-full z-[4] left-1/2 -translate-x-1/2 bottom-0 fixed top-0 my-8 ">
         <motion.div
           tw="relative rounded-3xl bg-[#1c1c1e] overflow-hidden w-full h-full mx-auto "
           layoutId={`card-container-${id}`}
         >
           <CardImageContainer layoutId={`card-image-container-${id}`}>
             <Image
-              width={600}
-              height={200}
-              layout="fill"
+              width={768}
+              height={432}
+              // layout="fill"
               tw="bg-[rgb(238, 234, 231)]"
               className="w-full  "
               src={`/images/${id}.jpeg`}

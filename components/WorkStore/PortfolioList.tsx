@@ -24,6 +24,7 @@ const variants: Variants = {
     opacity: 1,
     y: 0,
   },
+  exit: { opacity: 0, y: -15 },
   initial: { opacity: 0, y: 15 },
 };
 function Card({
@@ -42,7 +43,8 @@ function Card({
       animate={"animate"}
       variants={variants}
       initial="initial"
-      transition={{ type: "spring", damping: 10, stiffness: 100 }}
+      exit={"exit"}
+      transition={{ type: "tween", duration: 0.15 }}
       tw=" flex flex-col justify-between h-auto  mb-6 cursor-pointer z-0 "
       onClick={() => {
         setId(id);
@@ -106,18 +108,21 @@ const PortfolioList: FC<PortfolioListProps> = ({
         transition={{ duration: 0.15 }}
         tw="fixed will-change[opacity] top-0 bottom-0 z-[-1]   bg-black h-screen w-full"
       ></motion.div> */}
+
       <ul tw="  max-w-content mx-auto px-content gap-6 md:grid-cols-2 grid  grid-cols-1 lg:grid-cols-3 pt-16">
-        {items
-          .filter((card) => card.category === selectedTab)
-          .map((SelectedItem) => (
-            <Card
-              setHovered={setHovered}
-              key={SelectedItem.id}
-              setId={setId}
-              {...SelectedItem}
-              isSelected={SelectedItem.id === selectedId}
-            />
-          ))}
+        <AnimatePresence exitBeforeEnter>
+          {items
+            .filter((card) => card.category === selectedTab)
+            .map((SelectedItem) => (
+              <Card
+                setHovered={setHovered}
+                key={SelectedItem.id}
+                setId={setId}
+                {...SelectedItem}
+                isSelected={SelectedItem.id === selectedId}
+              />
+            ))}
+        </AnimatePresence>
       </ul>
     </>
   );

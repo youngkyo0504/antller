@@ -1,12 +1,14 @@
-import { motion } from "framer-motion";
-import React, { FC } from "react";
+import { AnimatePresence, motion, Variants } from "framer-motion";
+import React, { FC, useState } from "react";
 import { items } from "../../data/simple-work.data";
 import "twin.macro";
 import Image from "next/image";
 import tw from "twin.macro";
+import { TabId } from "../../types";
 
 interface CardProps {
   id: string;
+  subCategory: string;
   category: string;
   title: string;
   pointOfInterest: number;
@@ -14,22 +16,39 @@ interface CardProps {
   isSelected: boolean;
   theme?: string;
   setId: Function;
+  setHovered: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Card({ setId, id, title, category, theme }: CardProps) {
+const variants: Variants = {
+  animate: {
+    opacity: 1,
+    y: 0,
+  },
+  initial: { opacity: 0, y: 15 },
+};
+function Card({
+  setId,
+  id,
+  title,
+  setHovered,
+  category,
+  subCategory,
+  theme,
+}: CardProps) {
+  const [hoverable, setHoverable] = useState(true);
   return (
-    <li
-      tw=" flex flex-col justify-between h-auto  mb-6 cursor-pointer "
+    <motion.li
+      className="group"
+      animate={"animate"}
+      variants={variants}
+      initial="initial"
+      transition={{ type: "spring", damping: 10, stiffness: 100 }}
+      tw=" flex flex-col justify-between h-auto  mb-6 cursor-pointer z-0 "
       onClick={() => {
         setId(id);
       }}
+      style={{ pointerEvents: hoverable ? "all" : "none" }}
     >
-      {/* Title Container */}
-      <motion.div tw="mb-4 z-[3] " layoutId={`title-container-${id}`}>
-        {/* <span tw="text-white text-sm uppercase">{category}</span> */}
-        <h2 tw="text-2xl font-bold">{title}</h2>
-      </motion.div>
-
       {/* Image Container */}
       <div tw="w-full  relative block ">
         <motion.div
@@ -46,36 +65,61 @@ function Card({ setId, id, title, category, theme }: CardProps) {
               width={484}
               height={303}
               // layout={"fill"}
-              tw=" bg-[rgb(238, 234, 231)] rounded-xl  "
-              src={`/images/${id}.jpeg`}
+              tw="rounded-2xl"
+              src={`/images/${id}.png`}
               alt=""
             />
           </motion.div>
         </motion.div>
       </div>
-    </li>
+      <motion.div layoutId={`title-container-${id}`}>
+        <span tw=" text-sm uppercase">{subCategory}</span>
+        <h2
+          className="underline-offset-2"
+          tw="group-hover:underline  text-2xl font-bold transition-all ease-in"
+        >
+          {title}
+        </h2>
+      </motion.div>
+    </motion.li>
   );
 }
 
 interface PortfolioListProps {
   selectedId: string | null;
   setId: Function;
+  selectedTab: TabId;
 }
 
-const PortfolioList: FC<PortfolioListProps> = ({ selectedId, setId }) => {
+const PortfolioList: FC<PortfolioListProps> = ({
+  selectedId,
+  setId,
+  selectedTab,
+}) => {
   const imageHasLoaded = true;
+  const [hoverd, setHovered] = useState(false);
 
   return (
-    <ul tw="  max-w-content mx-auto px-content gap-6 md:grid-cols-2 grid  grid-cols-1 lg:grid-cols-3 pt-16">
-      {items.map((card) => (
-        <Card
-          key={card.id}
-          setId={setId}
-          {...card}
-          isSelected={card.id === selectedId}
-        />
-      ))}
-    </ul>
+    <>
+      {/* <motion.div
+        animate={{ opacity: hoverd ? 0.8 : 0 }}
+        transition={{ duration: 0.15 }}
+        tw="fixed will-change[opacity] top-0 bottom-0 z-[-1]   bg-black h-screen w-full"
+      ></motion.div> */}
+      <ul tw="  max-w-content mx-auto px-content gap-6 md:grid-cols-2 grid  grid-cols-1 lg:grid-cols-3 pt-16">
+        {items
+          .filter((card) => card.category === selectedTab)
+          .map((SelectedItem) => (
+            <Card
+              setHovered={setHovered}
+              key={SelectedItem.id}
+              setId={setId}
+              {...SelectedItem}
+              isSelected={SelectedItem.id === selectedId}
+            />
+          ))}
+      </ul>
+    </>
   );
 };
 export default PortfolioList;

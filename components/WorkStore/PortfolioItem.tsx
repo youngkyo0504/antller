@@ -62,7 +62,7 @@ const PortfolioItem: FC<PortfolioItemProps> = ({ id, setId }) => {
               // layout="fill"
               tw="bg-[rgb(238, 234, 231)]"
               className="w-full  "
-              src={`/images/${id}.jpeg`}
+              src={`/images/${id}.png`}
               alt=""
             />
           </CardImageContainer>

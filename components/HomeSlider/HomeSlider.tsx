@@ -13,6 +13,7 @@ import usePreloadImage from "../../hooks/usePreloadImage";
 import "twin.macro";
 import ProjectDescription from "./ProjectDescription";
 import ProgressText from "./ProgressText";
+import Image from "next/image";
 interface HomeSliderProps {}
 
 // TODO
@@ -38,9 +39,10 @@ const HomeSlider: FC<HomeSliderProps> = () => {
   // const timerRef = useRef<NodeJS.Timer>();
 
   useEffect(() => {
-    if (imageRef.current)
+    if (imageRef.current) {
       // slide 이미지 변경
       imageRef.current.style.backgroundImage = `url('${sliderImagesInfo[page].src}')`;
+    }
   }, [page]);
 
   return (
@@ -60,6 +62,7 @@ const HomeSlider: FC<HomeSliderProps> = () => {
             imageRef={imageRef}
             style={{ translateY }}
           >
+            <div tw="w-full h-screen absolute z-[-1]"></div>
             <ProjectDescription
               delay={SLIDER_DURATION}
               description={{

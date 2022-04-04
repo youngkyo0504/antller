@@ -16,9 +16,7 @@ const WorkPage: NextPage = () => {
       </Head>
       <Layout>
         <TransitionContainer>
-          <AnimateSharedLayout>
-            <Portfolio />
-          </AnimateSharedLayout>
+          <Portfolio />
         </TransitionContainer>
       </Layout>
     </>

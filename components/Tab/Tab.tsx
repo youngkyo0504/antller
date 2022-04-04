@@ -14,7 +14,9 @@ const Tab: FC<TabProps> = () => {
           {tabs.map((item) => (
             <li
               key={item.label}
-              className={`${item === selectedTab ? "selected" : ""} relative`}
+              className={`py-2 ${
+                item === selectedTab ? "selected" : ""
+              } relative`}
               onClick={() => setSelectedTab(item)}
             >
               {`${item.icon} ${item.label}`}

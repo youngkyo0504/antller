@@ -14,20 +14,19 @@ const SubTitle = tw.span`text-black font-bold text-4xl pb-4 `;
 
 const TabUnderLine = tw(
   motion.div
-)`absolute bottom-[1px] left-0 right-0 h-[1px] bg-antller-black`;
+)`absolute bottom-[-1px] left-0 right-0 h-[1px] bg-antller-black`;
 interface TabProps {
   selectedTab: TabId;
   setSelectedTab: React.Dispatch<React.SetStateAction<TabId>>;
 }
 const Tab = ({ selectedTab, setSelectedTab }: TabProps) => {
   return (
-    <ul tw="flex">
+    <ul tw="flex h-full">
       {workClassification.map((work) => (
         <li
           key={work.id}
-          className={work.id === selectedTab ? "selected" : ""}
           onClick={() => setSelectedTab(work.id)}
-          tw="py-1 px-2 relative cursor-pointer"
+          tw="h-full py-3 px-6 relative cursor-pointer"
         >
           {work.name}
           {work.id === selectedTab ? (
@@ -46,7 +45,10 @@ const Portfolio: FC<WorkStoreProps> = () => {
   return (
     <>
       <div tw=" mt-header">
-        <div tw="w-full max-w-content mx-auto px-content flex justify-center items-center">
+        <div
+          className="border-b-[#6666]"
+          tw="w-full max-w-content mx-auto px-content flex justify-center items-center border-b"
+        >
           {/* <Title>Work</Title> */}
           <Tab {...{ selectedTab, setSelectedTab }} />
         </div>

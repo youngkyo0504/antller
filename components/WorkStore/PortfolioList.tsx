@@ -45,36 +45,35 @@ function Card({
       initial="initial"
       exit={"exit"}
       transition={{ type: "tween", duration: 0.15 }}
-      tw=" flex flex-col justify-between h-auto  mb-6 cursor-pointer z-0 "
+      tw="bg-transparent flex flex-col justify-between h-auto  mb-6 cursor-pointer z-0 "
       onClick={() => {
         setId(id);
       }}
       style={{ pointerEvents: hoverable ? "all" : "none" }}
     >
       {/* Image Container */}
-      <div tw="w-full  relative block ">
+      <div tw="w-full  relative block bg-transparent ">
         <motion.div
           // bg-[#1c1c1e]
-          tw="  overflow-hidden w-full mx-auto "
+          tw="   w-full mx-auto bg-transparent"
           layoutId={`card-container-${id}`}
         >
           <motion.div
-            tw=" overflow-hidden  "
+            tw="bg-transparent  overflow-hidden w-[484px] h-[303px] group-hover:(-translate-y-2 shadow-lg) rounded-2xl transition-all   "
             layoutId={`card-image-container-${id}`}
           >
             {/* <img src={`/images/${id}.jpeg`}></img> */}
             <Image
-              width={484}
-              height={303}
-              // layout={"fill"}
-              tw="rounded-2xl"
+              layout="fill"
+              objectFit="cover"
+              tw="rounded-2xl group-hover:shadow-xl"
               src={`/images/${id}.png`}
               alt=""
             />
           </motion.div>
         </motion.div>
       </div>
-      <motion.div layoutId={`title-container-${id}`}>
+      <motion.div tw="mt-2" layoutId={`title-container-${id}`}>
         <span tw=" text-sm uppercase">{subCategory}</span>
         <h2
           className="underline-offset-2"

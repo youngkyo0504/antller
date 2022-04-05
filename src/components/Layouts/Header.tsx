@@ -1,12 +1,11 @@
 import React, { FC } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import "twin.macro";
-import Logo from "../Logo/Logo";
+import Logo from "../Common/Logo/Logo";
 import tw, { styled } from "twin.macro";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import TransitionContainer from "./TransitionContainer";
+import InOutTransitionContainer from "./TransitionContainer";
 interface HeaderProps {}
 const links = ["work", "about", "news", "contact"];
 const LinkItem = styled.li(({ isActive }: { isActive: boolean }) => [
@@ -28,7 +27,7 @@ const Header: FC<HeaderProps> = () => {
         </Link>
 
         <nav>
-          <TransitionContainer>
+          <InOutTransitionContainer>
             <ul tw="font-semibold flex tracking-wide">
               {links.map((link) => (
                 <LinkItem isActive={path === link}>
@@ -38,7 +37,7 @@ const Header: FC<HeaderProps> = () => {
                 </LinkItem>
               ))}
             </ul>
-          </TransitionContainer>
+          </InOutTransitionContainer>
         </nav>
       </div>
     </motion.header>

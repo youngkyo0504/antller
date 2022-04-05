@@ -1,10 +1,9 @@
+import Layout from "@components/Layouts/Layout";
+import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
+import Portfolio from "@components/WorkStore/Portfolio";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Header from "../components/Layouts/Header";
-import Layout from "../components/Layouts/Layout";
-import TransitionContainer from "../components/Layouts/TransitionContainer";
-import Portfolio from "../components/WorkStore/Portfolio";
 
 const WorkPage: NextPage = () => {
   return (
@@ -15,9 +14,9 @@ const WorkPage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <TransitionContainer>
+        <InOutTransitionContainer>
           <Portfolio />
-        </TransitionContainer>
+        </InOutTransitionContainer>
       </Layout>
     </>
   );

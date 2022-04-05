@@ -1,26 +1,22 @@
 import { ImageContainer } from "./ImageContainer";
-import PaginationBtn from "./PaginationBtn";
 import React, { FC, useEffect, useRef, useState } from "react";
-import sliderImagesInfo from "../../data/imagesInfo/imageSliderData";
-import { useElementClientHeight, useSliderPagination } from "../../hooks";
 import {
   AnimatePresence,
   motion,
   useTransform,
   useViewportScroll,
 } from "framer-motion";
-import usePreloadImage from "../../hooks/usePreloadImage";
 import "twin.macro";
 import ProjectDescription from "./ProjectDescription";
+import sliderImagesInfo from "src/datas/imagesInfo/imageSliderData";
+import {
+  useElementClientHeight,
+  usePreloadImage,
+  useSliderPagination,
+} from "@hooks";
+import PaginationBtn from "./PaginationBtn";
 import ProgressText from "./ProgressText";
-import Image from "next/image";
 interface HomeSliderProps {}
-
-// TODO
-// - [] 버튼 태그 만들기 (prev,next)
-//      - [] 호버시 버튼 보이기
-//      - []
-// - [O] 코드 깔끔하게
 
 const SLIDER_DURATION = 0.8;
 

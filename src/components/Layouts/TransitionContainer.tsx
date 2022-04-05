@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { FC } from "react";
-import pageTransitionVariants from "../../data/variants/pageTransitionVariants";
-
-const TransitionContainer: FC = ({ children }) => {
+import pageTransitionVariants from "src/datas/variants/pageTransitionVariants";
+const InOutTransitionContainer: FC = ({ children }) => {
   return (
     <motion.div exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
       <motion.div
@@ -16,4 +15,4 @@ const TransitionContainer: FC = ({ children }) => {
   );
 };
 
-export default TransitionContainer;
+export default InOutTransitionContainer;

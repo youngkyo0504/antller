@@ -1,8 +1,8 @@
 import { AnimatePresence, motion, MotionStyle } from "framer-motion";
 import React, { FC } from "react";
-import { sliderVariants } from "../../data/variants";
 import "twin.macro";
 import Image from "next/image";
+import { sliderVariants } from "src/datas/variants";
 interface ImageContainerProps {
   setIsEndAnimation: React.Dispatch<React.SetStateAction<boolean>>;
   direction: number;

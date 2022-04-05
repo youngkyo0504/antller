@@ -1,6 +1,6 @@
 import { motion, MotionStyle } from "framer-motion";
 import React, { FC } from "react";
-import { onVariants } from "../../data/variants";
+import { onVariants } from "../../datas/variants";
 import "twin.macro";
 interface ProjectDescriptionProps {
   delay: number;

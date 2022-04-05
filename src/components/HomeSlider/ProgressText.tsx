@@ -1,6 +1,6 @@
 import { motion, MotionStyle } from "framer-motion";
 import { FC } from "react";
-import { rotateVariants } from "../../data/variants";
+import { rotateVariants } from "../../datas/variants";
 interface ProgressTextProps {
   style?: MotionStyle | undefined;
   isEndAnimation: boolean;

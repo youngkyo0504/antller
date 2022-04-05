@@ -1,9 +1,8 @@
+import HomeSlider from "@components/HomeSlider/HomeSlider";
+import Layout from "@components/Layouts/Layout";
+import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import type { NextPage } from "next";
 import Head from "next/head";
-import HomeSlider from "../components/HomeSlider/HomeSlider";
-import ImageSlider from "../components/ImageSlider/ImageSlider";
-import Layout from "../components/Layouts/Layout";
-import TransitionContainer from "../components/Layouts/TransitionContainer";
 
 const Home: NextPage = () => {
   return (
@@ -14,13 +13,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <TransitionContainer>
+        <InOutTransitionContainer>
           <HomeSlider />
           <div>
             <section className="w-full h-screen   text-white"></section>
-            <ImageSlider />
           </div>
-        </TransitionContainer>
+        </InOutTransitionContainer>
       </Layout>
     </>
   );

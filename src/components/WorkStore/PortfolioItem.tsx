@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import React, { FC, useEffect } from "react";
-import { items } from "../../data/simple-work.data";
+import { items } from "../../datas/simple-work.data";
 import { LoremIpsum, Avatar } from "react-lorem-ipsum";
 import "twin.macro";
 import Image from "next/image";

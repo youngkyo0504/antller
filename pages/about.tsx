@@ -2,7 +2,7 @@ import { motion, Variants } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Header from "../components/Layouts/Header";
+import Header from "../src/components/Layouts/Header";
 
 const title = {
   initial: { opacity: 0 },

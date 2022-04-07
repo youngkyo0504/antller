@@ -21,5 +21,19 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [addBasePlugin],
 };
+function addBasePlugin({ addBase }) {
+  const baseStyles = {
+    ".my-class": {
+      display: "block",
+    },
+    "section .my-class": {
+      marginTop: "5px",
+    },
+    '[type="button"] .my-class': {
+      backgroundColor: "black",
+    },
+  };
+  addBase(baseStyles);
+}

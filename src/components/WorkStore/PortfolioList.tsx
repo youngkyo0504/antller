@@ -38,7 +38,7 @@ function Card({ id, title, subCategory }: CardProps) {
           // bg-[#1c1c1e]
           tw="   w-full  h-full mx-auto   rounded-2xl"
         >
-          <motion.div tw=" h-auto  relative  overflow-hidden  group-hover:(-translate-y-6 shadow-lg) rounded-2xl transition-all   ">
+          <motion.div tw=" h-auto  relative ease-in-out overflow-hidden  group-hover:(-translate-y-0.5 shadow-lg) rounded-2xl transition-all   ">
             <img tw="rounded-2xl " src={`/images/${id}.png`} alt="" />
           </motion.div>
         </motion.div>
@@ -46,8 +46,9 @@ function Card({ id, title, subCategory }: CardProps) {
       <motion.div tw="mt-2">
         <span tw=" text-sm uppercase">{subCategory}</span>
         <h2
-          className="underline-offset-2"
-          tw="group-hover:underline  text-2xl font-bold transition-all ease-in"
+          className=""
+          tw="group-hover:underline  text-underline-offset[0.25rem]
+           text-2xl font-bold transition-all ease-in"
         >
           {title}
         </h2>

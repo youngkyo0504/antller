@@ -3,7 +3,7 @@ import "twin.macro";
 const Footer: FC = ({ children }) => {
   return (
     <>
-      <footer tw="text-gray max-w-content text-lg mx-auto px-content flex flex-col pt-4 pb-6 mt-24">
+      <footer tw="text-gray max-w-content w-full text-lg mx-auto px-content flex flex-col pt-4 pb-6 mt-24">
         <div tw="flex justify-between">
           <div tw="  "> © Antller </div>
           <ul tw="flex">

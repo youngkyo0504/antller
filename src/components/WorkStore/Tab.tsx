@@ -4,7 +4,7 @@ import { workClassification } from "src/datas/simple-work.data";
 import { TabId } from "@types";
 
 const TabItem = styled.li(({ selected }: { selected: boolean }) => [
-  tw`h-full py-3 px-6 relative cursor-pointer text-gray`,
+  tw`h-full py-3 mx-6 relative cursor-pointer text-gray`,
   selected && tw`text-antller-black`,
 ]);
 const TabUnderLine = tw(

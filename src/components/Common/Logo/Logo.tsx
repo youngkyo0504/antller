@@ -48,7 +48,7 @@ const line: Variants = {
 // };
 const Logo: FC<LogoProps> = () => {
   return (
-    <Image height={40} width={95.83} src={"/Antller_logotype_solid.png"} />
+    <Image height={44} width={104.5} src={"/Antller_logotype_solid.png"} />
   );
 };
 

@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import InOutTransitionContainer from "./TransitionContainer";
 interface HeaderProps {}
-const links = ["work", "about", "news", "contact"];
+const links = ["work", "about", "news", "contact", "history"];
 const LinkItem = styled.li(({ isActive }: { isActive: boolean }) => [
   tw`cursor-pointer last:mr-0 mr-8 leading-loose text-gray`,
   tw`hover:text-antller-black`,

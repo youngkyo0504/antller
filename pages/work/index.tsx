@@ -1,11 +1,17 @@
 import Layout from "@components/Layouts/Layout";
 import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import Portfolio from "@components/WorkStore/Portfolio";
+import { Work } from "@types";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
+import getPosts from "src/lib/mdxFiles";
 
-const WorkPage: NextPage = () => {
+interface WorkPageProps {
+  works: Work[];
+}
+const WorkPage: NextPage<WorkPageProps> = ({ works }) => {
+  console.log(works);
   return (
     <>
       <Head>
@@ -15,11 +21,20 @@ const WorkPage: NextPage = () => {
       </Head>
       <Layout>
         <InOutTransitionContainer>
-          <Portfolio />
+          <Portfolio works={works} />
         </InOutTransitionContainer>
       </Layout>
     </>
   );
+};
+export const getStaticProps = () => {
+  const works = getPosts();
+
+  return {
+    props: {
+      works,
+    },
+  };
 };
 
 export default WorkPage;

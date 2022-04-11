@@ -1,7 +1,7 @@
 import "twin.macro";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { FC, useState } from "react";
-import { TabId } from "../../types";
+import { TabId, Work } from "../../types";
 import { items } from "src/datas/simple-work.data";
 
 interface CardProps {
@@ -59,17 +59,18 @@ function Card({ id, title, subCategory }: CardProps) {
 
 interface PortfolioListProps {
   selectedTab: TabId;
+  works: Work[];
 }
 
-const PortfolioList: FC<PortfolioListProps> = ({ selectedTab }) => {
+const PortfolioList: FC<PortfolioListProps> = ({ selectedTab, works }) => {
   return (
     <>
       <ul tw="  max-w-content mx-auto px-content gap-6 md:grid-cols-2 grid  grid-cols-1 lg:grid-cols-3 pt-16">
         <AnimatePresence exitBeforeEnter>
-          {items
-            .filter((card) => card.category === selectedTab)
-            .map((SelectedItem) => (
-              <Card key={SelectedItem.id} {...SelectedItem} />
+          {works
+            .filter((work) => work.data.category === selectedTab)
+            .map((SelectedWork) => (
+              <Card key={SelectedWork.data.id} {...SelectedWork.data} />
             ))}
         </AnimatePresence>
       </ul>

@@ -19,13 +19,12 @@ const Header: FC<HeaderProps> = () => {
   const path = router.pathname.substring(1);
   return (
     <motion.header tw="absolute top-0 left-0  right-0 z-[4] mx-auto  bg-transparent ">
-      <div tw="h-[90px] mx-auto  flex justify-between items-center max-w-content md:px-content w-full">
+      <div tw="mt-7 mx-auto  flex justify-between items-center max-w-content md:px-content w-full">
         <Link href={"/"}>
           <a>
             <Logo />
           </a>
         </Link>
-
         <nav>
           <InOutTransitionContainer>
             <ul tw="font-semibold flex tracking-wide">

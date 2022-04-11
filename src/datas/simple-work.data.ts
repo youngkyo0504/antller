@@ -48,5 +48,5 @@ export const items: workItem[] = [
 export const workClassification: WorkTab[] = [
   { id: "solution", name: "솔루션" },
   { id: "dataAnalysis", name: "맞춤형 데이터 분석 서비스" },
-  { id: "socialContribution", name: "사회공헌(축산을 트렌디하게!)" },
+  { id: "socialContribution", name: "사회공헌" },
 ];

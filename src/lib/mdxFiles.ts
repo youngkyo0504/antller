@@ -1,8 +1,9 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { Work } from "@types";
 
-const getPosts = (limit?: number) => {
+const getWorks = (limit?: number) => {
   const dirFiles = fs.readdirSync(path.join(process.cwd(), "posts"), {
     withFileTypes: true,
   });
@@ -31,4 +32,4 @@ const getPosts = (limit?: number) => {
   return posts;
 };
 
-export default getPosts;
+export default getWorks;

@@ -24,7 +24,7 @@ const variants: Variants = {
 };
 function Card({ id, title, subCategory }: CardProps) {
   return (
-    <Link href={"/work/sample"}>
+    <Link href={`/work/${id}`}>
       <motion.li
         className="group"
         animate={"animate"}

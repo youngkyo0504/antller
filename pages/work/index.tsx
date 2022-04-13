@@ -5,7 +5,7 @@ import { Work } from "@types";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
-import getPosts from "src/lib/mdxFiles";
+import getWorks from "src/lib/mdxFiles";
 
 interface WorkPageProps {
   works: Work[];
@@ -28,7 +28,7 @@ const WorkPage: NextPage<WorkPageProps> = ({ works }) => {
   );
 };
 export const getStaticProps = () => {
-  const works = getPosts();
+  const works = getWorks();
 
   return {
     props: {

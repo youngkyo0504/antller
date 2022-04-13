@@ -14,7 +14,7 @@ const Year = styled.div(({ isSelectedYear }: styledProps) => [
 const YearGraphContainer = tw.li`relative h-20 w-14 `;
 
 const Circle = styled.div(({ isSelectedYear }: styledProps) => [
-  tw`transition-all ease-in  cursor-pointer absolute top-0 w-3 h-3 -left-1.5 bg-divider  rounded-full my-class `,
+  tw`transition-all ease-in  cursor-pointer absolute top-0 w-3 h-3 -left-1.5 bg-divider  rounded-full `,
   isSelectedYear && tw`bg-antller-black`,
 ]);
 

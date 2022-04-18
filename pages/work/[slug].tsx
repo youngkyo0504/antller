@@ -8,7 +8,7 @@ import { MDXProvider } from "@mdx-js/react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { ParsedUrlQuery } from "querystring";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
 import { Work } from "@types";
 import Image from "next/image";
 import { motion } from "framer-motion";

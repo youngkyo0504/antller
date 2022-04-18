@@ -73,7 +73,7 @@ const StickyHeader: FC<HeaderProps> = ({ stickyHeaderThreshold }) => {
           <InOutTransitionContainer>
             <ul tw="font-semibold flex tracking-wide">
               {links.map((link) => (
-                <LinkItem isActive={path === link}>
+                <LinkItem isActive={path === link} key={link}>
                   <Link href={`/${link}`}>
                     <a tw="uppercase">{link}</a>
                   </Link>

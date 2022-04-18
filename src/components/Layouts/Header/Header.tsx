@@ -31,7 +31,7 @@ const Header: FC<HeaderProps> = () => {
             <InOutTransitionContainer>
               <ul tw="font-semibold flex tracking-wide">
                 {links.map((link) => (
-                  <LinkItem isActive={path === link}>
+                  <LinkItem key={link} isActive={path === link}>
                     <Link href={`/${link}`}>
                       <a tw="uppercase">{link}</a>
                     </Link>

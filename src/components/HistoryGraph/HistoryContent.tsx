@@ -20,8 +20,8 @@ const HistroyContent: FC<HistoryContentProps> = ({
   selectedYear,
 }) => {
   return (
-    <ul tw="h-full relative    -top-1.5 ">
-      <AnimatePresence exitBeforeEnter>
+    <AnimatePresence exitBeforeEnter>
+      <ul tw="h-full relative -top-1.5" key={"historyContainer"}>
         {historyData
           .filter((history) => history.year === selectedYear)
           .map((selectedHistory) =>
@@ -38,15 +38,15 @@ const HistroyContent: FC<HistoryContentProps> = ({
                   <p tw="mb-0.5 text-gray">
                     {`${selectedHistory.year}.${monthWork.month}`}
                   </p>
-                  {monthWork.content.map((content) => (
-                    <p>{content}</p>
+                  {monthWork.content.map((content, index) => (
+                    <p key={index}>{content}</p>
                   ))}
                 </motion.li>
               )
             )
           )}
-      </AnimatePresence>
-    </ul>
+      </ul>
+    </AnimatePresence>
   );
 };
 export default HistroyContent;

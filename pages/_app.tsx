@@ -5,11 +5,12 @@ import { AnimatePresence } from "framer-motion";
 import Layout from "../src/components/Layouts/Layout";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
+  const AnyComponent = Component as any;
   return (
     <>
       <GlobalStyles />
       <AnimatePresence exitBeforeEnter>
-        <Component key={router.route} {...pageProps} />
+        <AnyComponent key={router.route} {...pageProps} />
       </AnimatePresence>
     </>
   );

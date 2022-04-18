@@ -8,21 +8,44 @@ import { MDXProvider } from "@mdx-js/react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { ParsedUrlQuery } from "querystring";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 import { Work } from "@types";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import Interview from "@components/Common/Markdown/Interview";
+import { MDXComponents } from "mdx/types";
+import MadeBy from "@components/Common/Markdown/MadeBy";
 
 // const Container = tw.div`max-w-content mx-auto px-content mt-header`;
-const Container = tw.div`max-w-[900px] mx-auto px-content mt-header`;
+const Container = tw.div`max-w-content mx-auto px-content mt-header`;
 const Title = tw.p`text-6xl font-bold tracking-wider`;
-const SubTitle = tw.p`text-xl pt-4 text-gray`;
+const SubTitle = tw.p`text-xl pt-4 text-gray mb-12`;
 
 interface WorkDetailProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
   frontMatter: Work["data"];
 }
+const ElementImage = (props: any) => {
+  const { src, alt } = props;
+  return (
+    <motion.img
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      viewport={{ once: true }}
+      src={src}
+      alt={alt}
+      className={"sfsfsfs"}
+    />
+  );
+};
 
-const components = {};
+const components: MDXComponents | undefined = {
+  img: ElementImage,
+  Interview: (props: any) => <Interview {...props} />,
+  MadeBy: (props: any) => <MadeBy {...props} />,
+};
+
 const WorkDetailPage: NextPage<WorkDetailProps> = ({ source, frontMatter }) => {
   return (
     <>
@@ -37,18 +60,18 @@ const WorkDetailPage: NextPage<WorkDetailProps> = ({ source, frontMatter }) => {
             <Container>
               <Title>{frontMatter.title}</Title>
               <SubTitle>{frontMatter.subCategory}</SubTitle>
-            </Container>
-            <Image
-              src={"/images/hanwoo-insight.png"}
-              layout="responsive"
-              width={1000}
-              height={600}
-            />
-            <Container>
-              <div tw="pb-12"></div>
-              <section className="prose lg:prose-xl prose-img:rounded-xl ">
+              <Image
+                src={`/images/${frontMatter.id}.png`}
+                layout="responsive"
+                width={1920}
+                height={1080}
+              />
+              <p tw="text-gray text-center mt-1">NEWSO ORIGINAL DOCUMENTARY</p>
+              <section
+                className="prose lg:prose-2xl prose-img:rounded-xl  max-w-content mt-20"
+                style={{ wordBreak: "keep-all" }}
+              >
                 <MDXRemote {...source} />
-                <p>왜 안되지?</p>
               </section>
             </Container>
           </InOutTransitionContainer>

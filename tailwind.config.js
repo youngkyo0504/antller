@@ -6,14 +6,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        spoqa: ["Spoqa Han Sans Neo"],
-        noto: ["Noto Sans KR"],
-        pretendard: ["Pretendard"],
-        nanum: ["Nanum Gothic"],
-        score: ["S-CoreDream-4Regular"],
-        gothicA1: ["Gothic A1"],
-      },
+      fontFamily: {},
       colors: {
         "antller-black": "#1A1A1A",
         gray: "#999999",

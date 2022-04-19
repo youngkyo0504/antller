@@ -20,6 +20,7 @@ const CardContainerBgVariants: Record<CardContainerBgVariant, TwStyle> = {
   yellow: tw`bg-[#ffe5a6]`,
   green: tw`bg-[#c7e4ca]`,
 };
+
 type CardContainerVariant = "6" | "8" | "4";
 type CardContainerBgVariant = "yellow" | "green" | "blue" | "orange";
 interface CardContainerProps {
@@ -159,7 +160,7 @@ const WorkDetail: FC<WorkDetailProps> = () => {
             <DiscList>가을 장마 대비하기</DiscList>
             <DiscList>한우 C등급 출현을 줄이는 방법</DiscList>
             <DiscList>
-              어려웠던 정책 개정, 법, 기술 관련 인사이트 까지!"
+              어려웠던 정책 개정, 법, 기술 관련 인사이트 까지!
             </DiscList>
           </ul>
         </Card>

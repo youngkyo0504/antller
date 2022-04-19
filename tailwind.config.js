@@ -20,7 +20,7 @@ module.exports = {
         divider: "#e3e4e5",
       },
       maxWidth: {
-        content: "100rem",
+        content: "1040px",
       },
       padding: {
         content: "3.125rem",

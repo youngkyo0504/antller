@@ -30,7 +30,7 @@ const Interview: FC<InterviewProps> = ({
         tw=" w-1/2 p-8 flex flex-col justify-center  font-bold text-[1.7rem]  leading-10"
         style={{ wordBreak: "keep-all" }}
       >
-        {children}
+        {content}
         <p tw="mt-4 pr-4 text-[#94A3B8] text-lg font-medium">
           <span>{name}</span> <span className="text-sm">{position}</span>
         </p>

@@ -51,8 +51,6 @@ const StickyHeader: FC<HeaderProps> = ({ stickyHeaderThreshold }) => {
   const headerVariants: Variants = getStickyHeaderVariants(
     stickyHeaderThreshold
   );
-
-  console.log(headerVariants);
   const router = useRouter();
   const path = router.pathname.substring(1);
   return (

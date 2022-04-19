@@ -65,10 +65,11 @@ const WorkDetailPage: NextPage<WorkDetailProps> = ({ source, frontMatter }) => {
                 layout="responsive"
                 width={1920}
                 height={1080}
+                alt="banner image"
               />
               <p tw="text-gray text-center mt-1">NEWSO ORIGINAL DOCUMENTARY</p>
               <section
-                className="prose lg:prose-2xl prose-img:rounded-xl  max-w-content mt-20"
+                className="prose lg:prose-xl prose-img:rounded-xl  max-w-content mt-20"
                 style={{ wordBreak: "keep-all" }}
               >
                 <MDXRemote {...source} />

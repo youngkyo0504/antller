@@ -10,7 +10,7 @@ module.exports = {
         spoqa: ["Spoqa Han Sans Neo"],
         noto: ["Noto Sans KR"],
         pretendard: ["Pretendard"],
-        nanum: ["Nanum Gothic"],
+        nanum: ["나눔스퀘어", "NanumSquare", "sans-serif"],
         score: ["S-CoreDream-4Regular"],
         gothicA1: ["Gothic A1"],
       },

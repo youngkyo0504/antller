@@ -2,7 +2,6 @@ import "twin.macro";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import React, { FC, useState } from "react";
 import { TabId, Work } from "../../types";
-import { items } from "src/datas/simple-work.data";
 import Link from "next/link";
 
 interface CardProps {
@@ -22,9 +21,10 @@ const variants: Variants = {
   exit: { opacity: 0, y: -15 },
   initial: { opacity: 0, y: 15 },
 };
+
 function Card({ id, title, subCategory }: CardProps) {
   return (
-    <Link href={`/work/${id}`}>
+    <Link passHref href={`/work/${id}`}>
       <motion.li
         className="group"
         animate={"animate"}
@@ -36,14 +36,14 @@ function Card({ id, title, subCategory }: CardProps) {
       >
         {/* Image Container */}
         <div tw="w-full  relative block  ">
-          <motion.div
+          <div
             // bg-[#1c1c1e]
             tw="   w-full  h-full mx-auto   rounded-2xl  "
           >
             <motion.div tw=" h-auto  relative ease-out  overflow-hidden rounded-2xl transition-all group-hover:(-translate-y-1  box-shadow[rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;])   ">
               <img tw="rounded-2xl " src={`/images/${id}.png`} alt="" />
             </motion.div>
-          </motion.div>
+          </div>
         </div>
         <motion.div tw="mt-2">
           <span tw=" text-sm uppercase">{subCategory}</span>

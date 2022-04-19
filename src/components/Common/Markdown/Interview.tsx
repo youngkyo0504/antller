@@ -19,13 +19,13 @@ const Interview: FC<InterviewProps> = ({
 }) => {
   return (
     <motion.div
-      initial={{ scale: 0.9 }}
-      whileInView={{ scale: 1 }}
+      initial={{ y: 50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
       transition={{
         duration: 0.7,
         ease: "easeOut",
       }}
-      viewport={{ amount: 0.5, once: true }}
+      viewport={{ amount: 0.2, once: true }}
       className="not-prose"
       tw="flex sm:(flex-row) flex-col md:(mb-36)"
     >

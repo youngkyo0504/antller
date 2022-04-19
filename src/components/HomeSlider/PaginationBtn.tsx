@@ -13,7 +13,7 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({
 }) => {
   return (
     <>
-      <div
+      <button
         className="next group"
         tw=""
         onClick={() => {
@@ -26,8 +26,8 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({
         }}
       >
         <ChevronRightIcon tw="mr-6 h-10 transition-all ease-in group-hover:(opacity-100)  opacity-0" />
-      </div>
-      <div
+      </button>
+      <button
         tw=""
         className="prev group"
         onClick={() => {
@@ -38,7 +38,7 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({
         }}
       >
         <ChevronLeftIcon tw="ml-6 h-10  transition-all ease-in group-hover:(opacity-100)  opacity-0" />
-      </div>
+      </button>
       <style jsx>{`
         .next,
         .prev {

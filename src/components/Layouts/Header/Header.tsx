@@ -10,18 +10,18 @@ import { links } from "./header.data";
 interface HeaderProps {}
 
 const LinkItem = styled.li(({ isActive }: { isActive: boolean }) => [
-  tw`cursor-pointer last:mr-0 mr-8 leading-loose text-gray`,
+  tw`cursor-pointer last:mr-0  leading-loose text-gray`,
   tw`hover:text-antller-black`,
   isActive && tw`text-black`,
 ]);
 
 const Header: FC<HeaderProps> = () => {
   const router = useRouter();
-  const path = router.pathname.substring(1);
+  const path = router.pathname.split("/")[1];
   return (
     <>
       <motion.header tw="absolute bg-transparent left-0  right-0 z-[4] mx-auto  overflow-auto  ">
-        <div tw="mt-7 mx-auto  flex justify-between items-center max-w-content md:px-content w-full">
+        <div tw="mt-4 mx-auto  flex justify-between items-center max-w-content md:px-content w-full">
           <Link href={"/"}>
             <a tw="flex items-center cursor-pointer">
               <Logo />
@@ -33,7 +33,7 @@ const Header: FC<HeaderProps> = () => {
                 {links.map((link) => (
                   <LinkItem key={link} isActive={path === link}>
                     <Link href={`/${link}`}>
-                      <a tw="uppercase">{link}</a>
+                      <a tw="uppercase p-4">{link}</a>
                     </Link>
                   </LinkItem>
                 ))}

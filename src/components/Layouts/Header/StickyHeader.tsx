@@ -15,7 +15,7 @@ interface HeaderProps {
 }
 
 const LinkItem = styled.li(({ isActive }: { isActive: boolean }) => [
-  tw`cursor-pointer last:mr-0 mr-8 leading-loose text-gray`,
+  tw`cursor-pointer  last:mr-0  leading-loose text-gray`,
   tw`hover:text-antller-black`,
   isActive && tw`text-black`,
 ]);
@@ -24,9 +24,8 @@ const StickyHeader: FC<HeaderProps> = ({ stickyHeaderThreshold }) => {
   const { scrollDirection, scrollY, headerVariants } = useStickyHeader(
     stickyHeaderThreshold
   );
-
   const router = useRouter();
-  const path = router.pathname.substring(1);
+  const path = router.pathname.split("/")[1];
   return (
     <motion.header
       variants={headerVariants}
@@ -37,22 +36,20 @@ const StickyHeader: FC<HeaderProps> = ({ stickyHeaderThreshold }) => {
     >
       <div tw="h-[70px] mx-auto  flex justify-between items-center max-w-content md:px-content w-full">
         <Link href={"/"}>
-          <a tw="flex items-center cursor-pointer">
+          <a tw=" flex items-center cursor-pointer">
             <Logo />
           </a>
         </Link>
         <nav>
-          <InOutTransitionContainer>
-            <ul tw="font-semibold flex tracking-wide">
-              {links.map((link) => (
-                <LinkItem isActive={path === link} key={link}>
-                  <Link href={`/${link}`}>
-                    <a tw="uppercase">{link}</a>
-                  </Link>
-                </LinkItem>
-              ))}
-            </ul>
-          </InOutTransitionContainer>
+          <ul tw="font-semibold flex tracking-wide">
+            {links.map((link) => (
+              <LinkItem isActive={path === link} key={link}>
+                <Link href={`/${link}`}>
+                  <a tw=" p-4 uppercase">{link}</a>
+                </Link>
+              </LinkItem>
+            ))}
+          </ul>
         </nav>
       </div>
     </motion.header>

@@ -36,7 +36,6 @@ const ElementImage = (props: any) => {
       viewport={{ once: true }}
       src={src}
       alt={alt}
-      className={"sfsfsfs"}
     />
   );
 };

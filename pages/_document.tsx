@@ -23,7 +23,14 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="ko-kr">
-        <Head />
+        <Head>
+          <link
+            rel="stylesheet"
+            as="style"
+            crossOrigin="true"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

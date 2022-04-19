@@ -4,7 +4,7 @@ import Image from "next/image";
 const WhileInViewImage = ({ src }: { src: string }) => {
   return (
     <motion.div
-      tw="overflow-hidden rounded-xl w-full"
+      tw="overflow-hidden rounded-xl w-full h-full relative"
       // initial={{ opacity: 0, y: 60 }}
       // whileInView={{ opacity: 1, y: 0 }}
       // transition={{
@@ -14,13 +14,15 @@ const WhileInViewImage = ({ src }: { src: string }) => {
       // }}
       // viewport={{ once: true }}
     >
-      <Image
-        tw="scale-[1.2] w-full "
-        layout="responsive"
-        width={1920}
-        height={1080}
-        src={src}
-      />
+      <div tw="scale-[1.22]">
+        <Image
+          className="hey"
+          tw=" h-full rounded-xl w-full"
+          width={450}
+          height={253}
+          src={src}
+        />
+      </div>
     </motion.div>
   );
 };

@@ -20,7 +20,7 @@ const Header: FC<HeaderProps> = () => {
   const path = router.pathname.substring(1);
   return (
     <>
-      <motion.header tw="absolute bg-transparent left-0  right-0 z-[4] mx-auto    ">
+      <motion.header tw="absolute bg-transparent left-0  right-0 z-[4] mx-auto  overflow-auto  ">
         <div tw="mt-7 mx-auto  flex justify-between items-center max-w-content md:px-content w-full">
           <Link href={"/"}>
             <a tw="flex items-center cursor-pointer">

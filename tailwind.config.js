@@ -6,14 +6,16 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {},
+      fontFamily: {
+        sans: ["Pretendard"],
+      },
       colors: {
         "antller-black": "#1A1A1A",
         gray: "#999999",
         divider: "#e3e4e5",
       },
       maxWidth: {
-        content: "1040px",
+        content: "1200px",
       },
       padding: {
         content: "3.125rem",

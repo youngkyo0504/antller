@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import Interview from "@components/Common/Markdown/Interview";
 import { MDXComponents } from "mdx/types";
 import MadeBy from "@components/Common/Markdown/MadeBy";
+import InterviewCol from "@components/Common/Markdown/InterViewCol";
 
 // const Container = tw.div`max-w-content mx-auto px-content mt-header`;
 const Container = tw.div`max-w-content mx-auto px-content mt-header`;
@@ -44,6 +45,7 @@ const components: MDXComponents | undefined = {
   img: ElementImage,
   Interview: (props: any) => <Interview {...props} />,
   MadeBy: (props: any) => <MadeBy {...props} />,
+  InterviewCol: (props: any) => <InterviewCol {...props} />,
 };
 
 const WorkDetailPage: NextPage<WorkDetailProps> = ({ source, frontMatter }) => {
@@ -63,13 +65,13 @@ const WorkDetailPage: NextPage<WorkDetailProps> = ({ source, frontMatter }) => {
               <Image
                 src={`/images/${frontMatter.id}.png`}
                 layout="responsive"
-                width={1920}
-                height={1080}
+                width={1280}
+                height={720}
                 alt="banner image"
               />
               <p tw="text-gray text-center mt-1">NEWSO ORIGINAL DOCUMENTARY</p>
               <section
-                className="prose lg:prose-xl prose-img:rounded-xl  max-w-content mt-20"
+                className="prose lg:prose-xl prose-img:rounded-xl mx-auto max-w-[900px] mt-20 overflow-auto"
                 style={{ wordBreak: "keep-all" }}
               >
                 <MDXRemote {...source} />

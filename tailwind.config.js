@@ -6,7 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {},
+      fontFamily: {
+        sans: ["Pretendard"],
+      },
       colors: {
         "antller-black": "#1A1A1A",
         gray: "#999999",

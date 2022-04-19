@@ -7,39 +7,13 @@ import { useRouter } from "next/router";
 import { motion, Variants } from "framer-motion";
 import InOutTransitionContainer from "../TransitionContainer";
 import { links } from "./header.data";
-import useHeader from "./useStickyHeader";
+import useStickyHeader from "./useStickyHeader";
 import { ScrollDirection } from "./header.type";
 
 interface HeaderProps {
   stickyHeaderThreshold?: number;
 }
-const getStickyHeaderVariants: (stickyHeaderThreshold?: number) => Variants = (
-  stickyHeaderThreshold = 300
-) => {
-  return {
-    initial: {
-      y: -100,
-    },
-    scroll: ({
-      direction,
-      scrollY,
-    }: {
-      direction: ScrollDirection;
-      scrollY: number;
-    }) => {
-      return {
-        position: "fixed",
-        y: direction === "up" && scrollY > stickyHeaderThreshold ? 0 : -100,
-        backgroundColor: "rgba(255,255,255,.97)",
-        transition: {
-          type: "tween",
-          duration: 0.4,
-          ease: "easeOut",
-        },
-      };
-    },
-  };
-};
+
 const LinkItem = styled.li(({ isActive }: { isActive: boolean }) => [
   tw`cursor-pointer last:mr-0 mr-8 leading-loose text-gray`,
   tw`hover:text-antller-black`,
@@ -47,10 +21,10 @@ const LinkItem = styled.li(({ isActive }: { isActive: boolean }) => [
 ]);
 
 const StickyHeader: FC<HeaderProps> = ({ stickyHeaderThreshold }) => {
-  const { scrollDirection, scrollY } = useHeader(stickyHeaderThreshold);
-  const headerVariants: Variants = getStickyHeaderVariants(
+  const { scrollDirection, scrollY, headerVariants } = useStickyHeader(
     stickyHeaderThreshold
   );
+
   const router = useRouter();
   const path = router.pathname.substring(1);
   return (

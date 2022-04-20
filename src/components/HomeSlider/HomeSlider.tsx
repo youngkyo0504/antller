@@ -16,8 +16,8 @@ import {
 } from "@hooks";
 import PaginationBtn from "./PaginationBtn";
 import ProgressText from "./ProgressText";
+import tw from "twin.macro";
 interface HomeSliderProps {}
-
 const SLIDER_DURATION = 0.8;
 
 const HomeSlider: FC<HomeSliderProps> = () => {

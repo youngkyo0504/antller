@@ -1,8 +1,8 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { FC } from "react";
 import { sortStrings } from "src/util";
+import tw from "twin.macro";
 import historyData from "./history.data";
-
 interface HistoryContentProps {
   selectedYear: string;
 }

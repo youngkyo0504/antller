@@ -1,7 +1,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const WhileInViewImage = ({ src }: { src: string }) => {
+import tw from "twin.macro";
+const WhileInViewImage = ({
+  src,
+  alt = "image",
+}: {
+  src: string;
+  alt?: string;
+}) => {
   return (
     <motion.div
       tw="overflow-hidden rounded-xl w-full h-full relative"
@@ -16,6 +22,7 @@ const WhileInViewImage = ({ src }: { src: string }) => {
     >
       <div tw="scale-[1.22]">
         <Image
+          alt={alt}
           className="hey"
           tw=" h-full rounded-xl w-full"
           width={450}

@@ -6,7 +6,7 @@ import { AnimateSharedLayout, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import getWorks from "src/lib/mdxFiles";
-
+import tw from "twin.macro";
 interface WorkPageProps {
   works: Work[];
 }

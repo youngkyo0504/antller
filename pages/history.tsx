@@ -3,7 +3,7 @@ import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import HistoryGraph from "@components/HistoryGraph/HistoryGraph";
 import type { NextPage } from "next";
 import Head from "next/head";
-
+import tw from "twin.macro";
 const WorkPage: NextPage = () => {
   return (
     <>

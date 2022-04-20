@@ -3,7 +3,7 @@ import Layout from "@components/Layouts/Layout";
 import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import type { NextPage } from "next";
 import Head from "next/head";
-
+import tw from "twin.macro";
 const Home: NextPage = () => {
   return (
     <>

@@ -3,7 +3,6 @@ import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import getWorks from "src/lib/mdxFiles";
-
 import { MDXProvider } from "@mdx-js/react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FC } from "react";
 import pageTransitionVariants from "src/datas/variants/pageTransitionVariants";
+import tw from "twin.macro";
 const InOutTransitionContainer: FC = ({ children }) => {
   return (
     <motion.div exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>

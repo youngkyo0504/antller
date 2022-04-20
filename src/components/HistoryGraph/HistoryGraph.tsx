@@ -6,12 +6,11 @@ import YearPicker from "./YearPicker";
 interface HistoryGraphProps {}
 
 const variants: Variants = {
-  exit: { opacity: 0, y: -15 },
   initial: { opacity: 0, y: 15 },
   whileInView: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", bounce: 0.4, duration: 1.5 },
+    transition: { type: "tween", duration: 0.3 },
   },
 };
 

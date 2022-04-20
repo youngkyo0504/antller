@@ -9,7 +9,14 @@
       "withStyle": false,
       "withTest": false,
       "withStory": false,
-      "withLazy": false
+      "withLazy": false,
+      "withIndex": true,
+      "withStoryStyle": false,
+      "customTemplates": {
+        "index": "templates/default/index.tsx",
+        "component": "templates/default/TemplateName.tsx",
+        "storyStyle": "templates/default/TemplateName.stories.css"
+      }
     }
   }
 }

@@ -8,14 +8,14 @@ interface styledProps {
   isSelectedYear: boolean;
 }
 const Year = styled.div(({ isSelectedYear }: styledProps) => [
-  tw`transition-all ease-in  cursor-pointer absolute -left-16 -top-2 text-lg text-gray`,
-  isSelectedYear && tw`text-antller-black`,
+  tw`transition-all ease-in  cursor-pointer absolute -left-16 -top-2 text-lg text-historyColor`,
+  isSelectedYear && tw`text-historySelectedColor`,
 ]);
 const YearGraphContainer = tw.li`relative h-20 w-14 `;
 
 const Circle = styled.div(({ isSelectedYear }: styledProps) => [
-  tw`transition-all ease-in  cursor-pointer absolute top-0 w-3 h-3 -left-1.5 bg-divider  rounded-full `,
-  isSelectedYear && tw`bg-antller-black`,
+  tw`transition-all ease-in  cursor-pointer absolute top-0 w-3 h-3 -left-1.5 bg-historyColor rounded-full  `,
+  isSelectedYear && tw`bg-historySelectedColor`,
 ]);
 
 interface YearPickerProps {
@@ -49,7 +49,7 @@ const YearPicker: FC<YearPickerProps> = ({
   };
   return (
     <motion.ul
-      tw="h-full border-l border-divider "
+      tw="h-full border-l border-historyColor "
       variants={variants}
       initial="initial"
       whileInView="whileInView"

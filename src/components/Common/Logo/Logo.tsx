@@ -2,8 +2,8 @@ import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import React, { FC } from "react";
 import "twin.macro";
+import Icon from "./Icon";
 interface LogoProps {}
-
 const line: Variants = {
   hidden: { pathLength: 0, opacity: 0, fill: "rgba(0, 0, 0, 0)" },
   animate: {
@@ -20,36 +20,10 @@ const line: Variants = {
     },
   },
 };
-// const line = {
-//   hidden: { pathLength: 0, opacity: 0 },
-//   animate: (i: number) => {
-//     const delay = 1 + i * 0.5;
-//     return {
-//       pathLength: 1,
-//       opacity: 1,
-//       transition: {
-//         pathLength: { delay, type: "spring", duration: 1.5, bounce: 0 },
-//         opacity: { delay, duration: 0.01 },
-//       },
-//     };
-//   },
-// };
-// const icon: Variants = {
-//   hidden: {
-//     pathLength: 0,
-//     opacity: 0,
-//     fill: "transparent",
-//   },
-//   visible: {
-//     fill: "black",
-//     opacity: 1,
-//     pathLength: 1,
-//   },
-// };
+
 const Logo: FC<LogoProps> = () => {
-  return (
-    <Image height={44} width={104.5} src={"/Antller_logotype_solid.png"} />
-  );
+  return <Icon />;
+  // <Image height={44} width={104.5} src={"/Antller_logotype.svg"} />;
 };
 
 export default Logo;

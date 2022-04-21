@@ -4,7 +4,7 @@ import tw from "twin.macro";
 const SubRole = ({ role, name }: { role: string; name: string }) => {
   return (
     <div tw="mr-5">
-      <p tw="uppercase leading-tight text-xl mt-4   font-bold">{role}</p>
+      <p tw="uppercase leading-tight text-xl   font-bold">{role}</p>
       <p tw="mt-0 leading-tight font-medium">{name}</p>
     </div>
   );
@@ -12,7 +12,7 @@ const SubRole = ({ role, name }: { role: string; name: string }) => {
 
 const MainRole = ({ role, name }: { role: string; name: string }) => {
   return (
-    <div>
+    <div tw="mt-4 ">
       <p tw="text-2xl uppercase font-bold"> {role}</p>
       <p tw="text-xl leading-loose font-medium ">{name}</p>
     </div>

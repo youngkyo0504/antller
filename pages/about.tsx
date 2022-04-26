@@ -32,9 +32,14 @@ const AboutPage: NextPage = () => {
         <InOutTransitionContainer>
           <div tw="bg-black">
             <Introduction />
-            <div tw="bg-blue-700 h-screen"></div>
             <People />
             <HistoryGraph />
+            <div tw="inline-flex h-16 w-full flex-nowrap overflow-x[scroll]">
+              <div tw="bg-blue-400 flex[0 0 auto] w-1/2"></div>
+              <div tw="flex[0 0 auto] w-1/2  bg-yellow-100"></div>
+              <div tw="flex[0 0 auto] w-1/2  bg-purple-300"></div>
+              <div tw="flex[0 0 auto] w-1/2  bg-green-300"></div>
+            </div>
           </div>
         </InOutTransitionContainer>
       </Layout>

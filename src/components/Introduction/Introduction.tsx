@@ -7,7 +7,7 @@ import {
   useViewportScroll,
   Variants,
 } from "framer-motion";
-import ScrollAnimation from "./useScrollAnimation";
+import ScrollAnimation from "./ScrollAnimation";
 import { useElementClientHeight } from "@hooks";
 import useWindowHeight from "src/hooks/useWindowHeight";
 import AnimatedText from "@components/Common/AnimatedText";
@@ -54,7 +54,7 @@ const Introduction: FC<IntroductionProps> = ({}) => {
         style={{
           opacity: opacity4,
         }}
-        tw="fixed top-0 translate-x-[-50%] left-[50%] h-screen w-full flex items-center max-w-content opacity-0"
+        tw="z-index[0] fixed top-0 translate-x-[-50%] left-[50%] h-screen w-full flex items-center max-w-content opacity-0"
       >
         <motion.div tw=" w-1/2">
           <AnimatedText titleOption={{ text: "Mission", color: "#D84624" }}>
@@ -67,8 +67,7 @@ const Introduction: FC<IntroductionProps> = ({}) => {
           <ScrollAnimation
             messages={[
               "우리의 미션은 데이터를 통해 축산농가의 생산성과 경제성을 최적화하고 환경에 미치는 영향을 최소화시킴으로써",
-              "이산업이사람들에게받던사랑과존경을 회복하고더지속가능하게만드는것입니다.",
-              "이산업이 사람들에게 받던 사랑과 존경을 회복하고더지속가능하게만드는것입니다.",
+              "이 산업이 사람들에게 받던 사랑과 존경을 회복하고 더 지속가능하게 만드는 것 입니다.",
             ]}
           ></ScrollAnimation>
         </div>

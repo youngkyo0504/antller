@@ -37,7 +37,9 @@ const ScrollAnimation = ({ messages }: { messages: string[] }) => {
           tw="margin-top[5vh] first:margin-top[0] "
           // css={{ top: `${38 + Number(index) * 10}vh` }}
         >
-          {text}
+          <span tw="leading-relaxed" css={{ wordBreak: "keep-all" }}>
+            {text}
+          </span>
         </motion.div>
       ))}
     </>

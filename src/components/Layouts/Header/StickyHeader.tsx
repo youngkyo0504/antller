@@ -41,7 +41,7 @@ const StickyHeader: FC<HeaderProps> = ({
       initial="initial"
       css={[
         tw`fixed  bg-[rgba(255,255,255,.97)] left-0  right-0 z-[4] mx-auto`,
-        isWhiteLogo && tw`bg-transparent`,
+        isWhiteLogo && tw`bg-[rgba(0,0,0,0.8)]`,
       ]}
     >
       <div tw="h-[70px] mx-auto  flex justify-between items-center max-w-content md:px-content w-full">

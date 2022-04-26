@@ -47,7 +47,7 @@ const StickyHeader: FC<HeaderProps> = ({
       <div tw="h-[70px] mx-auto  flex justify-between items-center max-w-content md:px-content w-full">
         <Link href={"/"}>
           <a tw=" flex items-center cursor-pointer">
-            <Logo isLogoWhite />
+            <Logo isLogoWhite={isWhiteLogo} />
           </a>
         </Link>
         <nav>

@@ -18,7 +18,7 @@ const Layout: FC<LayoutProps> = ({
   return (
     <div tw="flex flex-col min-h-screen">
       <Header isWhiteLogo={isWhiteLogo} />
-      <StickyHeader {...stickyHeaderOption} isWhiteLogo={true} />
+      <StickyHeader {...stickyHeaderOption} isWhiteLogo={isWhiteLogo} />
       <main tw="flex-1">{children}</main>
       <Footer />
     </div>

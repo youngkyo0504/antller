@@ -1,12 +1,11 @@
+import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import React, { FC } from "react";
 import "twin.macro";
 import tw from "twin.macro";
 import Icon from "./Icon";
-interface LogoProps {
-  isLogoWhite?: boolean;
-}
+interface LogoProps {}
 const line: Variants = {
   hidden: { pathLength: 0, opacity: 0, fill: "rgba(0, 0, 0, 0)" },
   animate: {
@@ -24,12 +23,13 @@ const line: Variants = {
   },
 };
 
-const Logo: FC<LogoProps> = ({ isLogoWhite }) => {
+const Logo: FC<LogoProps> = () => {
+  const { isBgBlack } = useDarkBgContext();
   return (
     <svg
       css={[
         tw`h-9 transition ease-in`,
-        isLogoWhite && tw`fill-[white] stroke-[white]`,
+        isBgBlack && tw`fill-[white] stroke-[white]`,
       ]}
       tw="h-9"
       xmlns="http://www.w3.org/2000/svg"

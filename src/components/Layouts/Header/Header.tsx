@@ -7,28 +7,31 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import InOutTransitionContainer from "../TransitionContainer";
 import { links } from "./header.data";
-interface HeaderProps {
-  isWhiteLogo?: boolean;
-}
+import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+interface HeaderProps {}
 
 const LinkItem = styled.li(
-  ({ isActive, isWhiteLogo }: { isWhiteLogo?: boolean; isActive: boolean }) => [
+  ({ isActive, isBgBlack }: { isBgBlack?: boolean; isActive: boolean }) => [
     tw`cursor-pointer last:mr-0  leading-loose text-gray`,
-    isWhiteLogo ? tw`hover:text-white` : tw`hover:text-antller-black`,
-    isActive && (isWhiteLogo ? tw`text-white` : tw`text-black`),
+    isBgBlack ? tw`hover:text-white` : tw`hover:text-antller-black`,
+    isActive && (isBgBlack ? tw`text-white` : tw`text-black`),
   ]
 );
 
-const Header: FC<HeaderProps> = ({ isWhiteLogo }) => {
+const Container = tw.div`mt-6 mx-auto  flex justify-between items-center max-w-content md:px-content w-full`;
+
+const Header: FC<HeaderProps> = ({}) => {
+  const { isBgBlack } = useDarkBgContext();
   const router = useRouter();
   const path = router.pathname.split("/")[1];
+
   return (
     <>
       <motion.header tw=" absolute bg-transparent left-0  right-0 z-[4] mx-auto">
-        <div tw="mt-6 mx-auto  flex justify-between items-center max-w-content md:px-content w-full">
+        <Container>
           <Link href={"/"}>
             <a tw="flex items-center cursor-pointer">
-              <Logo isLogoWhite={isWhiteLogo} />
+              <Logo />
             </a>
           </Link>
           <nav>
@@ -37,7 +40,7 @@ const Header: FC<HeaderProps> = ({ isWhiteLogo }) => {
                 {links.map((link) => (
                   <LinkItem
                     key={link}
-                    isWhiteLogo={isWhiteLogo}
+                    isBgBlack={isBgBlack}
                     isActive={path === link}
                   >
                     <Link href={`/${link}`}>
@@ -48,7 +51,7 @@ const Header: FC<HeaderProps> = ({ isWhiteLogo }) => {
               </ul>
             </InOutTransitionContainer>
           </nav>
-        </div>
+        </Container>
       </motion.header>
     </>
   );

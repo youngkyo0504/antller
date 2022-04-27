@@ -1,0 +1,22 @@
+[
+    {
+        "name":"나영준",
+        "role": "CEO"
+
+    },
+    {
+        "name":"장하라",
+        "role": "Manager"
+
+    },
+    {
+        "name":"강유림",
+        "role": "Editor"
+
+    },
+    {
+        "name":"금교영",
+        "role": "Developer"
+
+    }
+]

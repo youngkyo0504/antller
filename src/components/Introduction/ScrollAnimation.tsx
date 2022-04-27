@@ -13,7 +13,7 @@ const ScrollAnimation = ({ messages }: { messages: string[] }) => {
   const { scrollY } = useViewportScroll();
 
   const degreeOfMovement = windowHeight * 0.05;
-  const textGapY = windowHeight * 0.5;
+  const textGapY = windowHeight * 0.8;
   const yOfElements: MotionValue<number>[] = [];
   const opacityOfElements: MotionValue<number>[] = [];
 

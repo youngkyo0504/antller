@@ -10,15 +10,11 @@ interface LayoutProps {
   };
   isWhiteLogo?: boolean;
 }
-const Layout: FC<LayoutProps> = ({
-  isWhiteLogo,
-  children,
-  stickyHeaderOption,
-}) => {
+const Layout: FC<LayoutProps> = ({ children, stickyHeaderOption }) => {
   return (
     <div tw="flex flex-col min-h-screen">
-      <Header isWhiteLogo={isWhiteLogo} />
-      <StickyHeader {...stickyHeaderOption} isWhiteLogo={isWhiteLogo} />
+      <Header />
+      <StickyHeader {...stickyHeaderOption} />
       <main tw="flex-1">{children}</main>
       <Footer />
     </div>

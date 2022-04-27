@@ -12,7 +12,7 @@ module.exports = {
       },
       colors: {
         historySelectedColor: "#fff",
-        historyColor: "rgb(61, 72, 85)",
+        historyColor: "#555555",
         "antller-black": "#1A1A1A",
         gray: "#999999",
         divider: "#e3e4e5",

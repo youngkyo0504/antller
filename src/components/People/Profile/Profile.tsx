@@ -1,22 +1,36 @@
 import tw, { css } from "twin.macro";
 import React, { FC } from "react";
 import { motion, MotionConfig } from "framer-motion";
-
+import profileData from "./profile.json";
 interface ProfileProps {}
 const Container = tw(
   motion.div
 )`w-full rounded-xl max-w-content mx-auto relative z-index[3] flex`;
 const Profile: FC<ProfileProps> = ({}) => {
   return (
-    <Container drag="x" dragConstraints={{ left: 0, right: 0 }} dragElastic={1}>
-      {["1", "2", "3", "4"].map((number) => (
-        <motion.img
-          draggable={false}
-          key={number}
-          tw="user-select[none] w-1/2 ml-10 first:ml-0"
-          src={`/images/people/${number}.png`}
-          alt=""
-        />
+    <Container
+      css={{ cursor: "grab" }}
+      drag="x"
+      dragConstraints={{ right: 0, left: -1000 }}
+    >
+      {profileData.map((member, index) => (
+        <div
+          tw="relative flex[0 0 auto]  lg:(ml-36 first:ml-0) w-1/2 overflow-hidden rounded-xl"
+          key={member.name}
+        >
+          <motion.img
+            draggable={false}
+            tw="user-select[none] w-full "
+            src={`/images/people/${index + 1}.png`}
+            alt=""
+          />
+          <div tw="text-white flex absolute left[5%] bottom[3%] text-center items-center">
+            <p tw="text-lg">{member.name}</p>
+            <div tw="ml-2 text-sm text-gray relative before:(absolute w-[1px] top-[50%] left-0 h-[70%] translate-y-[-50%] content bg-gray)">
+              <span tw="px-1  ">{member.role}</span>
+            </div>
+          </div>
+        </div>
       ))}
       sd
     </Container>

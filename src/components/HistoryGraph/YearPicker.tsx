@@ -8,10 +8,10 @@ interface styledProps {
   isSelectedYear: boolean;
 }
 const Year = styled.div(({ isSelectedYear }: styledProps) => [
-  tw`transition-all ease-in  cursor-pointer absolute -left-16 -top-2 text-lg text-historyColor`,
+  tw`transition-all ease-in  cursor-pointer absolute font-bold text-xl -left-20 -top-2  text-historyColor`,
   isSelectedYear && tw`text-historySelectedColor`,
 ]);
-const YearGraphContainer = tw.li`relative h-20 w-14 `;
+const YearGraphContainer = tw.li`relative h-20 w-20 `;
 
 const Circle = styled.div(({ isSelectedYear }: styledProps) => [
   tw`transition-all ease-in  cursor-pointer absolute top-0 w-3 h-3 -left-1.5 bg-historyColor rounded-full  `,

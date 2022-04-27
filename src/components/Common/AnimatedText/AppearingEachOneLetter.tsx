@@ -30,7 +30,7 @@ const AppearingEachOneLetter: FC<AppearingEachOneLetterProps> = ({
       {text.split("").map((char, index) => (
         <motion.span
           css={[
-            tw`text-5xl font-bold  mb-7`,
+            tw`text-5xl font-bold mb-7 first:pl-0 pl-0.5`,
             css`
               color: ${color};
             `,

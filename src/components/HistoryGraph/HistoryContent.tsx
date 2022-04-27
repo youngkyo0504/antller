@@ -35,11 +35,13 @@ const HistroyContent: FC<HistoryContentProps> = ({
                   variants={variants}
                   transition={{ type: "tween", duration: 0.2 }}
                 >
-                  <p tw="mb-0.5 text-gray">
+                  <p tw="mb-0.5 font-bold lg:(text-lg) text-gray">
                     {`${selectedHistory.year}.${monthWork.month}`}
                   </p>
                   {monthWork.content.map((content, index) => (
-                    <p key={index}>{content}</p>
+                    <p tw="lg:(text-xl) text-white" key={index}>
+                      {content}
+                    </p>
                   ))}
                 </motion.li>
               )

@@ -81,7 +81,6 @@ const HomeSlider: FC<HomeSliderProps> = () => {
           setIsEndAnimation={setIsEndAnimation}
         />
       </motion.header>
-      <div className="h-screen"></div>
     </>
   );
 };

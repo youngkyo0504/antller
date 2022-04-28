@@ -1,6 +1,7 @@
 import HomeSlider from "@components/HomeSlider/HomeSlider";
 import Layout from "@components/Layouts/Layout";
 import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
+import Workslist from "@components/Workslist";
 import type { NextPage } from "next";
 import Head from "next/head";
 import tw from "twin.macro";
@@ -15,9 +16,7 @@ const Home: NextPage = () => {
       <Layout stickyHeaderOption={{ stickyHeaderThreshold: 1400 }}>
         <InOutTransitionContainer>
           <HomeSlider />
-          <div>
-            <section className="w-full h-screen   text-white"></section>
-          </div>
+          <Workslist />
         </InOutTransitionContainer>
       </Layout>
     </>

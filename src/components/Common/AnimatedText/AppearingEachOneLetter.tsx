@@ -14,8 +14,16 @@ const sentenceVariants: Variants = {
   },
 };
 const letterVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 0 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeOut",
+      type: "tween",
+      duration: 0.4,
+    },
+  },
 };
 const AppearingEachOneLetter: FC<AppearingEachOneLetterProps> = ({
   color,
@@ -30,7 +38,7 @@ const AppearingEachOneLetter: FC<AppearingEachOneLetterProps> = ({
       {text.split("").map((char, index) => (
         <motion.span
           css={[
-            tw`text-5xl font-bold mb-7 first:pl-0 pl-0.5`,
+            tw`text-5xl inline-block font-bold  first:pl-0 pl-0.5`,
             css`
               color: ${color};
             `,

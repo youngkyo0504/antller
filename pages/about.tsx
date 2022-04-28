@@ -1,21 +1,15 @@
-import { DarkBgContext } from "@components/DarkBgProvider/DarkBgProvider";
 import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
 import HistoryGraph from "@components/HistoryGraph/HistoryGraph";
 import Introduction from "@components/Introduction";
 import Layout from "@components/Layouts/Layout";
 import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import People from "@components/People";
-import { useElementClientHeight } from "@hooks";
-import { motion, Variants } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useContext, useEffect, useState } from "react";
-import tw from "twin.macro";
-import Header from "../src/components/Layouts/Header/Header";
+import { useEffect } from "react";
 
 const AboutPage: NextPage = () => {
   const { setIsBgBlack } = useDarkBgContext();
-
   useEffect(() => {
     setIsBgBlack(true);
     document.body.style.backgroundColor = "black";
@@ -24,14 +18,6 @@ const AboutPage: NextPage = () => {
       document.body.style.backgroundColor = "white";
     };
   });
-
-  const [contentHeights, setContentHeights] = useState<number[]>([]);
-  const [ref1, height1] = useElementClientHeight<HTMLDivElement>();
-  const [ref2, height2] = useElementClientHeight<HTMLDivElement>();
-
-  useEffect(() => {
-    setContentHeights([height1, height2]);
-  }, [height1, height2]);
 
   return (
     <>
@@ -43,8 +29,8 @@ const AboutPage: NextPage = () => {
       <Layout isWhiteLogo={true} stickyHeaderOption={{}}>
         <InOutTransitionContainer>
           <div tw="bg-black">
-            <Introduction ref={ref1} contentHeights={contentHeights} />
-            <People ref={ref2} contentHeights={contentHeights} />
+            <Introduction />
+            <People />
             <HistoryGraph />
           </div>
         </InOutTransitionContainer>

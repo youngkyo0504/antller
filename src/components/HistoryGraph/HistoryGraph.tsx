@@ -1,5 +1,11 @@
 import AnimatedText from "@components/Common/AnimatedText";
-import { motion, Variants } from "framer-motion";
+import { useElementGeometry } from "@hooks";
+import {
+  motion,
+  useTransform,
+  useViewportScroll,
+  Variants,
+} from "framer-motion";
 import React, { FC, useState } from "react";
 import tw from "twin.macro";
 import HistroyContent from "./HistoryContent";
@@ -18,11 +24,24 @@ const variants: Variants = {
 const Container = tw.div`relative min-h-[70vh] w-full max-w-content mx-auto mt-header `;
 const HistoryContainer = tw.div`relative flex w-[500px] mx-auto  mt-36 `;
 const HistoryGraph: FC<HistoryGraphProps> = () => {
+  const [ref, elementHeight, offsetTop] = useElementGeometry<HTMLDivElement>();
+  const { scrollY } = useViewportScroll();
+  const opacity = useTransform(
+    scrollY,
+    // scroll animation element의 opacity가 0이 될 때
+    [offsetTop - elementHeight, offsetTop - elementHeight / 2],
+    [0, 1],
+    {
+      clamp: false,
+    }
+  );
   const [selectedYear, setSelectedYear] = useState<string>("2022");
   return (
-    <Container>
-      <AnimatedText titleOption={{ text: "History", color: "#fff" }} />
-      {/* <motion.h2
+    <Container ref={ref}>
+      <motion.div style={{ opacity }}>
+        <p tw="text-5xl tracking-wide text-white font-bold">History</p>
+        {/* <AnimatedText titleOption={{ text: "History", color: "#fff" }} /> */}
+        {/* <motion.h2
         viewport={{ once: true }}
         variants={variants}
         {...{ ...variants }}
@@ -30,10 +49,11 @@ const HistoryGraph: FC<HistoryGraphProps> = () => {
       >
         앤틀러가 걸어온 길
       </motion.h2> */}
-      <HistoryContainer>
-        <YearPicker {...{ selectedYear, setSelectedYear }} />
-        <HistroyContent {...{ selectedYear }} />
-      </HistoryContainer>
+        <HistoryContainer>
+          <YearPicker {...{ selectedYear, setSelectedYear }} />
+          <HistroyContent {...{ selectedYear }} />
+        </HistoryContainer>
+      </motion.div>
     </Container>
   );
 };

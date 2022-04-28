@@ -14,11 +14,11 @@ const Profile: FC<ProfileProps> = ({}) => {
       dragConstraints={{ right: 0, left: -1000 }}
     >
       {profileData.map((member, index) => (
-        <div
+        <motion.div
           tw="relative flex[0 0 auto]  lg:(ml-36 first:ml-0) w-1/2 overflow-hidden rounded-xl"
           key={member.name}
         >
-          <motion.img
+          <img
             draggable={false}
             tw="user-select[none] w-full "
             src={`/images/people/${index + 1}.png`}
@@ -30,7 +30,7 @@ const Profile: FC<ProfileProps> = ({}) => {
               <span tw="px-1  ">{member.role}</span>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
       sd
     </Container>

@@ -6,7 +6,6 @@ export const useStickyHeader = (stickyHeaderThreshold: number = 300) => {
   const { scrollY } = useViewportScroll();
   const [viewPortScrollY, setViewPortScrollY] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<ScrollDirection>("up");
-  console.log("hi");
 
   useEffect(() => {
     function isDownScroll() {
@@ -42,7 +41,6 @@ export const useStickyHeader = (stickyHeaderThreshold: number = 300) => {
         return {
           position: "fixed",
           y: direction === "up" && scrollY > stickyHeaderThreshold ? 0 : -100,
-          backgroundColor: "rgba(255,255,255,.97)",
           transition: {
             type: "tween",
             duration: 0.4,

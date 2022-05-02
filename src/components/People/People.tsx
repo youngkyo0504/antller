@@ -48,6 +48,7 @@ const People: FC<PeopleProps> = ({}) => {
           <motion.p tw="text-5xl font-bold tracking-wide text-white">
             People
           </motion.p>
+          <p tw="mt-4 text-xl">앤틀러의 얼굴들 </p>
           {/* <AnimatedText titleOption={{ text: "People", color: "#fff" }}> */}
           {/* #4D90F4 */}
           {/* </AnimatedText> */}

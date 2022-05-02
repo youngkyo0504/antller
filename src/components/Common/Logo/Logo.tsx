@@ -28,10 +28,9 @@ const Logo: FC<LogoProps> = () => {
   return (
     <svg
       css={[
-        tw`h-9 transition ease-in`,
+        tw` h-7 md:h-9 transition ease-in`,
         isBgBlack && tw`fill-[white] stroke-[white]`,
       ]}
-      tw="h-9"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 291.78 97.92"
     >

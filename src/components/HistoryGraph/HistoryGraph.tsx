@@ -40,6 +40,7 @@ const HistoryGraph: FC<HistoryGraphProps> = () => {
     <Container ref={ref}>
       <motion.div style={{ opacity }}>
         <p tw="text-5xl tracking-wide text-white font-bold">History</p>
+        <p tw="text-white mt-4 text-xl">앤틀러가 걸어온 길 </p>
         {/* <AnimatedText titleOption={{ text: "History", color: "#fff" }} /> */}
         {/* <motion.h2
         viewport={{ once: true }}

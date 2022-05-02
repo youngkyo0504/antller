@@ -25,12 +25,13 @@ const HistroyContent: FC<HistoryContentProps> = ({
         {historyData
           .filter((history) => history.year === selectedYear)
           .map((selectedHistory) =>
-            sortStrings(selectedHistory.monthContent, "month").map(
-              (monthWork, index) => (
+            selectedHistory.monthContent
+              .sort((a, b) => Number(a.month) - Number(b.month))
+              .map((monthWork, index) => (
                 <motion.li
-                  viewport={{ once: true }}
                   key={monthWork.month + index}
                   tw="mb-5"
+                  viewport={{ amount: 1 }}
                   {...{ ...variants }}
                   variants={variants}
                   transition={{ type: "tween", duration: 0.2 }}
@@ -44,8 +45,7 @@ const HistroyContent: FC<HistoryContentProps> = ({
                     </p>
                   ))}
                 </motion.li>
-              )
-            )
+              ))
           )}
       </ul>
     </AnimatePresence>

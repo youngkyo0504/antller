@@ -8,6 +8,7 @@ import { motion, Variants } from "framer-motion";
 import { links } from "./header.data";
 import useStickyHeader from "./useStickyHeader";
 import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+import Hamburger from "./Hamburger";
 
 interface HeaderProps {
   stickyHeaderThreshold?: number;
@@ -22,7 +23,7 @@ const LinkItem = styled.li(
   ]
 );
 
-const Container = tw.div`h-[70px] mx-auto  flex justify-between items-center max-w-content md:px-content w-full`;
+const Container = tw.nav`md:(px-content h-[70px] )  mx-auto  flex justify-between items-center max-w-content pl-5 w-full`;
 
 const StickyHeader: FC<HeaderProps> = ({
   stickyHeaderThreshold,
@@ -54,7 +55,8 @@ const StickyHeader: FC<HeaderProps> = ({
           </a>
         </Link>
         <nav>
-          <ul tw="font-semibold flex tracking-wide">
+          <Hamburger />
+          <ul tw="hidden  font-semibold md:flex tracking-wide">
             {links.map((link) => (
               <LinkItem
                 isBgBlack={isBgBlack}

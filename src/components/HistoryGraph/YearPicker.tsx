@@ -24,7 +24,7 @@ interface YearPickerProps {
 }
 const variants: Variants = {
   initial: {
-    y: 15,
+    y: 20,
     opacity: 0,
   },
   whileInView: {
@@ -52,6 +52,8 @@ const YearPicker: FC<YearPickerProps> = ({
       tw="h-full border-l border-historyColor "
       variants={variants}
       initial="initial"
+      animate="initial"
+      viewport={{ amount: 1 }}
       whileInView="whileInView"
       transition={{ delay: 0.8 }}
     >

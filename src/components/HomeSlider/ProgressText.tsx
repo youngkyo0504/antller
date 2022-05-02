@@ -31,7 +31,7 @@ const ProgressText: FC<ProgressTextProps> = ({
           }}
           variants={rotateVariants}
           animate={isEndAnimation ? "stop" : "rotate"}
-          tw="inline-block origin-[center center 0] text-2xl mx-[0.7rem]  "
+          tw="inline-block origin-[center center 0] leading-none text-2xl mx-[0.7rem]  "
         >
           /
         </motion.span>

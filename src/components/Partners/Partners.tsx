@@ -1,6 +1,11 @@
 import tw from "twin.macro";
 import React, { FC } from "react";
-import { motion, useTransform, useViewportScroll } from "framer-motion";
+import {
+  motion,
+  useTransform,
+  useViewportScroll,
+  Variants,
+} from "framer-motion";
 import { useElementGeometry } from "@hooks";
 import {
   AboutSubTitle,
@@ -17,6 +22,25 @@ import Logo7 from "./partnerLogo/7.svg";
 interface PartnersProps {}
 const Container = tw.div`bg-black text-white max-w-content w-full mx-auto `;
 
+const parentVariants: Variants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: { delayChildren: 0.3, staggerChildren: 0.08 },
+  },
+};
+const childVariants: Variants = {
+  hidden: { opacity: 0, y: 0 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeOut",
+      type: "tween",
+      duration: 0.4,
+    },
+  },
+};
 const Partners: FC<PartnersProps> = ({}) => {
   const [ref, elementHeight, offsetTop] = useElementGeometry<HTMLDivElement>();
   const { scrollY } = useViewportScroll();
@@ -45,21 +69,80 @@ const Partners: FC<PartnersProps> = ({}) => {
         tw="h-[100vh] flex justify-center flex-col w-full overflow-hidden  z-index[1] relative"
       >
         <Container>
-          <AboutSubTitle>Partners</AboutSubTitle>
-          <SubTitleDescription>함께하는 앤틀러</SubTitleDescription>
+          <AboutSubTitle>Partnership</AboutSubTitle>
+          <SubTitleDescription></SubTitleDescription>
         </Container>
         <div tw=" mt-24  relative flex">
-          <div tw="max-w-content mx-auto flex items-center w-full">
-            <div>
-              <Logo1 tw="h-8 invert" />
-            </div>
-            <Logo2 tw="h-10 invert" />
-            <Logo3 tw="h-10 invert" />
-            <Logo4 tw="h-10 invert" />
-            <Logo5 tw="h-8 invert " />
-            <Logo6 tw="h-10 invert" />
-            <Logo7 tw="h-10 invert " />
-          </div>
+          <motion.div
+            variants={parentVariants}
+            initial="hidden"
+            whileInView={"visible"}
+            tw="max-w-content mx-auto flex items-center w-full"
+          >
+            <motion.div variants={childVariants}>
+              <Image
+                tw="invert "
+                alt="logo"
+                src={"/images/partnerLogo/1.svg"}
+                width={115}
+                height={31}
+              ></Image>
+            </motion.div>
+            <motion.div variants={childVariants}>
+              <Image
+                tw="invert"
+                alt="logo"
+                src={"/images/partnerLogo/2.svg"}
+                width={115}
+                height={31}
+              ></Image>
+            </motion.div>
+            <motion.div variants={childVariants}>
+              <Image
+                tw="invert"
+                alt="logo"
+                src={"/images/partnerLogo/3.svg"}
+                width={115}
+                height={31}
+              ></Image>
+            </motion.div>
+            <motion.div variants={childVariants}>
+              <Image
+                tw="invert"
+                alt="logo"
+                src={"/images/partnerLogo/4.svg"}
+                width={115}
+                height={31}
+              ></Image>
+            </motion.div>
+            <motion.div variants={childVariants}>
+              <Image
+                tw="invert"
+                alt="logo"
+                src={"/images/partnerLogo/5.svg"}
+                width={115}
+                height={31}
+              ></Image>
+            </motion.div>
+            <motion.div variants={childVariants}>
+              <Image
+                tw="invert"
+                alt="logo"
+                src={"/images/partnerLogo/6.svg"}
+                width={115}
+                height={31}
+              ></Image>
+            </motion.div>
+            <motion.div variants={childVariants}>
+              <Image
+                tw="invert"
+                alt="logo"
+                src={"/images/partnerLogo/7.svg"}
+                width={115}
+                height={31}
+              ></Image>
+            </motion.div>
+          </motion.div>
         </div>
       </motion.section>
     </>

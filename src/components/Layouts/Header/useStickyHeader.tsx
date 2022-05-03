@@ -13,8 +13,9 @@ export const useStickyHeader = (stickyHeaderThreshold: number = 300) => {
     }
     function updateScrollState() {
       const direction: ScrollDirection = isDownScroll() ? "down" : "up";
-      setScrollDirection(direction);
       setViewPortScrollY(scrollY.get());
+      if (direction === scrollDirection) return;
+      setScrollDirection(direction);
     }
     // onChange는 unscribe함수를 내보낸다.
     const unscribeScrollY = scrollY.onChange(updateScrollState);

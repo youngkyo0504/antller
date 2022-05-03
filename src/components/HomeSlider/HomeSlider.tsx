@@ -18,7 +18,7 @@ import PaginationBtn from "./PaginationBtn";
 import ProgressText from "./ProgressText";
 import tw from "twin.macro";
 interface HomeSliderProps {}
-const SLIDER_DURATION = 0.8;
+const SLIDER_DURATION = 1;
 
 const HomeSlider: FC<HomeSliderProps> = () => {
   usePreloadImage(sliderImagesInfo);

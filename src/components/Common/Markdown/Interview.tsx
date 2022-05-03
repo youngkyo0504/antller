@@ -37,12 +37,9 @@ const Interview: FC<InterviewProps> = ({
       >
         <WhileInViewImage src={imgUrl} />
       </div>
-      <div
-        tw="sm:(w-1/2) p-8 flex flex-col justify-center  font-bold text-[1.2rem] leading-7"
-        style={{ wordBreak: "keep-all" }}
-      >
+      <div tw="sm:(w-1/2 p-8 text-[1.2rem]) text-sm py-4 flex flex-col justify-center  font-semibold  leading-normal">
         {content}
-        <p tw="mt-4 pr-4 text-[#94A3B8] text-base font-medium">
+        <p tw="mt-4 pr-4 text-[#94A3B8] sm:(text-base) text-xs font-medium">
           <span>{name}</span> <span className="text-sm">{position}</span>
         </p>
       </div>

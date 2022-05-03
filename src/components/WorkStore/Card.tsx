@@ -39,7 +39,14 @@ function PortfolioItem({ id, title, subCategory }: PortfolioItemProps) {
           >
             <motion.div tw=" h-auto  relative ease-out  overflow-hidden transition-all  height[100%] ">
               {/* <img tw="rounded-2xl h-full " src={`/images/${id}.png`} alt="" /> */}
-              <img tw="w-full h-full" src={`/images/${id}.png`} alt="" />
+              <Image
+                layout="responsive"
+                width={1000}
+                height={630}
+                tw="w-full h-full"
+                src={`/images/${id}.png`}
+                alt=""
+              />
             </motion.div>
           </div>
         </div>

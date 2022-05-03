@@ -55,11 +55,11 @@ const PortfolioItem: FC<PortfolioItemProps> = ({ id, setId }) => {
           tw="relative rounded-3xl bg-[#1c1c1e] overflow-hidden w-full h-full mx-auto "
           layoutId={`card-container-${id}`}
         >
-          <CardImageContainer layoutId={`card-image-container-${id}`}>
+          <CardImageContainer>
             <Image
-              width={768}
-              height={432}
-              // layout="fill"
+              width={1000}
+              height={630}
+              layout="intrinsic"
               tw="bg-[rgb(238, 234, 231)]"
               className="w-full  "
               src={`/images/${id}.png`}

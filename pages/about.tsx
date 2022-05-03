@@ -3,6 +3,7 @@ import HistoryGraph from "@components/HistoryGraph/HistoryGraph";
 import Introduction from "@components/Introduction";
 import Layout from "@components/Layouts/Layout";
 import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
+import Partners from "@components/Partners";
 import People from "@components/People";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -32,6 +33,7 @@ const AboutPage: NextPage = () => {
             <Introduction />
             <People />
             <HistoryGraph />
+            <Partners />
           </div>
         </InOutTransitionContainer>
       </Layout>

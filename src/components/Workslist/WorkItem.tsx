@@ -2,6 +2,7 @@ import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import tw from "twin.macro";
+
 interface WorkItemProps {
   id: string;
   index: number;
@@ -34,36 +35,23 @@ function WorkItem({ id, title, subCategory, index }: WorkItemProps) {
       >
         {/* Image Container */}
         <div tw="w-full  relative block h-full  ">
-          <div
-            // bg-[#1c1c1e]
-            tw="   w-full  h-full mx-auto   rounded-2xl  "
-          >
-            <motion.div tw=" h-auto  relative ease-out  overflow-hidden transition-all  height[100%] ">
-              {/* <img tw="rounded-2xl h-full " src={`/images/${id}.png`} alt="" /> */}
-              <img
-                tw="w-full h-full"
-                src={`/work-img/img${index}.jpg`}
-                alt=""
-              />
+          <div tw="   w-full  h-full mx-auto   rounded-2xl  ">
+            <motion.div tw=" h-auto  relative ease-out  overflow-hidden transition-all pb-[62.9032258065%] height[100%] ">
+              <Image layout="fill" src={`/work-img/img${index}.jpg`} alt="" />
             </motion.div>
           </div>
         </div>
-        <motion.div tw="mt-2.5">
-          {/* <span tw=" text-sm uppercase">{subCategory}</span> */}
-          <div>
-            <h2
-              className=""
-              tw="text-underline-offset[0.25rem] relative
-             text-xl font-semibold transition-all ease-in  "
-            >
-              {/* tw="group-hover:(background-image[linear-gradient(to bottom,#1a1a1a 75%,#1a1a1a 75%)] background-size[1px 1px] background-repeat[repeat-x] background-position[0 98%])" */}
-              <span tw="relative  ">
-                {title}
-                <span tw="absolute left-0 bottom-[-10%] w-full transition-colors duration-500 group-hover:bg-antller-black h-[1px]"></span>
-              </span>
-            </h2>
-          </div>
-        </motion.div>
+        <div tw="mt-2.5">
+          <h2
+            tw="text-underline-offset[0.25rem] relative
+             text-xl font-semibold transition-all ease-in "
+          >
+            <span tw="relative  ">
+              {title}
+              <span tw="absolute left-0 bottom-[-10%] w-full transition-colors duration-500 group-hover:bg-antller-black h-[1px]"></span>
+            </span>
+          </h2>
+        </div>
       </motion.li>
     </Link>
   );

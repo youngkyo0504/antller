@@ -48,18 +48,18 @@ function WorkItem({ id, title, subCategory, index }: WorkItemProps) {
             </motion.div>
           </div>
         </div>
-        <motion.div tw="mt-2">
+        <motion.div tw="mt-2.5">
           {/* <span tw=" text-sm uppercase">{subCategory}</span> */}
           <div>
             <h2
               className=""
               tw="text-underline-offset[0.25rem] relative
-             text-xl font-bold transition-all ease-in  "
+             text-xl font-semibold transition-all ease-in  "
             >
               {/* tw="group-hover:(background-image[linear-gradient(to bottom,#1a1a1a 75%,#1a1a1a 75%)] background-size[1px 1px] background-repeat[repeat-x] background-position[0 98%])" */}
               <span tw="relative  ">
                 {title}
-                <span tw="absolute left-0 bottom-[-5%] w-full transition-colors duration-500 group-hover:bg-antller-black h-[1px]"></span>
+                <span tw="absolute left-0 bottom-[-10%] w-full transition-colors duration-500 group-hover:bg-antller-black h-[1px]"></span>
               </span>
             </h2>
           </div>

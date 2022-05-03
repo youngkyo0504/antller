@@ -6,11 +6,6 @@ import WorkItem from "./WorkItem";
 import { chunk } from "src/util";
 
 interface WorkslistProps {}
-const decideGridOrder = (index: number) => {
-  if (index % 10 === 0) return css`order[${index + 4}] col-span-2 row-span-2`;
-  if (index % 5 === 0) return tw`col-span-2 row-span-2`;
-  return "";
-};
 
 const GridItem = styled.div(({ index }: { index: number }) => [
   index === 0
@@ -20,33 +15,6 @@ const GridItem = styled.div(({ index }: { index: number }) => [
     : "",
 ]);
 
-const FlexItem = styled.div(() => [
-  css`
-    &:nth-of-type(5n) {
-      ${tw`w-1/2`}
-    }
-    &:nth-of-type(6n) {
-      ${tw`w-1/2`}
-    }
-    ${tw`w-1/4`}
-  `,
-]);
-const WorkItemsChunkedBy10 = (chunkedWorks: workItem[]) => {
-  return (
-    <>
-      <div tw=" col-span-2    row-span-2   ">1</div>
-      <div tw="">2</div>
-      <div tw="h-24 bg-red-200">3</div>
-      <div tw=" bg-red-200">4</div>
-      <div tw="h-24 bg-red-200">5</div>
-      <div tw="">6</div>
-      <div tw="h-24 bg-red-200">7</div>
-      <div tw="h-24 bg-red-200">8</div>
-      <div tw="h-24 bg-red-200">9</div>
-      <div tw="h-24 bg-red-200">10</div>
-    </>
-  );
-};
 const Workslist: FC<WorkslistProps> = ({}) => {
   console.log({ 배열들: chunk(items, 10) });
   return (
@@ -60,13 +28,6 @@ const Workslist: FC<WorkslistProps> = ({}) => {
           ))
         )}
       </section>
-      {/* <section tw="flex max-w-[1600px] px-[50px] mx-auto flex-wrap">
-        {items.map((item, index) => (
-          <div>
-            <WorkItem index={index} {...item} />
-          </div>
-        ))}
-      </section> */}
     </>
   );
 };

@@ -1,3 +1,4 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -7,24 +8,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          "Pretendard",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "system-ui",
-          "Roboto",
-          "Helvetica Neue",
-          "Segoe UI",
-          "Apple SD Gothic Neo",
-          "Noto Sans KR",
-          "Malgun Gothic",
-          "Apple Color Emoji",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol",
-          "sans-serif",
-        ],
+        sans: ["Pretendard", ...defaultTheme.fontFamily.sans],
       },
       colors: {
+        historySelectedColor: "#fff",
+        historyColor: "#555555",
         "antller-black": "#1A1A1A",
         gray: "#999999",
         divider: "#e3e4e5",

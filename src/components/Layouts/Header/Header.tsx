@@ -1,37 +1,42 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Link from "next/link";
 import "twin.macro";
 import Logo from "../../Common/Logo/Logo";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import InOutTransitionContainer from "../TransitionContainer";
 import { links } from "./header.data";
+import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+import Hamburger from "./Hamburger";
+import { LinkItem, NavBar } from "styles/globalStyleComponent";
 interface HeaderProps {}
 
-const LinkItem = styled.li(({ isActive }: { isActive: boolean }) => [
-  tw`cursor-pointer last:mr-0  leading-loose text-gray`,
-  tw`hover:text-antller-black`,
-  isActive && tw`text-black`,
-]);
-
-const Header: FC<HeaderProps> = () => {
+const Header: FC<HeaderProps> = ({}) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isBgBlack } = useDarkBgContext();
   const router = useRouter();
   const path = router.pathname.split("/")[1];
+
   return (
     <>
-      <motion.header tw="absolute bg-transparent left-0  right-0 z-[4] mx-auto  overflow-auto  ">
-        <div tw="mt-4 mx-auto  flex justify-between items-center max-w-content md:px-content w-full">
+      <motion.header tw="w-full absolute bg-transparent left-0  right-0 z-[4] mx-auto">
+        <NavBar>
           <Link href={"/"}>
             <a tw="flex items-center cursor-pointer">
               <Logo />
             </a>
           </Link>
-          <nav>
+          <div>
             <InOutTransitionContainer>
-              <ul tw="font-semibold flex tracking-wide">
+              <Hamburger />
+              <ul tw="hidden font-semibold md:flex tracking-wide">
                 {links.map((link) => (
-                  <LinkItem key={link} isActive={path === link}>
+                  <LinkItem
+                    key={link}
+                    isBgBlack={isBgBlack}
+                    isActive={path === link}
+                  >
                     <Link href={`/${link}`}>
                       <a tw="uppercase p-4">{link}</a>
                     </Link>
@@ -39,8 +44,8 @@ const Header: FC<HeaderProps> = () => {
                 ))}
               </ul>
             </InOutTransitionContainer>
-          </nav>
-        </div>
+          </div>
+        </NavBar>
       </motion.header>
     </>
   );

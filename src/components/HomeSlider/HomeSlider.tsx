@@ -10,7 +10,7 @@ import "twin.macro";
 import ProjectDescription from "./ProjectDescription";
 import sliderImagesInfo from "src/datas/imagesInfo/imageSliderData";
 import {
-  useElementClientHeight,
+  useElementGeometry,
   usePreloadImage,
   useSliderPagination,
 } from "@hooks";
@@ -23,8 +23,7 @@ const SLIDER_DURATION = 0.8;
 const HomeSlider: FC<HomeSliderProps> = () => {
   usePreloadImage(sliderImagesInfo);
   const { page, direction, paginate } = useSliderPagination(sliderImagesInfo);
-  const [containerRef, containerHeight] =
-    useElementClientHeight<HTMLDivElement>();
+  const [containerRef, containerHeight] = useElementGeometry<HTMLDivElement>();
   const { scrollY } = useViewportScroll();
   const opacity = useTransform(scrollY, [0, containerHeight], [0, 0.66]);
   const translateY = useTransform(scrollY, [0, containerHeight], [0, 300]);
@@ -82,7 +81,6 @@ const HomeSlider: FC<HomeSliderProps> = () => {
           setIsEndAnimation={setIsEndAnimation}
         />
       </motion.header>
-      <div className="h-screen"></div>
     </>
   );
 };

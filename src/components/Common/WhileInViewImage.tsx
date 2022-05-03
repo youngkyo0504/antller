@@ -9,7 +9,7 @@ const WhileInViewImage = ({
   alt?: string;
 }) => {
   return (
-    <motion.div
+    <div
       tw="overflow-hidden rounded-xl w-full h-full relative"
       // initial={{ opacity: 0, y: 60 }}
       // whileInView={{ opacity: 1, y: 0 }}
@@ -22,6 +22,7 @@ const WhileInViewImage = ({
     >
       <div tw="scale-[1.22]">
         <Image
+          loading="eager"
           alt={alt}
           className="hey"
           tw=" h-full rounded-xl w-full"
@@ -30,7 +31,7 @@ const WhileInViewImage = ({
           src={src}
         />
       </div>
-    </motion.div>
+    </div>
   );
 };
 

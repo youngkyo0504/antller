@@ -1,16 +1,20 @@
-import { Children, FC } from "react";
+import { Children, createContext, FC } from "react";
 import Header from "./Header/Header";
 import Footer from "./Footer";
 import tw from "twin.macro";
 import StickyHeader from "./Header/StickyHeader";
 interface LayoutProps {
-  stickyHeaderThreshold?: number;
+  stickyHeaderOption?: {
+    stickyHeaderThreshold?: number;
+    stickyHeaderEnable?: boolean;
+  };
+  isWhiteLogo?: boolean;
 }
-const Layout: FC<LayoutProps> = ({ children, stickyHeaderThreshold }) => {
+const Layout: FC<LayoutProps> = ({ children, stickyHeaderOption }) => {
   return (
     <div tw="flex flex-col min-h-screen">
       <Header />
-      <StickyHeader stickyHeaderThreshold={stickyHeaderThreshold} />
+      <StickyHeader {...stickyHeaderOption} />
       <main tw="flex-1">{children}</main>
       <Footer />
     </div>

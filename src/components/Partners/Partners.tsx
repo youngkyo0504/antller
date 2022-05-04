@@ -72,74 +72,47 @@ const Partners: FC<PartnersProps> = ({}) => {
           <AboutSubTitle>Partnership</AboutSubTitle>
           <SubTitleDescription></SubTitleDescription>
         </Container>
-        <div tw=" mt-24  relative flex">
+        <div tw=" mt-24  relative flex ">
           <motion.div
             variants={parentVariants}
             initial="hidden"
             whileInView={"visible"}
-            tw="max-w-content mx-auto flex items-center w-full"
+            tw="max-w-content mx-auto gap-8 justify-center flex items-center w-full"
           >
             <motion.div variants={childVariants}>
               <Image
-                tw="invert "
+                tw="invert"
                 alt="logo"
-                src={"/images/partnerLogo/1.svg"}
-                width={115}
-                height={31}
+                src={"/images/partnerLogo/ch-black.svg"}
+                width={200}
+                height={42}
               ></Image>
             </motion.div>
             <motion.div variants={childVariants}>
               <Image
                 tw="invert"
                 alt="logo"
-                src={"/images/partnerLogo/2.svg"}
-                width={115}
-                height={31}
+                src={"/images/partnerLogo/konkuk.svg"}
+                width={160}
+                height={60}
               ></Image>
             </motion.div>
             <motion.div variants={childVariants}>
               <Image
                 tw="invert"
                 alt="logo"
-                src={"/images/partnerLogo/3.svg"}
-                width={115}
-                height={31}
+                src={"/images/partnerLogo/jineps.png"}
+                width={32.6}
+                height={40}
               ></Image>
             </motion.div>
             <motion.div variants={childVariants}>
               <Image
                 tw="invert"
                 alt="logo"
-                src={"/images/partnerLogo/4.svg"}
-                width={115}
-                height={31}
-              ></Image>
-            </motion.div>
-            <motion.div variants={childVariants}>
-              <Image
-                tw="invert"
-                alt="logo"
-                src={"/images/partnerLogo/5.svg"}
-                width={115}
-                height={31}
-              ></Image>
-            </motion.div>
-            <motion.div variants={childVariants}>
-              <Image
-                tw="invert"
-                alt="logo"
-                src={"/images/partnerLogo/6.svg"}
-                width={115}
-                height={31}
-              ></Image>
-            </motion.div>
-            <motion.div variants={childVariants}>
-              <Image
-                tw="invert"
-                alt="logo"
-                src={"/images/partnerLogo/7.svg"}
-                width={115}
-                height={31}
+                src={"/images/partnerLogo/charatu.svg"}
+                width={200}
+                height={60}
               ></Image>
             </motion.div>
           </motion.div>

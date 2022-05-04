@@ -31,6 +31,7 @@ const HomeSlider: FC<HomeSliderProps> = () => {
   // local state
   const [isEndAnimation, setIsEndAnimation] = useState(true);
   const imageRef = useRef<HTMLDivElement>(null);
+
   // const timerRef = useRef<NodeJS.Timer>();
 
   useEffect(() => {
@@ -57,7 +58,15 @@ const HomeSlider: FC<HomeSliderProps> = () => {
             imageRef={imageRef}
             style={{ translateY }}
           >
-            <div tw="w-full h-screen absolute z-[-1]"></div>
+            <div tw="w-full h-screen absolute z-[-1]">
+              <video
+                src={`video/soso${page + 1}.mp4`}
+                tw="object-cover object-position[center] absolute w-[101%] h-[101%] z-[2] top-[50%] left-1/2 -translate-y-1/2 -translate-x-1/2"
+                muted
+                autoPlay
+                loop
+              ></video>
+            </div>
             <ProjectDescription
               delay={SLIDER_DURATION}
               description={{

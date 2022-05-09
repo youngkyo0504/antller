@@ -12,15 +12,11 @@ import {
   SubTitleDescription,
 } from "styles/globalStyleComponent";
 import Image from "next/image";
-import Logo1 from "./partnerLogo/1.svg";
-import Logo2 from "./partnerLogo/2.svg";
-import Logo3 from "./partnerLogo/3.svg";
-import Logo4 from "./partnerLogo/4.svg";
-import Logo5 from "./partnerLogo/5.svg";
-import Logo6 from "./partnerLogo/6.svg";
-import Logo7 from "./partnerLogo/7.svg";
+import Logos from "./logo.json";
+
 interface PartnersProps {}
-const Container = tw.div`bg-black text-white max-w-content w-full mx-auto `;
+
+const Container = tw.div`bg-black text-white px-content max-w-content w-full mx-auto `;
 
 const parentVariants: Variants = {
   hidden: { opacity: 1 },
@@ -49,8 +45,8 @@ const Partners: FC<PartnersProps> = ({}) => {
     scrollY,
     // scroll animation element의 opacity가 0이 될 때
     [
+      offsetTop - elementHeight * 2,
       offsetTop - elementHeight,
-      offsetTop,
       offsetTop + elementHeight * 0.3,
       offsetTop + elementHeight * 0.7,
     ],
@@ -66,55 +62,79 @@ const Partners: FC<PartnersProps> = ({}) => {
           opacity: opacity,
         }}
         ref={ref}
-        tw="h-[100vh] flex justify-center flex-col w-full overflow-hidden  z-index[1] relative"
+        tw="h-[50vh] flex flex-col w-full overflow-hidden  z-index[1] relative "
       >
         <Container>
           <AboutSubTitle>Partnership</AboutSubTitle>
           <SubTitleDescription></SubTitleDescription>
         </Container>
-        <div tw=" mt-24  relative flex ">
+        <div tw=" mt-32  relative flex ">
           <motion.div
             variants={parentVariants}
             initial="hidden"
             whileInView={"visible"}
-            tw="max-w-content mx-auto gap-8 justify-center flex items-center w-full"
+            tw="max-w-content px-content mx-auto gap-16 justify-center flex items-center w-full"
           >
-            <motion.div variants={childVariants}>
+            {Logos.map((logo) => (
+              <motion.div variants={childVariants} tw="relative w-48 h-14">
+                <Image
+                  tw="invert select-none"
+                  draggable={false}
+                  alt={logo.name}
+                  src={`/images/partnerLogo/${logo.src}`}
+                  // width={200}
+                  // height={42}
+                  layout="fill"
+                ></Image>
+              </motion.div>
+            ))}
+            {/* <motion.div variants={childVariants} tw="relative w-48 h-16">
               <Image
-                tw="invert"
+                tw="invert select-none"
+                draggable={false}
                 alt="logo"
                 src={"/images/partnerLogo/ch-black.svg"}
-                width={200}
-                height={42}
+                // width={200}
+                // height={42}
+                layout="fill"
               ></Image>
             </motion.div>
-            <motion.div variants={childVariants}>
+            <motion.div variants={childVariants} tw="relative w-48 h-16">
               <Image
                 tw="invert"
                 alt="logo"
                 src={"/images/partnerLogo/konkuk.svg"}
-                width={160}
-                height={60}
+                // width={160}
+                // height={60}
+                layout="fill"
               ></Image>
             </motion.div>
-            <motion.div variants={childVariants}>
+            <motion.div variants={childVariants} tw="relative w-8 h-12">
               <Image
                 tw="invert"
                 alt="logo"
                 src={"/images/partnerLogo/jineps.png"}
-                width={32.6}
-                height={40}
+                // width={32.6}
+                // height={60}
+                layout="fill"
               ></Image>
             </motion.div>
-            <motion.div variants={childVariants}>
+            <motion.div variants={childVariants} tw="relative w-48 h-16">
               <Image
                 tw="invert"
                 alt="logo"
                 src={"/images/partnerLogo/charatu.svg"}
-                width={200}
-                height={60}
+                layout="fill"
               ></Image>
             </motion.div>
+            <motion.div variants={childVariants} tw="relative w-48 h-16">
+              <Image
+                tw="invert"
+                alt="logo"
+                src={"/images/partnerLogo/nonghyup.svg"}
+                layout="fill"
+              ></Image>
+            </motion.div> */}
           </motion.div>
         </div>
       </motion.section>

@@ -21,7 +21,7 @@ module.exports = {
         content: "1200px",
       },
       padding: {
-        content: "3.125rem",
+        content: "2.8125rem",
       },
       margin: {
         header: "155px",

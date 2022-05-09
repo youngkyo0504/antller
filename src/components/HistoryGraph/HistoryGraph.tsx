@@ -10,7 +10,7 @@ import HistroyContent from "./HistoryContent";
 import YearPicker from "./YearPicker";
 interface HistoryGraphProps {}
 
-const Container = tw.div`relative min-h-[80vh] w-full max-w-content mx-auto mt-header `;
+const Container = tw.section`relative min-h-[80vh] w-full max-w-content mx-auto mt-header px-content`;
 const HistoryContainer = tw.div`relative flex w-[500px] mx-auto  mt-36 `;
 const HistoryGraph: FC<HistoryGraphProps> = () => {
   const [ref, elementHeight, offsetTop] = useElementGeometry<HTMLDivElement>();

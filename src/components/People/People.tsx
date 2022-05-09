@@ -10,7 +10,7 @@ import {
 
 interface PeopleProps {}
 
-const Container = tw.div`bg-black text-white max-w-content w-full mx-auto `;
+const Container = tw.div`bg-black text-white max-w-content w-full mx-auto px-content `;
 
 const People: FC<PeopleProps> = ({}) => {
   const [ref, elementHeight, offsetTop] = useElementGeometry<HTMLDivElement>();
@@ -47,7 +47,7 @@ const People: FC<PeopleProps> = ({}) => {
           {/* </AnimatedText> */}
         </Container>
         <motion.div>
-          <div tw=" mt-24 overflow-hidden relative">
+          <div tw=" mt-32 overflow-hidden relative">
             <Profile />
           </div>
         </motion.div>

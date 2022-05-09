@@ -49,14 +49,14 @@ const Introduction: FC<IntroductionProps> = () => {
       initial="out"
       animate="in"
       variants={boxVariants}
-      tw="max-w-content w-full h-[350vh] mx-auto relative text-white text-2xl flex justify-center  "
+      tw="max-w-content w-full h-[350vh] mx-auto relative text-white text-2xl flex justify-center px-content "
     >
       <motion.div
         whileInView={{ visibility: "visible", zIndex: 0 }}
         style={{
           opacity: opacity,
         }}
-        tw=" fixed top-0 translate-x-[-50%] left-[50%] h-screen w-full flex items-center max-w-content opacity-0"
+        tw=" fixed top-0 translate-x-[-50%] left-[50%] h-screen w-full flex items-center max-w-content px-content opacity-0"
       >
         <motion.div tw=" w-1/2">
           <AnimatedText titleOption={{ text: "Mission", color: "#D84624" }}>

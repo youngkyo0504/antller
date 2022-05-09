@@ -1,21 +1,16 @@
 import tw from "twin.macro";
-import React, {
-  FC,
-  forwardRef,
-  RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import AnimatedText from "@components/Common/AnimatedText";
+import React, { FC } from "react";
 import Profile from "./Profile";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
-import useWindowHeight from "src/hooks/useWindowHeight";
 import { useElementGeometry } from "@hooks";
+import {
+  AboutSubTitle,
+  SubTitleDescription,
+} from "styles/globalStyleComponent";
 
 interface PeopleProps {}
 
-const Container = tw.div`bg-black text-white max-w-content w-full mx-auto `;
+const Container = tw.div`bg-black text-white max-w-content w-full mx-auto px-content `;
 
 const People: FC<PeopleProps> = ({}) => {
   const [ref, elementHeight, offsetTop] = useElementGeometry<HTMLDivElement>();
@@ -45,16 +40,14 @@ const People: FC<PeopleProps> = ({}) => {
         tw="h-[100vh] flex justify-center flex-col w-full overflow-hidden  z-index[1] relative"
       >
         <Container>
-          <motion.p tw="text-5xl font-bold tracking-wide text-white">
-            People
-          </motion.p>
-          <p tw="mt-4 text-xl">앤틀러의 얼굴들 </p>
+          <AboutSubTitle>People</AboutSubTitle>
+          <SubTitleDescription>앤틀러의 얼굴들</SubTitleDescription>
           {/* <AnimatedText titleOption={{ text: "People", color: "#fff" }}> */}
           {/* #4D90F4 */}
           {/* </AnimatedText> */}
         </Container>
         <motion.div>
-          <div tw=" mt-24 overflow-hidden relative">
+          <div tw=" mt-32 overflow-hidden relative">
             <Profile />
           </div>
         </motion.div>

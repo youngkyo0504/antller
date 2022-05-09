@@ -5,7 +5,7 @@ import profileData from "./profile.json";
 interface ProfileProps {}
 const Container = tw(
   motion.div
-)`w-full rounded-xl max-w-content mx-auto relative z-index[3] flex`;
+)`w-full rounded-xl px-content max-w-content mx-auto relative z-index[3] flex`;
 
 const variants: Variants = {
   onView: {

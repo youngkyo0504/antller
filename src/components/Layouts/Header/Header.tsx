@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import InOutTransitionContainer from "../TransitionContainer";
 import { links } from "./header.data";
-import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import Hamburger from "./Hamburger";
 import { LinkItem, NavBar } from "styles/globalStyleComponent";
 interface HeaderProps {}
@@ -33,6 +33,7 @@ const Header: FC<HeaderProps> = ({}) => {
               <ul tw="hidden font-semibold md:flex tracking-wide">
                 {links.map((link) => (
                   <LinkItem
+                    isHome={path === ""}
                     key={link}
                     isBgBlack={isBgBlack}
                     isActive={path === link}

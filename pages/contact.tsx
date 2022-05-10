@@ -1,4 +1,4 @@
-import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import Layout from "@components/Layouts/Layout";
 import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import { NextPage } from "next";

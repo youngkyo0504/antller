@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { motion, Variants } from "framer-motion";
 import { links } from "./header.data";
 import useStickyHeader from "./useStickyHeader";
-import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import Hamburger from "./Hamburger";
 
 interface HeaderProps {

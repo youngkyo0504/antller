@@ -1,4 +1,5 @@
-import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
+import { useRouter } from "next/router";
 import { FC } from "react";
 import tw, { styled } from "twin.macro";
 
@@ -9,20 +10,24 @@ const SocialLink = styled.li(({ isBgBlack }: { isBgBlack: boolean }) => [
 
 const Footer: FC = ({ children }) => {
   const { isBgBlack } = useDarkBgContext();
+  const path = useRouter().pathname.split("/")[1];
+  const isHome = path === "";
   return (
     <>
       <footer tw="text-gray max-w-content w-full text-lg mx-auto px-content flex flex-col pt-4 pb-6 mt-24 relative z-index[1] mb-4">
         <div tw="flex justify-between">
           <div>© Antller</div>
           <ul tw="flex">
-            <SocialLink isBgBlack={isBgBlack}>Instagram</SocialLink>
-            <SocialLink isBgBlack={isBgBlack}>Twitter</SocialLink>
-            <SocialLink isBgBlack={isBgBlack}>Facebook</SocialLink>
+            <SocialLink isBgBlack={!isHome && isBgBlack}>Instagram</SocialLink>
+            <SocialLink isBgBlack={!isHome && isBgBlack}>Twitter</SocialLink>
+            <SocialLink isBgBlack={!isHome && isBgBlack}>Facebook</SocialLink>
           </ul>
         </div>
         <div
           css={[
-            isBgBlack ? tw`hover:text-white` : tw`hover:text-antller-black`,
+            !isHome && isBgBlack
+              ? tw`hover:text-white`
+              : tw`hover:text-antller-black`,
           ]}
           tw="mt-2 cursor-pointer"
         >

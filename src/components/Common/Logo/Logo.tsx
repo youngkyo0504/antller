@@ -1,4 +1,4 @@
-import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import React, { FC } from "react";

@@ -8,7 +8,6 @@ interface ImageContainerProps {
   direction: number;
   style?: MotionStyle | undefined;
   duration: number;
-  imageRef: React.RefObject<HTMLDivElement>;
 }
 export const ImageContainer: FC<ImageContainerProps> = ({
   setIsEndAnimation,
@@ -16,11 +15,9 @@ export const ImageContainer: FC<ImageContainerProps> = ({
   style,
   duration,
   children,
-  imageRef,
 }) => {
   return (
     <motion.div
-      ref={imageRef}
       onAnimationComplete={(definition) => {
         setIsEndAnimation(true);
         console.log("애니메이션 끝");

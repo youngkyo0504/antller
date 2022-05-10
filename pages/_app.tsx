@@ -4,7 +4,7 @@ import GlobalStyles from "../styles/GlobalStyles";
 import { AnimatePresence } from "framer-motion";
 import Layout from "../src/components/Layouts/Layout";
 import { createContext, useState } from "react";
-import { DarkBgProvider } from "@components/DarkBgProvider/DarkBgProvider";
+import { DarkBgProvider } from "@components/contexts/DarkBgContext/DarkBgProvider";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   const AnyComponent = Component as any;

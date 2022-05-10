@@ -18,7 +18,8 @@ module.exports = {
         divider: "#e3e4e5",
       },
       maxWidth: {
-        content: "1200px",
+        content: "75rem",
+        sliderDescription: "87.5rem",
       },
       padding: {
         content: "2.8125rem",

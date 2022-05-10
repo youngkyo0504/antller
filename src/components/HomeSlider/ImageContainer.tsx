@@ -8,7 +8,6 @@ interface ImageContainerProps {
   direction: number;
   style?: MotionStyle | undefined;
   duration: number;
-  imageRef: React.RefObject<HTMLDivElement>;
 }
 export const ImageContainer: FC<ImageContainerProps> = ({
   setIsEndAnimation,
@@ -16,17 +15,15 @@ export const ImageContainer: FC<ImageContainerProps> = ({
   style,
   duration,
   children,
-  imageRef,
 }) => {
   return (
     <motion.div
-      ref={imageRef}
       onAnimationComplete={(definition) => {
         setIsEndAnimation(true);
         console.log("애니메이션 끝");
       }}
       style={{ ...style }}
-      tw="z-[1] top-0 absolute h-full w-full bg-cover
+      tw=" top-0 absolute h-full w-full bg-cover
        bg-no-repeat bg-center overflow-hidden "
       custom={direction}
       variants={sliderVariants}

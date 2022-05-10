@@ -5,7 +5,16 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import tw from "twin.macro";
 import WorksList from "@components/Workslist";
+import ImageSlider from "@components/HomeImageSlider";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
+import { useEffect } from "react";
 const Home: NextPage = () => {
+  const { setIsBgBlack } = useDarkBgContext();
+  useEffect(() => {
+    return () => {
+      setIsBgBlack(false);
+    };
+  }, []);
   return (
     <>
       <Head>
@@ -15,7 +24,9 @@ const Home: NextPage = () => {
       </Head>
       <Layout stickyHeaderOption={{ stickyHeaderThreshold: 1400 }}>
         <InOutTransitionContainer>
-          <HomeSlider />
+          {/* <HomeSlider /> */}
+          {/* <ImageSlider /> */}
+          <ImageSlider />
           <WorksList />
         </InOutTransitionContainer>
       </Layout>

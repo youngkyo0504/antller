@@ -1,6 +1,7 @@
-import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { FC } from "react";
 import "twin.macro";
 import tw from "twin.macro";
@@ -24,12 +25,15 @@ const line: Variants = {
 };
 
 const Logo: FC<LogoProps> = () => {
+  const router = useRouter();
+  const path = router.pathname.split("/")[1];
+  const isHome = path === "";
   const { isBgBlack } = useDarkBgContext();
   return (
     <svg
       css={[
         tw` h-7 md:h-9 transition ease-in`,
-        isBgBlack && tw`fill-[white] stroke-[white]`,
+        !isHome && isBgBlack && tw`fill-[white] stroke-[white]`,
       ]}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 291.78 97.92"

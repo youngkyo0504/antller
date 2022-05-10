@@ -3,24 +3,22 @@ import Link from "next/link";
 import "twin.macro";
 import Logo from "../../Common/Logo/Logo";
 import tw from "twin.macro";
-import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import InOutTransitionContainer from "../TransitionContainer";
 import { links } from "./header.data";
-import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import Hamburger from "./Hamburger";
 import { LinkItem, NavBar } from "styles/globalStyleComponent";
+import useHomePath from "src/hooks/useHomePath";
 interface HeaderProps {}
 
 const Header: FC<HeaderProps> = ({}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isBgBlack } = useDarkBgContext();
-  const router = useRouter();
-  const path = router.pathname.split("/")[1];
-
+  const { isHome, path } = useHomePath();
   return (
     <>
-      <motion.header tw="w-full absolute bg-transparent left-0  right-0 z-[4] mx-auto">
+      <motion.header tw="w-full absolute bg-transparent left-0  right-0 z-[30] mx-auto">
         <NavBar>
           <Link href={"/"}>
             <a tw="flex items-center cursor-pointer">
@@ -30,9 +28,17 @@ const Header: FC<HeaderProps> = ({}) => {
           <div>
             <InOutTransitionContainer>
               <Hamburger />
-              <ul tw="hidden font-semibold md:flex tracking-wide">
+              <ul
+                tw="hidden font-semibold md:flex tracking-wide text-gray transition-colors"
+                css={[
+                  { transitionDuration: "1000ms" },
+                  isHome && isBgBlack ? tw`text-white` : "",
+                  isHome && !isBgBlack ? tw`text-antller-black` : "",
+                ]}
+              >
                 {links.map((link) => (
                   <LinkItem
+                    isHome={isHome}
                     key={link}
                     isBgBlack={isBgBlack}
                     isActive={path === link}

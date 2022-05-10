@@ -1,4 +1,4 @@
-import useDarkBgContext from "@components/DarkBgProvider/useDarkBgContext";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import HistoryGraph from "@components/HistoryGraph/HistoryGraph";
 import Introduction from "@components/Introduction";
 import Layout from "@components/Layouts/Layout";

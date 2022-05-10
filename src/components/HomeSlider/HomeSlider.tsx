@@ -17,7 +17,11 @@ import {
 import PaginationBtn from "./PaginationBtn";
 import ProgressText from "./ProgressText";
 import tw from "twin.macro";
+import Image from "next/image";
+import sliderMediaInfo from "./sliderMediaInfo.json";
+
 interface HomeSliderProps {}
+
 const SLIDER_DURATION = 1;
 
 const HomeSlider: FC<HomeSliderProps> = () => {
@@ -29,7 +33,7 @@ const HomeSlider: FC<HomeSliderProps> = () => {
   const translateY = useTransform(scrollY, [0, containerHeight], [0, 300]);
 
   // local state
-  const [isEndAnimation, setIsEndAnimation] = useState(true);
+  const [isOnAnimation, setIsOnAnimation] = useState(true);
   const imageRef = useRef<HTMLDivElement>(null);
 
   // const timerRef = useRef<NodeJS.Timer>();
@@ -37,7 +41,7 @@ const HomeSlider: FC<HomeSliderProps> = () => {
   useEffect(() => {
     if (imageRef.current) {
       // slide 이미지 변경
-      imageRef.current.style.backgroundImage = `url('${sliderImagesInfo[page].src}')`;
+      imageRef.current.style.backgroundImage = `url('${sliderMediaInfo[page].imageSrc}')`;
     }
   }, [page]);
 
@@ -55,17 +59,25 @@ const HomeSlider: FC<HomeSliderProps> = () => {
             duration={SLIDER_DURATION}
             setIsEndAnimation={setIsEndAnimation}
             direction={direction}
-            imageRef={imageRef}
             style={{ translateY }}
           >
+            <Image
+              tw="z-[-2]"
+              layout="fill"
+              src={sliderImagesInfo[page].src}
+              objectFit="cover"
+              objectPosition={""}
+            />
             <div tw="w-full h-screen absolute z-[-1]">
-              <video
-                src={`video/soso${page + 1}.mp4`}
-                tw="object-cover object-position[center] absolute w-[101%] h-[101%] z-[2] top-[50%] left-1/2 -translate-y-1/2 -translate-x-1/2"
-                muted
-                autoPlay
-                loop
-              ></video>
+              {sliderMediaInfo[page].videoSrc && (
+                <video
+                  src={`video/soso${page + 1}.mp4`}
+                  tw="object-cover object-position[center] absolute w-[101%] h-[101%] z-[2] top-[50%] left-1/2 -translate-y-1/2 -translate-x-1/2"
+                  muted
+                  autoPlay
+                  loop
+                ></video>
+              )}
             </div>
             <ProjectDescription
               delay={SLIDER_DURATION}

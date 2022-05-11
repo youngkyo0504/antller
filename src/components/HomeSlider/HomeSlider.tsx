@@ -33,7 +33,7 @@ const HomeSlider: FC<HomeSliderProps> = () => {
   const translateY = useTransform(scrollY, [0, containerHeight], [0, 300]);
 
   // local state
-  const [isEndAnimation, setIsEndAnimation] = useState(true);
+  const [isOnAnimation, setIsOnAnimation] = useState(true);
   const imageRef = useRef<HTMLDivElement>(null);
 
   // const timerRef = useRef<NodeJS.Timer>();

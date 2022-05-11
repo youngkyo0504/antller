@@ -1,11 +1,14 @@
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
+import { SliderMediaInfo } from "@components/useContextHome/sliderMediaInfo";
 import { useCallback, useEffect, useState } from "react";
 import { circle } from "src/util";
 
-const useSliderPagination = (sliderInfos: any[]) => {
+const useSliderPagination = (sliderInfos: SliderMediaInfo) => {
   const [[page, direction], setPage] = useState([0, 0]);
   const [imagePosition, setImagePosition] = useState<{ [x: number]: string }>(
     {}
   );
+  const { isBgBlack, setIsBgBlack } = useDarkBgContext();
 
   // 순환식 pagination 끝까지 오면 처음으로 돌아감
   const paginate = useCallback(
@@ -31,6 +34,10 @@ const useSliderPagination = (sliderInfos: any[]) => {
     };
 
     setImagePosition(imagePos);
+  }, [page]);
+
+  useEffect(() => {
+    setIsBgBlack(sliderInfos[page].isBgBlack);
   }, [page]);
 
   return { page, direction, paginate, imagePosition };

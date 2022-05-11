@@ -23,7 +23,7 @@ export const ImageContainer: FC<ImageContainerProps> = ({
         console.log("애니메이션 끝");
       }}
       style={{ ...style }}
-      tw="z-[1] top-0 absolute h-full w-full bg-cover
+      tw=" top-0 absolute h-full w-full bg-cover
        bg-no-repeat bg-center overflow-hidden "
       custom={direction}
       variants={sliderVariants}

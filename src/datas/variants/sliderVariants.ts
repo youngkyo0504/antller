@@ -1,11 +1,7 @@
 const sliderVariants = {
   enter: (direction: number) => {
-    console.log("sfsdf", document.documentElement.clientWidth);
     return {
-      x:
-        direction > 0
-          ? document.documentElement.clientWidth
-          : -document.documentElement.clientWidth,
+      x: direction > 0 ? "100%" : "-100%",
       opacity: 1,
       zIndex: 1,
     };

@@ -20,7 +20,7 @@ const Header: FC<HeaderProps> = ({}) => {
 
   return (
     <>
-      <motion.header tw="w-full absolute bg-transparent left-0  right-0 z-[4] mx-auto">
+      <motion.header tw="w-full absolute bg-transparent left-0  right-0 z-[30] mx-auto">
         <NavBar>
           <Link href={"/"}>
             <a tw="flex items-center cursor-pointer">

@@ -5,6 +5,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import tw from "twin.macro";
 import WorksList from "@components/Workslist";
+import ImageSlider from "@components/ImageSlider";
 const Home: NextPage = () => {
   return (
     <>
@@ -15,7 +16,8 @@ const Home: NextPage = () => {
       </Head>
       <Layout stickyHeaderOption={{ stickyHeaderThreshold: 1400 }}>
         <InOutTransitionContainer>
-          <HomeSlider />
+          {/* <HomeSlider /> */}
+          <ImageSlider />
           <WorksList />
         </InOutTransitionContainer>
       </Layout>

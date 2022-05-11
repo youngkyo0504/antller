@@ -27,3 +27,8 @@ export const chunk = <T>(target: T[], size: number) => {
     [[]]
   );
 };
+
+export const circle = (length: number, updatedIndex: number) => {
+  if (updatedIndex < 0) return length - 1;
+  return updatedIndex % length;
+};

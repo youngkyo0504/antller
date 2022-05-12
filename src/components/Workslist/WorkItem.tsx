@@ -24,7 +24,12 @@ function WorkItem({ id, title, subCategory, index }: WorkItemProps) {
         {/* Image Container */}
         <div tw="w-full relative block h-full">
           <ImageContainer>
-            <Image layout="fill" src={`/work-img/img${index}.jpg`} alt="" />
+            <Image
+              layout="fill"
+              objectFit="cover"
+              src={`/images/works/${id}.png`}
+              alt=""
+            />
           </ImageContainer>
         </div>
         <div tw="mt-2.5">

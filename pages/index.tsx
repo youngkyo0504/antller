@@ -24,8 +24,6 @@ const Home: NextPage = () => {
       </Head>
       <Layout stickyHeaderOption={{ stickyHeaderThreshold: 1400 }}>
         <InOutTransitionContainer>
-          {/* <HomeSlider /> */}
-          {/* <ImageSlider /> */}
           <ImageSlider />
           <WorksList />
         </InOutTransitionContainer>

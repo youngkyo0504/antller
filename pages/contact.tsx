@@ -4,7 +4,8 @@ import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useEffect } from "react";
-
+import { Container } from "styles/globalStyleComponent";
+import tw from "twin.macro";
 const ContactPage: NextPage = () => {
   const { setIsBgBlack } = useDarkBgContext();
   useEffect(() => {
@@ -25,7 +26,11 @@ const ContactPage: NextPage = () => {
       </Head>
       <Layout isWhiteLogo={true} stickyHeaderOption={{}}>
         <InOutTransitionContainer>
-          <div tw="bg-black"></div>
+          <Container>
+            <div tw="bg-black  text-white max-w-content px-content mx-auto">
+              <h1>Contact</h1>
+            </div>
+          </Container>
         </InOutTransitionContainer>
       </Layout>
     </>

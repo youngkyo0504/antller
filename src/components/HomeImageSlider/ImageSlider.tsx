@@ -19,8 +19,6 @@ const ImageSlider: FC<HomeSliderProps> = () => {
   const opacity = useTransform(scrollY, [0, containerHeight], [0, 0.66]);
   const translateY = useTransform(scrollY, [0, containerHeight], [0, 300]);
 
-  // local state
-  const imageRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <SliderInfoProvider>

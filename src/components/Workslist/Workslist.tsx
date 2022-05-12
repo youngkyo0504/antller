@@ -6,7 +6,7 @@ import { chunk } from "src/util";
 
 interface worksListProps {}
 
-const GridItem = styled.div(({ index }: { index: number }) => [
+const GridItem = styled.li(({ index }: { index: number }) => [
   index === 0
     ? tw`col-span-2 row-span-2`
     : index % 5 === 0
@@ -14,10 +14,13 @@ const GridItem = styled.div(({ index }: { index: number }) => [
     : "",
 ]);
 
+const WorkGrid = tw.ul`grid lg:(grid-cols-4) grid-flow-row-dense auto-cols-max max-w-[100rem] px-[3.125rem] mx-auto gap-y-[3.125rem] gap-x-[1.25rem] mt-20 w-full overflow-hidden`;
+
 const WorksList: FC<worksListProps> = ({}) => {
   return (
-    <>
-      <section tw="grid lg:(grid-cols-4) grid-flow-row-dense auto-cols-max max-w-[1600px] px-[50px] mx-auto gap-y-[50px] gap-x-[20px] mt-20 w-full overflow-hidden">
+    <section>
+      <WorkGrid>
+        {/* // 10개씩 끊는 1번째와 10번째의 사이즈를 4배로 하기 위해서. */}
         {chunk(items, 10).map((chunkedWorks) =>
           chunkedWorks.map((work, index) => (
             <GridItem key={work.id} index={index}>
@@ -25,8 +28,8 @@ const WorksList: FC<worksListProps> = ({}) => {
             </GridItem>
           ))
         )}
-      </section>
-    </>
+      </WorkGrid>
+    </section>
   );
 };
 

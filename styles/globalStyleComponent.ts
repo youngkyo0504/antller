@@ -1,5 +1,7 @@
 import tw, { styled } from "twin.macro";
-
+// common
+export const Container = tw.div`mt-header`;
+export const ContentContainer = tw.div`max-w-content px-content mx-auto w-full`;
 // NavigationBar
 export const LinkItem = styled.li(
   ({

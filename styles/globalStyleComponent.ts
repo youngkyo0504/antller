@@ -1,7 +1,7 @@
 import tw, { styled } from "twin.macro";
 // common
-export const Container = tw.div`mt-header`;
-export const ContentContainer = tw.div`max-w-content px-content mx-auto w-full`;
+export const Container = tw.div`sm:mt-header mt-mo-header`;
+export const ContentContainer = tw.div`max-w-content sm:px-content mx-auto w-full px-mo-content`;
 // NavigationBar
 export const LinkItem = styled.li(
   ({
@@ -19,7 +19,7 @@ export const LinkItem = styled.li(
   ]
 );
 
-export const NavBar = tw.nav`md:(mt-6 px-content) mx-auto  flex justify-between items-center max-w-content pl-5 w-full`;
+export const NavBar = tw.nav`md:(mt-6 px-content) mx-auto  flex justify-between items-center max-w-content pl-mo-content w-full `;
 
 // about Page
 export const AboutSubTitle = tw.h2` text-5xl font-bold tracking-wide text-white`;

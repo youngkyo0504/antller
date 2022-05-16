@@ -23,9 +23,11 @@ module.exports = {
       },
       padding: {
         content: "2.8125rem",
+        "mo-content": "1.25rem",
       },
       margin: {
         header: "155px",
+        "mo-header": "90px",
       },
     },
   },

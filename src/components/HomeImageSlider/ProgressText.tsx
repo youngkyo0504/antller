@@ -18,9 +18,8 @@ const ProgressText: FC<ProgressTextProps> = ({
   style,
   pagesLength,
 }) => {
-  const { page, setIsOnAnimation, isOnAnimation, imagePosition, direction } =
-    useSliderInfoContext();
-  const { isBgBlack, setIsBgBlack } = useDarkBgContext();
+  const { page, isOnAnimation } = useSliderInfoContext();
+  const { isBgBlack } = useDarkBgContext();
 
   return (
     <motion.div

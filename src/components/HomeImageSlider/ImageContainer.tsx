@@ -56,7 +56,7 @@ export const ImageContainer: FC<ImageContainerProps> = ({
         objectPosition={""}
         loading={"eager"}
       />
-      <div tw="w-full h-screen absolute z-[-1]">
+      <div tw="w-full h-full absolute z-[-1]">
         {sliderMediaInfo[index].videoSrc && (
           <video
             src={`video/soso${index + 1}.mp4`}

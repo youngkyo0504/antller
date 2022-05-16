@@ -1,13 +1,13 @@
 import { ImageContainer } from "./ImageContainer";
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC } from "react";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import ProjectDescription from "./ProjectDescription";
-import { useElementGeometry, useSliderPagination } from "@hooks";
+import { useElementGeometry } from "@hooks";
 import PaginationBtn from "./PaginationBtn";
 import ProgressText from "./ProgressText";
-import tw from "twin.macro";
 import sliderMediaInfo from "./sliderMediaInfo";
 import { SliderInfoProvider } from "@components/contexts/SliderContext/SliderInfoProvider";
+import tw from "twin.macro";
 
 interface HomeSliderProps {}
 
@@ -19,12 +19,10 @@ const ImageSlider: FC<HomeSliderProps> = () => {
   const opacity = useTransform(scrollY, [0, containerHeight], [0, 0.66]);
   const translateY = useTransform(scrollY, [0, containerHeight], [0, 300]);
 
-  // local state
-  const imageRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <SliderInfoProvider>
-        <motion.header tw="relative w-full h-screen  flex flex-col justify-end  overflow-hidden">
+        <motion.header tw="relative w-full sm:h-screen h-[115.625vw]  flex flex-col justify-end  overflow-hidden">
           <motion.div
             ref={containerRef}
             tw="w-full h-full bg-black  absolute z-[12] top-0 left-0 "

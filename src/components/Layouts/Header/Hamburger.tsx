@@ -1,6 +1,7 @@
 import tw from "twin.macro";
 import React, { FC, useState } from "react";
 import { motion, Transition, Variants } from "framer-motion";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 interface HamburgerProps {
   setIsOpen?: any;
 }
@@ -20,6 +21,8 @@ const transition: Transition = {
 };
 const Hamburger: FC<HamburgerProps> = ({}) => {
   const [open, setOpen] = useState(false);
+  const { isBgBlack } = useDarkBgContext();
+
   return (
     <motion.button
       onClick={() => {
@@ -32,13 +35,15 @@ const Hamburger: FC<HamburgerProps> = ({}) => {
           variants={variants}
           transition={transition}
           animate={open ? "rotateLeft" : ""}
-          tw="w-full h-[2px]  top-0 absolute bg-antller-black"
+          tw="w-full h-[2px]  top-0 absolute"
+          css={[isBgBlack ? tw`bg-white` : tw`bg-antller-black`]}
         ></motion.span>
         <motion.span
           variants={variants}
           transition={transition}
           animate={open ? "rotateRight" : ""}
           tw="w-full h-[2px]  absolute bottom-0 bg-antller-black"
+          css={[isBgBlack ? tw`bg-white` : tw`bg-antller-black`]}
         ></motion.span>
       </div>
     </motion.button>

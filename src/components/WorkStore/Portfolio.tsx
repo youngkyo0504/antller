@@ -1,5 +1,6 @@
 import { TabId, Work } from "@types";
 import React, { FC, useState } from "react";
+import { Container, ContentContainer } from "styles/globalStyleComponent";
 import tw from "twin.macro";
 import PortfolioList from "./PortfolioList";
 import Tab from "./Tab";
@@ -17,15 +18,15 @@ const Portfolio: FC<PortfolioProps> = ({ works }) => {
   const [selectedTab, setSelectedTab] = useState<TabId>("dataAnalysis");
   return (
     <>
-      <div tw=" mt-header">
-        <div tw="relative w-full max-w-content mx-auto px-content ">
+      <Container>
+        <ContentContainer tw="relative">
           <Title>Work</Title>
           <TabContainer>
             <Tab {...{ selectedTab, setSelectedTab }} />
           </TabContainer>
-        </div>
+        </ContentContainer>
         <PortfolioList {...{ works, selectedTab }} />
-      </div>
+      </Container>
     </>
   );
 };

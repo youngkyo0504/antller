@@ -1,13 +1,14 @@
 import { TabId } from "../types";
 import { WorkTab } from "../types/workTab.type";
 export interface workItem {
-  id: string;
+  id: string; // public/images/works 에 있는 이미지 이름입니다.
   category: TabId;
   title: string;
-  subCategory: string;
-  backgroundColor: string;
-  pointOfInterest: number;
+  subCategory: string; // 사용되지 않음
+  backgroundColor: string; // image placeholder로 남겨놓은 부분 적용안함
+  pointOfInterest: number; // 사용되지 않음
 }
+
 export const items: workItem[] = [
   // Photo by ivan Torres on Unsplash
   {
@@ -107,7 +108,7 @@ export const items: workItem[] = [
     backgroundColor: "#CC555B",
   },
   {
-    id: "woosijang",
+    id: "ekape-greenhouse-gases",
     category: "dataAnalysis",
     subCategory: "data",
     title: "축평원 온실가스 배출량 평가지표",
@@ -115,7 +116,7 @@ export const items: workItem[] = [
     backgroundColor: "#CC555B",
   },
   {
-    id: "woosijang",
+    id: "ekape-beef-quality-history",
     category: "dataAnalysis",
     subCategory: "data",
     title: "축평원 한우 품질 이력 분석",
@@ -123,10 +124,10 @@ export const items: workItem[] = [
     backgroundColor: "#CC555B",
   },
   {
-    id: "woosijang",
+    id: "ekape-shipment-result",
     category: "dataAnalysis",
     subCategory: "data",
-    title: "한우 출하 성적 예측모델 개발",
+    title: "한우 출하성적 예측 모델",
     pointOfInterest: 260,
     backgroundColor: "#CC555B",
   },

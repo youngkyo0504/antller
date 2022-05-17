@@ -36,7 +36,6 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({}) => {
         tw=""
         className="prev group"
         onClick={() => {
-          console.log({ isOnAnimation }, "클릭했을 때");
           if (isOnAnimation === true) return;
           setIsOnAnimation(true);
           paginate(-1);

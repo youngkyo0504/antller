@@ -1,5 +1,5 @@
 import { ImageContainer } from "./ImageContainer";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import ProjectDescription from "./ProjectDescription";
 import { useElementGeometry } from "@hooks";
@@ -8,6 +8,7 @@ import ProgressText from "./ProgressText";
 import sliderMediaInfo from "./sliderMediaInfo";
 import { SliderInfoProvider } from "@components/contexts/SliderContext/SliderInfoProvider";
 import tw from "twin.macro";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 
 interface HomeSliderProps {}
 
@@ -19,6 +20,19 @@ const ImageSlider: FC<HomeSliderProps> = () => {
   const opacity = useTransform(scrollY, [0, containerHeight], [0, 0.66]);
   const translateY = useTransform(scrollY, [0, containerHeight], [0, 300]);
 
+  const { isBgBlack, setIsBgBlack } = useDarkBgContext();
+  // sliderMediaInfo[0].isBgBlack
+
+  useEffect(() => {
+    setTimeout(() => {
+      document.body.style.background = "white";
+    }, 0);
+    return () => {
+      if (isBgBlack) {
+        document.body.style.backgroundColor = "black";
+      }
+    };
+  }, [isBgBlack]);
   return (
     <>
       <SliderInfoProvider>

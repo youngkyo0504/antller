@@ -11,10 +11,11 @@ import tw from "twin.macro";
 import { Work } from "@types";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Interview from "@components/Common/Markdown/Interview";
 import { MDXComponents } from "mdx/types";
-import MadeBy from "@components/Common/Markdown/MadeBy";
+import Interview from "@components/Common/Markdown/Interview";
 import InterviewCol from "@components/Common/Markdown/InterViewCol";
+import MadeBy from "@components/Common/Markdown/MadeBy";
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 
 // const Container = tw.div`max-w-content mx-auto px-content mt-header`;
 const Container = tw.div`max-w-content mx-auto sm:px-content px-5 mt-header `;
@@ -25,6 +26,7 @@ interface WorkDetailProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
   frontMatter: Work["data"];
 }
+
 const ElementImage = (props: any) => {
   const { src, alt } = props;
   return (
@@ -47,6 +49,8 @@ const components: MDXComponents | undefined = {
 };
 
 const WorkDetailPage: NextPage<WorkDetailProps> = ({ source, frontMatter }) => {
+  const { setIsBgBlack, isBgBlack } = useDarkBgContext(false);
+
   return (
     <>
       <Head>

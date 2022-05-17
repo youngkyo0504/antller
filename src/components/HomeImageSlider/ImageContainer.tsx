@@ -27,12 +27,10 @@ export const ImageContainer: FC<ImageContainerProps> = ({
 }) => {
   const { setIsOnAnimation, isOnAnimation, imagePosition, direction } =
     useSliderInfoContext();
-  console.log(imagePosition[index], sliderMediaInfo[index]);
   return (
     <motion.div
       onAnimationComplete={(definition) => {
         if (definition.toString() === "current" && isOnAnimation === true) {
-          console.log("애니메이션 끝");
           setIsOnAnimation(false);
         }
       }}

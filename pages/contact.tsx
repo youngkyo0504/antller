@@ -15,15 +15,15 @@ const SocialText = tw.p`text-gray sm:(mb-1 text-2xl ) text-lg `;
 const SocialLink = tw.a`hover:underline sm:(text-xl) `;
 
 const ContactPage: NextPage = () => {
-  const { setIsBgBlack } = useDarkBgContext();
-  useEffect(() => {
-    setIsBgBlack(true);
-    document.body.style.backgroundColor = "black";
-    return () => {
-      setIsBgBlack(false);
-      document.body.style.backgroundColor = "white";
-    };
-  });
+  const { setIsBgBlack } = useDarkBgContext(true);
+  // useEffect(() => {
+  //   setIsBgBlack(true);
+  //   document.body.style.backgroundColor = "black";
+  //   return () => {
+  //     setIsBgBlack(false);
+  //     document.body.style.backgroundColor = "white";
+  //   };
+  // });
 
   return (
     <>

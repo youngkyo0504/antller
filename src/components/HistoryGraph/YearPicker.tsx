@@ -43,7 +43,6 @@ const YearPicker: FC<YearPickerProps> = ({
 }) => {
   const setYear = (year: string) => {
     return () => {
-      console.log({ year });
       setSelectedYear(year);
     };
   };

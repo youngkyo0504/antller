@@ -1,3 +1,4 @@
+import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import Layout from "@components/Layouts/Layout";
 import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import Portfolio from "@components/WorkStore/Portfolio";
@@ -5,13 +6,15 @@ import { Work } from "@types";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useEffect } from "react";
 import getWorks from "src/lib/mdxFiles";
 import tw from "twin.macro";
 interface WorkPageProps {
   works: Work[];
 }
 const WorkPage: NextPage<WorkPageProps> = ({ works }) => {
-  console.log(works);
+  const { setIsBgBlack, isBgBlack } = useDarkBgContext(false);
+
   return (
     <>
       <Head>

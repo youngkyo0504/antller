@@ -20,7 +20,6 @@ export const ImageContainer: FC<ImageContainerProps> = ({
     <motion.div
       onAnimationComplete={(definition) => {
         setIsEndAnimation(true);
-        console.log("애니메이션 끝");
       }}
       style={{ ...style }}
       tw=" top-0 absolute h-full w-full bg-cover

@@ -13,13 +13,13 @@ export const LinkItem = styled.li(
     isActive: boolean;
     isHome?: boolean;
   }) => [
-    tw`cursor-pointer last:mr-0  leading-loose `,
+    tw`last:mr-0  leading-loose `,
     isBgBlack ? tw`hover:text-white` : tw`hover:text-antller-black`,
     !isHome && isActive && (isBgBlack ? tw`text-white` : tw`text-black`),
   ]
 );
 
-export const NavBar = tw.nav`md:(mt-6 px-content) mx-auto  flex justify-between items-center max-w-content pl-mo-content w-full `;
+export const NavBar = tw.nav`md:(mt-6 px-content) mx-auto   sm:(flex justify-between items-center) max-w-content pl-mo-content w-full `;
 
 // about Page
 export const AboutSubTitle = tw.h2` text-5xl font-bold tracking-wide text-white`;

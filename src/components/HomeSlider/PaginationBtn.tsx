@@ -21,7 +21,6 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({
             paginate(1);
             setIsEndAnimation(false);
           } else {
-            console.log("false임...");
           }
         }}
       >

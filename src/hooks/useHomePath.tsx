@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const useHomePath = () => {
   const [isHome, setIsHome] = useState(false);

@@ -10,15 +10,15 @@ import Head from "next/head";
 import { useEffect } from "react";
 
 const AboutPage: NextPage = () => {
-  const { setIsBgBlack } = useDarkBgContext();
-  useEffect(() => {
-    setIsBgBlack(true);
-    document.body.style.backgroundColor = "black";
-    return () => {
-      setIsBgBlack(false);
-      document.body.style.backgroundColor = "white";
-    };
-  });
+  const { setIsBgBlack } = useDarkBgContext(true);
+  // useEffect(() => {
+  //   setIsBgBlack(true);
+  //   document.body.style.backgroundColor = "black";
+  //   return () => {
+  //     setIsBgBlack(false);
+  //     document.body.style.backgroundColor = "white";
+  //   };
+  // });
 
   return (
     <>

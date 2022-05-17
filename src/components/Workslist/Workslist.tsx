@@ -8,13 +8,14 @@ interface worksListProps {}
 
 const GridItem = styled.li(({ index }: { index: number }) => [
   index === 0
-    ? tw`col-span-2 row-span-2`
+    ? tw`lg:(col-span-2 row-span-2)`
     : index % 5 === 0
-    ? tw`col-span-2  col-start-3 row-span-2`
+    ? tw`lg:(col-span-2  col-start-3 row-span-2)`
     : "",
 ]);
 
-const WorkGrid = tw.ul`grid lg:(grid-cols-4) grid-flow-row-dense auto-cols-max max-w-[100rem] px-[3.125rem] mx-auto gap-y-[3.125rem] gap-x-[1.25rem] mt-20 w-full overflow-hidden`;
+const WorkGrid = tw.ul`grid lg:(grid-cols-4  px-[3.125rem] mt-20 )  //
+mt-10 grid-cols-1  grid-flow-row-dense auto-cols-max max-w-[100rem] px-mo-content mx-auto gap-y-[3.125rem] gap-x-[1.25rem] w-full overflow-hidden`;
 
 const WorksList: FC<worksListProps> = ({}) => {
   return (

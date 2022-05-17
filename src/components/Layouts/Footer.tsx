@@ -14,16 +14,21 @@ const Footer: FC = ({ children }) => {
   const isHome = path === "";
   return (
     <>
-      <footer tw="text-gray max-w-content w-full text-lg mx-auto px-content flex flex-col pt-4 pb-6 mt-24 relative z-index[1] mb-4">
+      <footer
+        css={[isHome ? tw`sm:max-w-[1600px]` : ""]}
+        tw="text-gray max-w-content w-full sm:(text-lg px-content) px-mo-content mx-auto flex flex-col pt-4 pb-6 mt-24 relative z-index[1] mb-4"
+      >
         <div tw="flex justify-between">
           <div>© Antller</div>
           <ul tw="flex">
-            <SocialLink isBgBlack={!isHome && isBgBlack}>Instagram</SocialLink>
-            <SocialLink isBgBlack={!isHome && isBgBlack}>Twitter</SocialLink>
-            <SocialLink isBgBlack={!isHome && isBgBlack}>Facebook</SocialLink>
+            {/* <SocialLink isBgBlack={!isHome && isBgBlack}>Instagram</SocialLink> */}
+            {/* <SocialLink isBgBlack={!isHome && isBgBlack}>Twitter</SocialLink> */}
+            {/* <SocialLink isBgBlack={!isHome && isBgBlack}>Facebook</SocialLink> */}
           </ul>
         </div>
-        <div
+        <a
+          target={"#"}
+          href="http://newso.co.kr"
           css={[
             !isHome && isBgBlack
               ? tw`hover:text-white`
@@ -32,7 +37,7 @@ const Footer: FC = ({ children }) => {
           tw="mt-2 cursor-pointer"
         >
           Subscribe to our Newsletter
-        </div>
+        </a>
       </footer>
     </>
   );

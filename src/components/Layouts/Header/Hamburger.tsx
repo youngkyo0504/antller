@@ -38,7 +38,6 @@ const Hamburger: FC<HamburgerProps> = ({
         });
         if (isMobileMenuOpen) {
           console.log("메뉴를 끕니다. 이걸로 바꿉니다.", bgBlackCache.current);
-          console.log(bgBlackCache.current);
           if (
             bgBlackCache.current !== null &&
             bgBlackCache.current !== undefined
@@ -60,7 +59,7 @@ const Hamburger: FC<HamburgerProps> = ({
           variants={variants}
           transition={transition}
           animate={isMobileMenuOpen ? "rotateLeft" : ""}
-          tw="w-full h-[2px]  top-0 absolute"
+          tw="w-full h-[2px]  top-0 absolute "
           css={[isBgBlack ? tw`bg-white` : tw`bg-antller-black`]}
         ></motion.span>
         <motion.span

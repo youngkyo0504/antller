@@ -1,17 +1,15 @@
 import React, { FC, useEffect, useState } from "react";
-import Link from "next/link";
 import "twin.macro";
 import Logo from "../../Common/Logo/Logo";
-import tw, { styled } from "twin.macro";
-import { useRouter } from "next/router";
+import tw from "twin.macro";
 import { motion } from "framer-motion";
-import { links } from "./header.data";
 import useStickyHeader from "./useStickyHeader";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import Hamburger from "./Hamburger";
-import { LinkItem } from "styles/globalStyleComponent";
 import useHomePath from "src/hooks/useHomePath";
 import MobileNavbar from "./MobileNavbar";
+import MobileLinkItems from "./LinkItems";
+import { useToggleScroll } from "@hooks";
 
 interface HeaderProps {
   stickyHeaderThreshold?: number;
@@ -25,19 +23,19 @@ const StickyHeader: FC<HeaderProps> = ({
   stickyHeaderEnable = true,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const { isHome, path } = useHomePath();
   const { isBgBlack } = useDarkBgContext();
   const { scrollDirection, scrollY, headerVariants } = useStickyHeader(
     stickyHeaderThreshold
   );
-  useEffect(() => {
-    if (!isMobileMenuOpen) return;
-    document.body.style.overflowY = "hidden";
-    return () => {
-      document.body.style.overflowY = "";
-    };
-  }, [isMobileMenuOpen]);
+  useToggleScroll(isMobileMenuOpen);
+  // useEffect(() => {
+  //   if (!isMobileMenuOpen) return;
+  //   document.body.style.overflowY = "hidden";
+  //   return () => {
+  //     document.body.style.overflowY = "";
+  //   };
+  // }, [isMobileMenuOpen]);
   return stickyHeaderEnable ? (
     <>
       <motion.header
@@ -47,16 +45,22 @@ const StickyHeader: FC<HeaderProps> = ({
         animate={"scroll"}
         initial="initial"
         css={[
-          tw`fixed  bg-[rgba(255,255,255,.97)] left-0  right-0 z-[4] mx-auto`,
-          !isHome && isBgBlack && tw`bg-[rgba(0,0,0,0.8)]`,
+          tw`fixed  bg-[rgba(255,255,255,.97)] left-0  right-0 z-[30] mx-auto`,
+          !isHome && isBgBlack && tw`bg-[rgba(0,0,0,0.8)]  overflow-hidden`,
         ]}
       >
-        <MobileNavbar key={"stickyMobileNav"} {...{ isMobileMenuOpen }} />
+        {/* <MobileNavbar key={"stickyMobileNav"} {...{ isMobileMenuOpen }} /> */}
         <Container>
           <Logo />
-          <nav>
-            <Hamburger {...{ isMobileMenuOpen, setIsMobileMenuOpen }} />
-            <ul
+          <Hamburger
+            {...{
+              isMobileMenuOpen,
+              setIsMobileMenuOpen,
+              isStickyHeader: true,
+            }}
+          />
+          <MobileLinkItems {...{ isHome, path }} />
+          {/* <ul
               tw="hidden  font-semibold md:flex tracking-wide text-gray"
               css={[isHome ? tw`text-antller-black` : ""]}
             >
@@ -72,8 +76,7 @@ const StickyHeader: FC<HeaderProps> = ({
                   </Link>
                 </LinkItem>
               ))}
-            </ul>
-          </nav>
+            </ul> */}
         </Container>
       </motion.header>
     </>

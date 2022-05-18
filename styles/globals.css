@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  position: relative;
+}
 html,
 a {
   color: inherit;

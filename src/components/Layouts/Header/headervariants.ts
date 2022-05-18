@@ -7,7 +7,7 @@ const STAGGERCHILDREN = 0.1;
 export const wrapperVariants: Variants = {
   show: {
     height: "100vh",
-    backgroundColor: "blue",
+    backgroundColor: "rgba(0,0,0,0.8)",
     transition: {
       ease: [0.32, 0.08, 0.24, 1],
       type: "tween",
@@ -15,8 +15,8 @@ export const wrapperVariants: Variants = {
     },
   },
   hide: {
-    backgroundColor: "blue",
     height: "3.75rem",
+    backgroundColor: "rgba(0,0,0,0)",
     transition: {
       ease: [0.32, 0.08, 0.24, 1],
       times: [0, 1],
@@ -33,6 +33,7 @@ export const itemVariants: Variants = {
     return {
       scale: 1,
       opacity: [0, 0, 1],
+      display: "inline-block",
       transition: {
         type: "tween",
         ease: [0.2727, 0.0986, 0.8333, 1],
@@ -46,6 +47,7 @@ export const itemVariants: Variants = {
     return {
       scale: 0,
       opacity: [1, 1, 0],
+      display: ["inline-block", "inline-block", "hidden"],
       transition: {
         type: "tween",
         ease: [0.2727, 0.0986, 0.8333, 1],
@@ -55,5 +57,9 @@ export const itemVariants: Variants = {
       },
     };
   },
-  initial: { scale: 0.7, opacity: 1 },
+  notMobile: {
+    display: "inline-block",
+  },
+
+  initial: { scale: 1, opacity: 1 },
 };

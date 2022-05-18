@@ -12,12 +12,18 @@ const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   const onResize = () => {
-    const { innerWidth } = getWindowDimensions();
-    setContentWidth(innerWidth);
+    // const isMobile = !window.matchMedia("(min-width: 640)").matches;
+    console.log(window.matchMedia("(min-width: 640px)").matches);
+    const value = window.matchMedia("(min-width: 640px)").matches;
+    setIsMobile(!value);
+    // const { innerWidth } = getWindowDimensions();
+    // setContentWidth(innerWidth);
   };
 
   useEffect(() => {
     window.addEventListener("resize", onResize);
+    const value = window.matchMedia("(min-width: 640px)").matches;
+    setIsMobile(!value);
 
     return () => {
       window.removeEventListener("resize", onResize);
@@ -25,8 +31,8 @@ const useIsMobile = () => {
   }, []);
 
   useEffect(() => {
-    if (!contentWidth) return;
-    setIsMobile(contentWidth < 640 ? true : false);
+    // if (!contentWidth) return;
+    // setIsMobile(contentWidth < 640 ? true : false);
   }, [contentWidth]);
 
   return [isMobile];

@@ -13,6 +13,8 @@ import useHomePath from "src/hooks/useHomePath";
 import { itemVariants, wrapperVariants } from "./headervariants";
 import useIsMobile from "src/hooks/useIsMobile";
 import { useToggleScroll } from "@hooks";
+import MobileLinkItems from "./LinkItems";
+import LinkItems from "./MobileLinkItems";
 
 interface HeaderProps {}
 
@@ -44,40 +46,8 @@ const Header: FC<HeaderProps> = ({}) => {
                 isStickyHeader: false,
               }}
             />
-            <ul
-              onClick={(e) => {
-                console.log({ isHome, isBgBlack });
-              }}
-              tw=" font-semibold md:flex tracking-wide text-gray transition-colors"
-              css={[
-                // isMobileMenuOpen ? tw`` : tw`visibility[hidden]`,
-                { transitionDuration: "1000ms" },
-                isHome && (isBgBlack ? tw`text-white` : tw`text-antller-black`),
-              ]}
-            >
-              {links.map((link, index) => (
-                <LinkItem
-                  isHome={isHome}
-                  key={link}
-                  isBgBlack={isBgBlack}
-                  isActive={path === link}
-                >
-                  <motion.div
-                    variants={itemVariants}
-                    tw="inline-block "
-                    animate={
-                      isMobile ? (isMobileMenuOpen ? "show" : "hide") : false
-                    }
-                    initial={false}
-                    custom={index}
-                  >
-                    <Link href={`/${link}`}>
-                      <a tw="uppercase cursor-pointer py-2  sm:p-4">{link}</a>
-                    </Link>
-                  </motion.div>
-                </LinkItem>
-              ))}
-            </ul>
+            <LinkItems {...{ isHome, path, isMobileMenuOpen }} />
+            <MobileLinkItems {...{ isHome, path }} />
           </InOutTransitionContainer>
           {/* </div> */}
         </NavBar>

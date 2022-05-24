@@ -5,39 +5,30 @@ import Logo from "../../Common/Logo/Logo";
 import tw from "twin.macro";
 import { motion } from "framer-motion";
 import InOutTransitionContainer from "../TransitionContainer";
-import { links } from "./header.data";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import Hamburger from "./Hamburger";
-import { LinkItem, NavBar } from "styles/globalStyleComponent";
+import { NavBar } from "styles/globalStyleComponent";
 import useHomePath from "src/hooks/useHomePath";
-import { itemVariants, wrapperVariants } from "./headervariants";
 import useIsMobile from "src/hooks/useIsMobile";
 import { useToggleScroll } from "@hooks";
-import MobileLinkItems from "./LinkItems";
-import LinkItems from "./MobileLinkItems";
+import LinkItems from "./LinkItems";
 
-interface HeaderProps {}
+interface HeaderProps {
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const Header: FC<HeaderProps> = ({}) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const Header: FC<HeaderProps> = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const [isMobile] = useIsMobile();
   const { isBgBlack } = useDarkBgContext();
   const { isHome, path } = useHomePath();
-  useToggleScroll(isMobileMenuOpen);
 
   return (
     <>
       {" "}
-      <motion.header
-        variants={wrapperVariants}
-        animate={isMobile && (isMobileMenuOpen ? "show" : "hide")}
-        initial="initial"
-        tw="w-full absolute bg-transparent h-[3.75rem] left-0  right-0 z-[30] mx-auto "
-      >
+      <motion.header tw="w-full absolute bg-transparent h-[3.75rem] overflow-y-hidden left-0  right-0 z-[30] mx-auto ">
         <NavBar>
-          <Logo />
-          {/* <MobileNavbar key={"stickyMobileNav"} {...{ isMobileMenuOpen }} /> */}
-          {/* <div> */}
+          <Logo {...{ isMobileMenuOpen }} />
           <InOutTransitionContainer>
             <Hamburger
               {...{
@@ -47,9 +38,7 @@ const Header: FC<HeaderProps> = ({}) => {
               }}
             />
             <LinkItems {...{ isHome, path, isMobileMenuOpen }} />
-            <MobileLinkItems {...{ isHome, path }} />
           </InOutTransitionContainer>
-          {/* </div> */}
         </NavBar>
       </motion.header>
     </>

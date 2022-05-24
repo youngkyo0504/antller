@@ -6,14 +6,15 @@ import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContex
 import { LinkItem } from "styles/globalStyleComponent";
 import { links } from "./header.data";
 import { itemVariants } from "./headervariants";
+import { calcAxisDelta } from "framer-motion/types/projection/geometry/delta-calc";
 
-interface LinkItemsProps {
+interface MobileLinkItemsProps {
   isMobileMenuOpen: boolean;
   isHome: boolean;
   path: string;
 }
 
-const MobileLinkItems: FC<LinkItemsProps> = ({
+const MobileLinkItems: FC<MobileLinkItemsProps> = ({
   isMobileMenuOpen,
   isHome,
   path,
@@ -21,35 +22,30 @@ const MobileLinkItems: FC<LinkItemsProps> = ({
   const { isBgBlack } = useDarkBgContext();
 
   return (
-    <ul
-      tw=" font-semibold sm:hidden tracking-wide text-gray transition-colors"
-      css={[
-        // isMobileMenuOpen ? tw`` : tw`visibility[hidden]`,
-        { transitionDuration: "1000ms" },
-        isHome && (isBgBlack ? tw`text-white` : tw`text-antller-black`),
-      ]}
+    <div
+      tw="absolute  top-[60px] flex flex-col justify-between  left-0 px-mo-content w-full font-semibold sm:hidden tracking-wide text-gray transition-colors"
+      css={[isHome && tw`text-white`, `height: calc(100%-60px);`]}
     >
-      {links.map((link, index) => (
-        <LinkItem
-          isHome={isHome}
-          key={link}
-          isBgBlack={isBgBlack}
-          isActive={path === link}
-        >
-          <motion.div
-            variants={itemVariants}
-            tw="hidden"
-            animate={isMobileMenuOpen ? "show" : "hide"}
-            initial={false}
-            custom={index}
-          >
-            <Link href={`/${link}`}>
-              <a tw="uppercase cursor-pointer py-2  sm:p-4">{link}</a>
-            </Link>
-          </motion.div>
-        </LinkItem>
-      ))}
-    </ul>
+      <ul tw="mt-10">
+        {links.map((link, index) => (
+          <LinkItem key={link} isBgBlack={true} isActive={path === link}>
+            <motion.div
+              variants={itemVariants}
+              tw="inline-block my-1"
+              animate={isMobileMenuOpen ? "show" : "hide"}
+              initial={false}
+              custom={index}
+            >
+              <Link href={`/${link}`}>
+                <a tw="tracking-wider text-lg uppercase cursor-pointer  sm:p-4">
+                  {link}
+                </a>
+              </Link>
+            </motion.div>
+          </LinkItem>
+        ))}
+      </ul>
+    </div>
   );
 };
 

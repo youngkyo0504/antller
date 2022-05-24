@@ -27,9 +27,7 @@ const Overlay = ({ onClick }: OverlayProps) => {
 };
 
 const ContentContainer = tw(motion.div)`px-8 py-8`;
-const CardImageContainer = tw(
-  motion.div
-)`w-full aspect-ratio[16/9] overflow-hidden relative`;
+const CardImageContainer = tw(motion.div)`w-full  overflow-hidden relative`;
 const TitleContainer = tw(
   motion.div
 )`  z-[3] absolute top-4 left-4 max-w-[300px]`;
@@ -57,12 +55,11 @@ const PortfolioItem: FC<PortfolioItemProps> = ({ id, setId }) => {
         >
           <CardImageContainer>
             <Image
-              width={1000}
-              height={630}
-              layout="intrinsic"
+              layout="fill"
               tw="bg-[rgb(238, 234, 231)]"
               className="w-full  "
               src={`/images/${id}.png`}
+              objectFit="cover"
               alt=""
             />
           </CardImageContainer>

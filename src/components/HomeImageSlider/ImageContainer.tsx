@@ -47,14 +47,14 @@ export const ImageContainer: FC<ImageContainerProps> = ({
       }}
     >
       <Image
-        tw="z-[-2]"
+        tw=""
         layout="fill"
         src={sliderMediaInfo[index].imageSrc}
         objectFit="cover"
         objectPosition={""}
         loading={"eager"}
       />
-      <div tw="w-full h-full absolute z-[-1]">
+      <div tw="w-full h-full absolute ">
         {sliderMediaInfo[index].videoSrc && (
           <video
             src={`video/soso${index + 1}.mp4`}

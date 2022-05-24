@@ -9,9 +9,9 @@ interface PortfolioProps {
   works: Work[];
 }
 
-const Title = tw.div`text-antller-black absolute bottom-5 text-6xl
+const Title = tw.div`text-antller-black sm:absolute text-3xl mb-4 sm:mb-0 sm:text-4xl md:(bottom-4 text-5xl) font-bold 
 `;
-
+const ProtofolioContainer = tw.div`relative h-screen flex w-full max-w-content mx-auto `;
 const TabContainer = tw.div`border-b-divider border-b w-full flex justify-center items-center`;
 
 const Portfolio: FC<PortfolioProps> = ({ works }) => {
@@ -25,7 +25,9 @@ const Portfolio: FC<PortfolioProps> = ({ works }) => {
             <Tab {...{ selectedTab, setSelectedTab }} />
           </TabContainer>
         </ContentContainer>
-        <PortfolioList {...{ works, selectedTab }} />
+        <ProtofolioContainer>
+          <PortfolioList {...{ works, selectedTab }} />
+        </ProtofolioContainer>
       </Container>
     </>
   );

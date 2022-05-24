@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import "twin.macro";
 import Logo from "../../Common/Logo/Logo";
 import tw from "twin.macro";
@@ -7,35 +7,29 @@ import useStickyHeader from "./useStickyHeader";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import Hamburger from "./Hamburger";
 import useHomePath from "src/hooks/useHomePath";
-import MobileNavbar from "./MobileNavbar";
-import MobileLinkItems from "./LinkItems";
-import { useToggleScroll } from "@hooks";
+import LinkItems from "./LinkItems";
 
 interface HeaderProps {
   stickyHeaderThreshold?: number;
   stickyHeaderEnable?: boolean;
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Container = tw.nav`md:(px-content h-[70px] )  mx-auto  flex justify-between items-center max-w-content pl-5 w-full`;
+const Container = tw.nav`md:(px-content h-[76px] )  mx-auto  flex justify-between items-center max-w-content pl-5 w-full`;
 
 const StickyHeader: FC<HeaderProps> = ({
   stickyHeaderThreshold,
   stickyHeaderEnable = true,
+  isMobileMenuOpen,
+  setIsMobileMenuOpen,
 }) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isHome, path } = useHomePath();
   const { isBgBlack } = useDarkBgContext();
   const { scrollDirection, scrollY, headerVariants } = useStickyHeader(
     stickyHeaderThreshold
   );
-  useToggleScroll(isMobileMenuOpen);
-  // useEffect(() => {
-  //   if (!isMobileMenuOpen) return;
-  //   document.body.style.overflowY = "hidden";
-  //   return () => {
-  //     document.body.style.overflowY = "";
-  //   };
-  // }, [isMobileMenuOpen]);
+
   return stickyHeaderEnable ? (
     <>
       <motion.header
@@ -49,9 +43,8 @@ const StickyHeader: FC<HeaderProps> = ({
           !isHome && isBgBlack && tw`bg-[rgba(0,0,0,0.8)]  overflow-hidden`,
         ]}
       >
-        {/* <MobileNavbar key={"stickyMobileNav"} {...{ isMobileMenuOpen }} /> */}
         <Container>
-          <Logo />
+          <Logo {...{ isMobileMenuOpen }} />
           <Hamburger
             {...{
               isMobileMenuOpen,
@@ -59,24 +52,7 @@ const StickyHeader: FC<HeaderProps> = ({
               isStickyHeader: true,
             }}
           />
-          <MobileLinkItems {...{ isHome, path }} />
-          {/* <ul
-              tw="hidden  font-semibold md:flex tracking-wide text-gray"
-              css={[isHome ? tw`text-antller-black` : ""]}
-            >
-              {links.map((link) => (
-                <LinkItem
-                  isHome={isHome}
-                  isBgBlack={isBgBlack}
-                  isActive={path === link}
-                  key={"sticky" + link}
-                >
-                  <Link href={`/${link}`}>
-                    <a tw=" p-4 uppercase">{link}</a>
-                  </Link>
-                </LinkItem>
-              ))}
-            </ul> */}
+          <LinkItems {...{ isHome, path, isSticky: true }} />
         </Container>
       </motion.header>
     </>

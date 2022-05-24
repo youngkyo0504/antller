@@ -16,15 +16,11 @@ const Footer: FC = ({ children }) => {
     <>
       <footer
         css={[isHome ? tw`sm:max-w-[1600px]` : ""]}
-        tw="text-gray max-w-content w-full sm:(text-lg px-content) px-mo-content mx-auto flex flex-col pt-4 pb-6 mt-24 relative z-index[1] mb-4"
+        tw="text-gray max-w-content w-full sm:(text-lg px-content) px-mo-content mx-auto flex flex-col pt-4 pb-4 sm:pb-6 mt-24 relative mb-4"
       >
         <div tw="flex justify-between">
           <div>© Antller</div>
-          <ul tw="flex">
-            {/* <SocialLink isBgBlack={!isHome && isBgBlack}>Instagram</SocialLink> */}
-            {/* <SocialLink isBgBlack={!isHome && isBgBlack}>Twitter</SocialLink> */}
-            {/* <SocialLink isBgBlack={!isHome && isBgBlack}>Facebook</SocialLink> */}
-          </ul>
+          <ul tw="flex"></ul>
         </div>
         <a
           target={"#"}

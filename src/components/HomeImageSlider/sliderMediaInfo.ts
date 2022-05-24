@@ -2,14 +2,14 @@ export const sliderMediaInfo: SliderMediaInfo = [
   {
     videoSrc: "/video/soso1.mp4",
     imageSrc: "/images/main-background-image/soso1.png",
-    title: "First",
-    desc: "Industrial design of IPU and Rack Mount Chassis for a machine learning start-up",
+    title: "소소한 사람들",
+    desc: "다큐멘터리",
     isBgBlack: true,
   },
   {
     imageSrc: "/images/insight.jpeg",
-    title: "Second",
-    desc: "Industrial design of IPU and  second",
+    title: "한우 품질이력 레포트",
+    desc: "데이터 분석",
     isBgBlack: false,
   },
   {

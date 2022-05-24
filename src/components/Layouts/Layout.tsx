@@ -3,20 +3,22 @@ import Header from "./Header/Header";
 import Footer from "./Footer";
 import tw from "twin.macro";
 import StickyHeader from "./Header/StickyHeader";
+import Headers from "@components/Headers";
+import InOutTransitionContainer from "./TransitionContainer";
 interface LayoutProps {
   stickyHeaderOption?: {
     stickyHeaderThreshold?: number;
     stickyHeaderEnable?: boolean;
   };
-  isWhiteLogo?: boolean;
 }
 const Layout: FC<LayoutProps> = ({ children, stickyHeaderOption }) => {
   return (
     <div tw="flex flex-col min-h-screen">
-      <Header />
-      <StickyHeader {...stickyHeaderOption} />
+      <Headers {...{ stickyHeaderOption }} />
       <main tw="flex-1">{children}</main>
-      <Footer />
+      <InOutTransitionContainer>
+        <Footer />
+      </InOutTransitionContainer>
     </div>
   );
 };

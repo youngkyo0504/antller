@@ -19,9 +19,8 @@ const ImageSlider: FC<HomeSliderProps> = () => {
   const { scrollY } = useViewportScroll();
   const opacity = useTransform(scrollY, [0, containerHeight], [0, 0.66]);
   const translateY = useTransform(scrollY, [0, containerHeight], [0, 300]);
-
+  const parallaxY = useTransform(scrollY, [0, containerHeight], [0, 500]);
   const { isBgBlack, setIsBgBlack } = useDarkBgContext();
-  // sliderMediaInfo[0].isBgBlack
 
   useEffect(() => {
     setTimeout(() => {
@@ -39,22 +38,28 @@ const ImageSlider: FC<HomeSliderProps> = () => {
         <motion.header tw="relative w-full sm:h-screen h-[115.625vw]  flex flex-col justify-end  overflow-hidden">
           <motion.div
             ref={containerRef}
-            tw="w-full h-full bg-black  absolute z-[12] top-0 left-0 "
-            style={{ opacity }}
+            tw="w-full h-full bg-black  absolute  top-0 left-0 z-10 "
+            style={{ opacity, translateY }}
           />
-          {sliderMediaInfo.map((media, index) => (
-            <ImageContainer
-              key={media.title}
-              index={index}
-              duration={SLIDER_DURATION}
-            />
-          ))}
+          <motion.div
+            tw="absolute top-0 left-0 w-full h-full"
+            style={{ translateY: parallaxY }}
+          >
+            {sliderMediaInfo.map((media, index) => (
+              <ImageContainer
+                key={media.title}
+                index={index}
+                duration={SLIDER_DURATION}
+              />
+            ))}
+          </motion.div>
+          <ProjectDescription delay={SLIDER_DURATION} style={{ translateY }} />
           <ProgressText
             pagesLength={sliderMediaInfo.length}
             duration={SLIDER_DURATION}
             style={{ translateY }}
           />
-          <ProjectDescription delay={SLIDER_DURATION} style={{ translateY }} />
+
           <PaginationBtn />
         </motion.header>
       </SliderInfoProvider>

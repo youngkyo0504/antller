@@ -1,5 +1,5 @@
+import { links } from "@components/Layouts/Header/header.data";
 import { Variants } from "framer-motion";
-import { links } from "./header.data";
 
 const WRAPPER_DURATION = 0.5;
 const STAGGERCHILDREN = 0.1;
@@ -27,7 +27,32 @@ export const wrapperVariants: Variants = {
   },
   initial: { opacity: 1 },
 };
+export const MobileHeaderVariants: Variants = {
+  show: {
+    // height: "100vh",
+    opacity: 1,
+    backgroundColor: "rgba(0,0,0,0.9)",
+    transition: {
+      ease: [0.32, 0.08, 0.24, 1],
+      type: "tween",
+      duration: WRAPPER_DURATION,
+    },
+  },
 
+  hide: {
+    // height: "3.75rem",
+    backgroundColor: "rgba(0,0,0,0)",
+    opacity: 0,
+    transition: {
+      ease: [0.32, 0.08, 0.24, 1],
+      times: [0, 1],
+      type: "tween",
+      duration: WRAPPER_DURATION,
+      delay: STAGGERCHILDREN * links.length,
+    },
+  },
+  initial: { opacity: 0 },
+};
 export const itemVariants: Variants = {
   show: (index) => {
     return {

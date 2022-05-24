@@ -39,6 +39,7 @@ function PortfolioItem({ id, title, subCategory }: PortfolioItemProps) {
                 layout="fill"
                 tw="w-full h-full"
                 src={`/images/${id}.png`}
+                objectFit={"cover"}
                 alt=""
               />
             </motion.div>

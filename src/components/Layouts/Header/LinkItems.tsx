@@ -9,9 +9,14 @@ import { links } from "./header.data";
 interface MobileLinkItemsProps {
   isHome: boolean;
   path: string;
+  isSticky?: boolean;
 }
 
-const LinkItems: FC<MobileLinkItemsProps> = ({ isHome, path }) => {
+const LinkItems: FC<MobileLinkItemsProps> = ({
+  isHome,
+  path,
+  isSticky = false,
+}) => {
   const { isBgBlack } = useDarkBgContext();
 
   return (
@@ -20,6 +25,7 @@ const LinkItems: FC<MobileLinkItemsProps> = ({ isHome, path }) => {
       css={[
         { transitionDuration: "1000ms" },
         isHome && (isBgBlack ? tw`text-white` : tw`text-antller-black`),
+        isHome && isSticky && tw`text-antller-black`,
       ]}
     >
       {links.map((link, index) => (

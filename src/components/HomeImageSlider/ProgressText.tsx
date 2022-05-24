@@ -24,14 +24,14 @@ const ProgressText: FC<ProgressTextProps> = ({
   return (
     <motion.div
       style={{ ...style }}
-      tw="absolute bottom-10 z-30 text-3xl  w-full mx-auto "
+      tw="absolute sm:bottom-10 bottom-5  z-10  text-3xl  w-full mx-auto px-mo-content"
       css={[isBgBlack ? tw`text-white` : tw`text-antller-black`]}
     >
       <div
         css={{
           transitionDuration: `${duration * 1000}ms`,
         }}
-        tw=" max-w-sliderDescription mx-auto justify-end text-right flex items-center "
+        tw="font-semibold  text-xl sm:text-2xl max-w-sliderDescription mx-auto justify-end text-right flex items-center "
       >
         <span tw="align-top inline-block origin-center w-4  ">{page + 1}</span>
         <motion.span
@@ -42,7 +42,7 @@ const ProgressText: FC<ProgressTextProps> = ({
           variants={rotateVariants}
           initial={false}
           animate={isOnAnimation ? "rotate" : "stop"}
-          tw="inline-block origin-[center center 0] leading-none text-2xl mx-[0.7rem]  "
+          tw="font-light inline-block origin-[center center 0] leading-none text-2xl mx-[0.7rem]  "
         >
           /
         </motion.span>

@@ -38,7 +38,7 @@ const AppearingEachOneLetter: FC<AppearingEachOneLetterProps> = ({
       {text.split("").map((char, index) => (
         <motion.span
           css={[
-            tw`text-5xl inline-block font-bold  first:pl-0 pl-0.5`,
+            tw`md:text-4xl lg:text-5xl sm:text-3xl text-2xl mb-2 inline-block font-bold  first-of-type:pl-0 pl-0.5`,
             css`
               color: ${color};
             `,

@@ -25,7 +25,6 @@ const MobileHeader: FC<MobileHeaderProps> = ({ isMobileMenuOpen }) => {
       animate={isMobileMenuOpen ? "show" : "hide"}
       onAnimationComplete={(definition) => {
         if (definition === "hide") {
-          console.log(definition);
           setIsHide(true);
         }
       }}

@@ -17,7 +17,6 @@ import InterviewCol from "@components/Common/Markdown/InterViewCol";
 import MadeBy from "@components/Common/Markdown/MadeBy";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 
-// const Container = tw.div`max-w-content mx-auto px-content mt-header`;
 const Container = tw.div`max-w-content mx-auto sm:px-content px-5 mt-header `;
 const Title = tw.p`text-6xl font-bold tracking-wider`;
 const SubTitle = tw.p`text-xl pt-4 text-gray mb-12`;

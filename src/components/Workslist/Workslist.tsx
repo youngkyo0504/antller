@@ -19,7 +19,7 @@ mt-10 grid-cols-1  grid-flow-row-dense auto-cols-max max-w-[100rem] px-mo-conten
 
 const WorksList: FC<worksListProps> = ({}) => {
   return (
-    <section>
+    <section tw="relative z-index[1] bg-white">
       <WorkGrid>
         {/* // 10개씩 끊는 1번째와 10번째의 사이즈를 4배로 하기 위해서. */}
         {chunk(items, 10).map((chunkedWorks) =>

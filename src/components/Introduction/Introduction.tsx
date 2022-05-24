@@ -1,8 +1,7 @@
 import tw from "twin.macro";
-import React, { FC, forwardRef, RefObject, useEffect, useRef } from "react";
+import React, { FC } from "react";
 import {
   motion,
-  useMotionValue,
   useTransform,
   useViewportScroll,
   Variants,
@@ -49,23 +48,23 @@ const Introduction: FC<IntroductionProps> = () => {
       initial="out"
       animate="in"
       variants={boxVariants}
-      tw="max-w-content w-full h-[350vh] mx-auto relative text-white text-2xl flex justify-center px-content "
+      tw="max-w-content w-full h-[350vh] mx-auto relative text-white lg:text-2xl md:text-xl sm:text-lg  flex justify-center px-content "
     >
       <motion.div
         whileInView={{ visibility: "visible", zIndex: 0 }}
         style={{
           opacity: opacity,
         }}
-        tw=" fixed top-0 translate-x-[-50%] left-[50%] h-screen w-full flex items-center max-w-content px-content opacity-0"
+        tw=" fixed top-0 translate-x-[-50%] left-[50%] h-screen w-full flex md:flex-row justify-center md:(justify-start) flex-col items-center max-w-content px-mo-content sm:(px-content )   opacity-0"
       >
-        <motion.div tw=" w-1/2">
+        <motion.div tw="w-full md:w-1/2">
           <AnimatedText titleOption={{ text: "Mission", color: "#D84624" }}>
             다음 세대를 위한
             <br />
             단단한 축산
           </AnimatedText>
         </motion.div>
-        <div tw="w-1/2">
+        <div tw="md:w-1/2 w-full margin-top[5vh] md:(margin-top[5vh])">
           <ScrollAnimation
             messages={[
               "우리의 미션은 데이터를 통해 축산농가의 생산성과 경제성을 최적화하고 환경에 미치는 영향을 최소화시킴으로써",

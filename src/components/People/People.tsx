@@ -10,7 +10,7 @@ import {
 
 interface PeopleProps {}
 
-const Container = tw.div`bg-black text-white max-w-content w-full mx-auto px-content `;
+const Container = tw.div`bg-black text-white max-w-content w-full mx-auto sm:px-content px-mo-content`;
 
 const People: FC<PeopleProps> = ({}) => {
   const [ref, elementHeight, offsetTop] = useElementGeometry<HTMLDivElement>();
@@ -42,15 +42,8 @@ const People: FC<PeopleProps> = ({}) => {
         <Container>
           <AboutSubTitle>People</AboutSubTitle>
           <SubTitleDescription>앤틀러의 얼굴들</SubTitleDescription>
-          {/* <AnimatedText titleOption={{ text: "People", color: "#fff" }}> */}
-          {/* #4D90F4 */}
-          {/* </AnimatedText> */}
         </Container>
-        <motion.div>
-          <div tw=" mt-32 overflow-hidden relative">
-            <Profile />
-          </div>
-        </motion.div>
+        <Profile />
       </motion.section>
     </>
   );

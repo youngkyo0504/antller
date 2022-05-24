@@ -16,7 +16,7 @@ interface HeaderProps {
   setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Container = tw.nav`md:(px-content h-[76px] )  mx-auto  flex justify-between items-center max-w-content pl-5 w-full`;
+const Container = tw.nav`sm:(px-content h-[76px]) h-[3.75rem] mx-auto  flex justify-between items-center max-w-content pl-5 w-full`;
 
 const StickyHeader: FC<HeaderProps> = ({
   stickyHeaderThreshold,

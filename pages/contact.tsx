@@ -9,7 +9,7 @@ import tw from "twin.macro";
 
 const IconContainer = tw.div`flex items-center`;
 const InfoText = tw.p`ml-4 `;
-const Grid = tw.div`sm:(mt-10 grid-cols-2 gap-x-10 gap-y-5) gap-y-4  grid mt-5`;
+const Grid = tw.div`sm:(mt-10 grid-cols-2 gap-x-16 gap-y-5) gap-y-4  grid mt-5`;
 const ContactItemWrapper = tw.div``;
 const SocialText = tw.p`text-gray sm:(mb-1 text-xl ) text-lg `;
 const SocialLink = tw.a`hover:underline sm:(text-xl) `;

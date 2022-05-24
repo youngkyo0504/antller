@@ -1,6 +1,5 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { FC } from "react";
-import { sortStrings } from "src/util";
 import tw from "twin.macro";
 import historyData from "./history.data";
 interface HistoryContentProps {
@@ -9,7 +8,7 @@ interface HistoryContentProps {
 const variants: Variants = {
   exit: { opacity: 0, y: -15 },
   initial: { opacity: 0, y: 15 },
-  whileInView: {
+  animate: {
     opacity: 1,
     y: 0,
     transition: { type: "tween", duration: 0.4 },
@@ -21,33 +20,31 @@ const HistroyContent: FC<HistoryContentProps> = ({
 }) => {
   return (
     <AnimatePresence exitBeforeEnter>
-      <ul tw="h-full relative -top-1.5" key={"historyContainer"}>
-        {historyData
-          .filter((history) => history.year === selectedYear)
-          .map((selectedHistory) =>
-            selectedHistory.monthContent
+      {historyData
+        .filter((history) => history.year === selectedYear)
+        .map((selectedHistory) => (
+          <motion.ul
+            {...{ ...variants }}
+            transition={{ type: "tween", duration: 0.2 }}
+            tw="h-full   relative -top-1.5 px-mo-content sm:(px-0 text-lg) w-full "
+            key={selectedYear}
+          >
+            {selectedHistory.monthContent
               .sort((a, b) => Number(a.month) - Number(b.month))
               .map((monthWork, index) => (
-                <motion.li
-                  key={monthWork.month + index}
-                  tw="mb-5"
-                  viewport={{ amount: 1 }}
-                  {...{ ...variants }}
-                  variants={variants}
-                  transition={{ type: "tween", duration: 0.2 }}
-                >
-                  <p tw="mb-0.5 font-bold lg:(text-lg) text-gray">
+                <motion.li key={monthWork.month + index} tw="mb-5 ">
+                  <p tw="mb-0.5  font-bold  text-gray">
                     {`${selectedHistory.year}.${monthWork.month}`}
                   </p>
                   {monthWork.content.map((content, index) => (
-                    <p tw="lg:(text-xl) text-white" key={index}>
-                      {content}
+                    <p tw="mb-1 text-white" key={index}>
+                      - {content}
                     </p>
                   ))}
                 </motion.li>
-              ))
-          )}
-      </ul>
+              ))}
+          </motion.ul>
+        ))}
     </AnimatePresence>
   );
 };

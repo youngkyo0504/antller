@@ -33,9 +33,7 @@ const ScrollAnimation = ({ messages }: { messages: string[] }) => {
         <motion.div
           key={index}
           style={{ opacity: opacityOfElements[index], y: yOfElements[index] }}
-          // tw="fixed"
-          tw="margin-top[5vh] first:margin-top[0] "
-          // css={{ top: `${38 + Number(index) * 10}vh` }}
+          tw="margin-top[5vh] first-of-type:margin-top[0] "
         >
           <span tw="leading-relaxed" css={{ wordBreak: "keep-all" }}>
             {text}

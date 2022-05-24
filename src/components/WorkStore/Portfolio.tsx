@@ -11,7 +11,7 @@ interface PortfolioProps {
 
 const Title = tw.div`text-antller-black sm:absolute text-3xl mb-4 sm:mb-0 sm:text-4xl md:(bottom-4 text-5xl) font-bold 
 `;
-const ProtofolioContainer = tw.div`relative h-screen flex w-full max-w-content mx-auto `;
+const ProtofolioContainer = tw.div`relative  flex w-full max-w-content mx-auto `;
 const TabContainer = tw.div`border-b-divider border-b w-full flex justify-center items-center`;
 
 const Portfolio: FC<PortfolioProps> = ({ works }) => {

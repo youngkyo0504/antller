@@ -7,6 +7,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        loop: {
+          "0%": { transform: "translate3d(0,0,0)" },
+          "100%": { transform: "translate3d(-50%,0,0)" },
+        },
+      },
+
+      animation: {
+        "infinite-loop": "loop 20s linear infinite",
+      },
+
       fontFamily: {
         sans: ["Pretendard", ...defaultTheme.fontFamily.sans],
       },
@@ -28,6 +39,8 @@ module.exports = {
       margin: {
         header: "155px",
         "mo-header": "90px",
+        "about-item": "9rem",
+        "mo-about-item": "2rem",
       },
     },
   },

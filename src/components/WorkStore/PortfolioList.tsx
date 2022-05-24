@@ -22,7 +22,7 @@ const PortfolioList: FC<PortfolioListProps> = ({ selectedTab, works }) => {
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          tw="  max-w-content absolute w-full px-content gap-6 md:grid-cols-2 grid  grid-cols-1 lg:grid-cols-3 pt-16"
+          tw="  max-w-content w-full px-mo-content sm:px-content gap-6 md:grid-cols-2 grid  grid-cols-1 lg:grid-cols-3 md:pt-16 pt-8"
         >
           {works
             .filter((work) => work.data.category === selectedTab)

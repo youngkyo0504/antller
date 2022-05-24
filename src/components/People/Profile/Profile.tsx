@@ -1,11 +1,12 @@
 import tw, { css } from "twin.macro";
-import React, { FC } from "react";
-import { motion, MotionConfig, Variants } from "framer-motion";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+import { motion, MotionConfig, motionValue, Variants } from "framer-motion";
 import profileData from "./profile.json";
+import { useElementWIdth, useWindowHeight } from "@hooks";
 interface ProfileProps {}
 const Container = tw(
   motion.div
-)`w-full rounded-xl px-content max-w-content mx-auto relative z-index[3] flex`;
+)`relative z-index[3] flex mt-mo-about-item sm:(mt-about-item pt-0 )max-w-content w-full pt-3  mx-auto `;
 
 const variants: Variants = {
   onView: {
@@ -19,6 +20,7 @@ const variants: Variants = {
   hidden: {},
   transition: {},
 };
+
 const personVariants: Variants = {
   hidden: {
     opacity: 0,
@@ -33,40 +35,105 @@ const personVariants: Variants = {
     },
   },
 };
+
 const Profile: FC<ProfileProps> = ({}) => {
+  const { windowWidth } = useWindowHeight();
+  const [grabConstraintsX, setGrabConstraintsX] = useState<number>(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sliderRef.current) return;
+    // const itemWidth = windowWidth * 0.5;
+    const itemWidth = sliderRef.current.offsetWidth * 0.5;
+    const allMargin = windowWidth * 0.25; // 어림잡아 놓은 값
+    const newValue = windowWidth - (itemWidth * 4 + allMargin);
+
+    setGrabConstraintsX(newValue);
+    console.log(newValue);
+  }, [windowWidth]);
+  const getdragConstraints = () => {
+    return {
+      right: 0,
+      left: grabConstraintsX,
+    };
+  };
   return (
     <Container
+      key={grabConstraintsX}
       css={{ cursor: "grab" }}
       drag="x"
-      dragConstraints={{ right: 0, left: -1000 }}
-      variants={variants}
-      initial={"hidden"}
-      whileInView={"onView"}
+      ref={sliderRef}
+      dragElastic={0.2}
+      dragConstraints={{
+        right: 0,
+        left: grabConstraintsX || -500,
+      }}
     >
       {profileData.map((member, index) => (
-        <motion.div
-          tw="relative flex[0 0 auto]  lg:(ml-36 first:ml-0) w-1/2 overflow-hidden rounded-xl"
-          variants={personVariants}
+        <div
+          tw="relative flex[0 0 auto] mx-4  w-1/2 text-sm sm:text-base md:text-lg overflow-hidden "
           key={member.name}
-          viewport={{ amount: 1 }}
         >
           <img
             draggable={false}
-            tw="user-select[none] w-full "
-            src={`/images/people/${index + 1}.png`}
+            tw="user-select[none] w-full rounded-xl"
+            src={`/images/people/${member.id}.jpg`}
             alt=""
           />
-          <div tw="text-white flex absolute left[5%] bottom[3%] text-center items-center">
-            <p tw="text-lg">{member.name}</p>
-            <div tw="ml-2 text-sm text-gray relative before:(absolute w-[1px] top-[50%] left-0 h-[70%] translate-y-[-50%] content bg-gray)">
+          <div tw="user-select[none]  text-white flex absolute left[5%] bottom[3%] text-center items-center">
+            <p tw="sm:text-lg ">{member.name}</p>
+            <div tw="ml-2 text-xs sm:text-sm text-gray relative before:(absolute w-[1px] top-[50%] left-0 h-[70%] translate-y-[-50%] content bg-gray)">
               <span tw="px-1  ">{member.role}</span>
             </div>
           </div>
-        </motion.div>
+        </div>
       ))}
-      sd
     </Container>
   );
 };
 
 export default Profile;
+
+{
+  /* <div tw="max-w-content mx-auto">
+<motion.div tw="overflow-visible relative mt-mo-about-item sm:mt-about-item mx-auto">
+  <motion.div
+    tw="relative w-full flex"
+    // key={grabConstranitsY}
+    css={{ cursor: "grab" }}
+    drag="x"
+    ref={sliderRef}
+    // dragElastic={0.5}
+    dragConstraints={constraintRef}
+    // dragConstraints={{
+    //   right: 0,
+    //   left: grabConstranitsY,
+    //   // https://codesandbox.io/s/framer-motion-slider-ref-pg8dfc?file=/src/App.js:347-362
+    //   // 여기서 해결 방법 찾기
+    //   // https://merrily-code.tistory.com/46
+    // }}
+  >
+    {profileData.map((member, index) => (
+      <div
+        tw="relative flex[0 0 auto] mx-4   w-64 overflow-hidden "
+        key={member.name}
+      >
+        <img
+          draggable={false}
+          tw="user-select[none] w-full rounded-xl"
+          src={`/images/people/${index + 1}.png`}
+          alt=""
+        />
+        <div tw="user-select[none] sm:pl-content pl-mo-content text-white flex absolute left[5%] bottom[3%] text-center items-center">
+          <p tw="sm:text-lg ">{member.name}</p>
+          <div tw="ml-2 text-xs sm:text-sm text-gray relative before:(absolute w-[1px] top-[50%] left-0 h-[70%] translate-y-[-50%] content bg-gray)">
+            <span tw="px-1  ">{member.role}</span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </motion.div>
+  <motion.div tw="absolute" style={constraintStyle} ref={constraintRef} />
+</motion.div>
+</div> */
+}

@@ -9,10 +9,17 @@ const useElementGeometry: <T extends HTMLElement>() => [
   const [elementClientHeight, setElementClientHeight] = useState(100);
   const [offsetTop, setOffsetTop] = useState(1000);
   useEffect(() => {
-    if (elementRef.current) {
-      setElementClientHeight(elementRef.current.clientHeight);
-      setOffsetTop(elementRef.current.offsetTop);
-    }
+    const resize = () => {
+      if (elementRef.current) {
+        setElementClientHeight(elementRef.current.clientHeight);
+        setOffsetTop(elementRef.current.offsetTop);
+      }
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
   }, [elementRef.current]);
 
   return [elementRef, elementClientHeight, offsetTop];

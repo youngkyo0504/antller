@@ -23,5 +23,5 @@ export const LinkItem = styled.li(
 export const NavBar = tw.nav`h-full sm:h-auto sm:(mt-6 px-content) mx-auto   sm:(flex justify-between items-center) max-w-content pl-mo-content w-full `;
 
 // about Page
-export const AboutSubTitle = tw.h2` text-5xl font-bold tracking-wide text-white`;
-export const SubTitleDescription = tw.p`mt-4 text-xl text-[#999]`;
+export const AboutSubTitle = tw.h2`  font-bold tracking-wide text-white md:text-4xl lg:text-5xl sm:text-3xl text-2xl `;
+export const SubTitleDescription = tw.p`md:mt-4 mt-1 text-base sm:text-lg  md:text-xl text-[#999]`;

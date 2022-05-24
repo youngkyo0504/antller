@@ -1,22 +1,22 @@
 [
-    {
-        "name":"나영준",
-        "role": "CEO"
-
-    },
-    {
-        "name":"장하라",
-        "role": "Manager"
-
-    },
-    {
-        "name":"강유림",
-        "role": "Editor"
-
-    },
-    {
-        "name":"금교영",
-        "role": "Developer"
-
-    }
+  {
+    "name": "나영준",
+    "id": "nyj",
+    "role": "CEO"
+  },
+  {
+    "name": "장하라",
+    "id": "chr",
+    "role": "Manager"
+  },
+  {
+    "name": "강유림",
+    "id": "kyr",
+    "role": "Editor"
+  },
+  {
+    "name": "금교영",
+    "id": "kky",
+    "role": "Developer"
+  }
 ]

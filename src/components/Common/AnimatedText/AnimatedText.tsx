@@ -28,7 +28,7 @@ const AnimatedText: FC<AnimatedTextProps> = ({ titleOption, children }) => {
     <>
       <AppearingEachOneLetter {...titleOption} />
       <motion.h2
-        tw="text-6xl leading-normal opacity-0 "
+        tw="md:text-5xl lg:text-6xl sm:text-4xl text-3xl leading-relaxed opacity-0 "
         whileInView={"in"}
         variants={iconVariants}
       >

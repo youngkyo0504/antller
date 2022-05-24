@@ -28,14 +28,12 @@ const Hamburger: FC<HamburgerProps> = ({
   isStickyHeader = true,
 }) => {
   const { setIsBgBlack, isBgBlack } = useDarkBgContext();
-  console.log(setIsMobileMenuOpen);
   return (
     <motion.button
       onClick={() => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
         if (!isStickyHeader) {
           window.scrollTo(0, 0);
-          console.log("위로 올립니다.");
         }
       }}
       tw="sm:hidden h-[3.75rem] w-[3.75rem] absolute right-0 top-0 p-5 flex items-center justify-center "

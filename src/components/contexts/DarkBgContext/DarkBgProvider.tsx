@@ -21,7 +21,6 @@ const DarkBgContext = createContext<DarkBgContextProps | null>(null);
 const DarkBgProvider: FC<DarkBgProviderProps> = ({ children }) => {
   const [isBgBlack, setIsBgBlack] = useState<boolean>(false);
   const bgBlackCache = useRef<boolean | null>(null);
-  // console.log();
 
   useEffect(() => {
     if (isBgBlack) {

@@ -20,7 +20,7 @@ const MovingLogoList: FC = ({}) => {
       {Logos.map((logo) => (
         <div tw="inline-block mx-5  overflow-hidden" key={logo.name}>
           <img
-            tw="invert select-none inline-block h-6"
+            tw=" select-none inline-block h-6"
             draggable={false}
             alt={logo.name}
             src={`/images/partnerLogo/${logo.src}`}

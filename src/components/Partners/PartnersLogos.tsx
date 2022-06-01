@@ -42,7 +42,7 @@ const PartnersLogos: FC<PartnersLogoProps> = ({}) => {
             tw=" relative w-full h-8 items-center inline-block"
           >
             <Image
-              tw="invert select-none"
+              tw=" select-none fill-[white]"
               draggable={false}
               alt={logo.name}
               src={`/images/partnerLogo/${logo.src}`}

@@ -5,11 +5,11 @@ import {
   useViewportScroll,
 } from "framer-motion";
 import { useEffect, useState } from "react";
-import useWindowHeight from "src/hooks/useWindowHeight";
+import useWindowGeometry from "src/hooks/useWindowGeometry";
 import tw from "twin.macro";
 
 const ScrollAnimation = ({ messages }: { messages: string[] }) => {
-  const { windowHeight } = useWindowHeight();
+  const { windowHeight } = useWindowGeometry();
   const { scrollY } = useViewportScroll();
 
   const degreeOfMovement = windowHeight * 0.05;

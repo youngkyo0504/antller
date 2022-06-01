@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 
-const useWindowHeight = () => {
+const useWindowGeometry = () => {
   const [windowHeight, setWindowHeight] = useState(600);
   const [windowWidth, setWindowWidth] = useState(500);
   const resize = useCallback(() => {
@@ -25,4 +25,4 @@ const useWindowHeight = () => {
   return { windowHeight, windowWidth };
 };
 
-export default useWindowHeight;
+export default useWindowGeometry;

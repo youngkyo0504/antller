@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import ScrollAnimation from "./ScrollAnimation";
 import { useElementGeometry } from "@hooks";
-import useWindowHeight from "src/hooks/useWindowHeight";
+import useWindowGeometry from "src/hooks/useWindowGeometry";
 import AnimatedText from "@components/Common/AnimatedText";
 
 const boxVariants: Variants = {
@@ -30,7 +30,7 @@ interface IntroductionProps {}
 
 const Introduction: FC<IntroductionProps> = () => {
   const [ref, elementHeight] = useElementGeometry<HTMLDivElement>();
-  const { windowHeight } = useWindowHeight();
+  const { windowHeight } = useWindowGeometry();
   const { scrollY } = useViewportScroll();
 
   const opacity = useTransform(

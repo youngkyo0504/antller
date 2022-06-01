@@ -38,7 +38,7 @@ const MobileHeader: FC<MobileHeaderProps> = ({ isMobileMenuOpen }) => {
         <nav>
           <MobileLinkItems {...{ isMobileMenuOpen, isHome, path }} />
         </nav>
-        <Footer />
+        <Footer isMobileFooter={true} />
       </div>
     </motion.header>
   );

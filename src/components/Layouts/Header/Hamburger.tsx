@@ -6,6 +6,7 @@ interface HamburgerProps {
   setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isMobileMenuOpen: boolean;
   isStickyHeader?: boolean;
+  isHome?: boolean;
 }
 const variants: Variants = {
   rotateLeft: {
@@ -26,6 +27,7 @@ const Hamburger: FC<HamburgerProps> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
   isStickyHeader = true,
+  isHome,
 }) => {
   const { setIsBgBlack, isBgBlack } = useDarkBgContext();
   return (
@@ -46,6 +48,7 @@ const Hamburger: FC<HamburgerProps> = ({
           tw="w-full h-[2px]  top-0 absolute transition-colors duration-[0.5s] "
           css={[
             isBgBlack || isMobileMenuOpen ? tw`bg-white` : tw`bg-antller-black`,
+            isHome && !isMobileMenuOpen ? tw`bg-antller-black` : "",
           ]}
         ></motion.span>
         <motion.span
@@ -55,6 +58,7 @@ const Hamburger: FC<HamburgerProps> = ({
           tw="w-full h-[2px]  absolute bottom-0 bg-antller-black transition-colors duration-[0.5s]"
           css={[
             isBgBlack || isMobileMenuOpen ? tw`bg-white` : tw`bg-antller-black`,
+            isHome && !isMobileMenuOpen ? tw`bg-antller-black` : "",
           ]}
         ></motion.span>
       </div>

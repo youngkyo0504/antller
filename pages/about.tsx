@@ -5,13 +5,14 @@ import Layout from "@components/Layouts/Layout";
 import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import Partners from "@components/Partners";
 import People from "@components/People";
+import { useColorScheme } from "@hooks";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect } from "react";
 
 const AboutPage: NextPage = () => {
   const { setIsBgBlack } = useDarkBgContext(true);
-
+  useColorScheme();
   return (
     <>
       <Head>

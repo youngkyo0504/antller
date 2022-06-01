@@ -8,10 +8,15 @@ const SocialLink = styled.li(({ isBgBlack }: { isBgBlack: boolean }) => [
   isBgBlack ? tw`hover:text-white` : tw`hover:text-antller-black`,
 ]);
 
-const Footer: FC = ({ children }) => {
+interface FooterProps {
+  isMobileFooter?: boolean;
+}
+
+const Footer: FC<FooterProps> = ({ children, isMobileFooter }) => {
   const { isBgBlack } = useDarkBgContext();
   const path = useRouter().pathname.split("/")[1];
   const isHome = path === "";
+
   return (
     <>
       <footer
@@ -26,7 +31,7 @@ const Footer: FC = ({ children }) => {
           target={"#"}
           href="http://newso.co.kr"
           css={[
-            !isHome && isBgBlack
+            (!isHome && isBgBlack) || isMobileFooter
               ? tw`hover:text-white`
               : tw`hover:text-antller-black`,
           ]}

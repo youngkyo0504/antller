@@ -1,5 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
-import Link from "next/link";
+import React, { FC } from "react";
 import "twin.macro";
 import Logo from "../../Common/Logo/Logo";
 import tw from "twin.macro";
@@ -10,7 +9,6 @@ import Hamburger from "./Hamburger";
 import { NavBar } from "styles/globalStyleComponent";
 import useHomePath from "src/hooks/useHomePath";
 import useIsMobile from "src/hooks/useIsMobile";
-import { useToggleScroll } from "@hooks";
 import LinkItems from "./LinkItems";
 
 interface HeaderProps {
@@ -26,7 +24,7 @@ const Header: FC<HeaderProps> = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
   return (
     <>
       {" "}
-      <motion.header tw="w-full absolute bg-transparent h-[3.75rem] overflow-y-hidden left-0  right-0 z-[30] mx-auto ">
+      <header tw="w-full absolute bg-transparent h-[3.75rem] overflow-y-hidden left-0  right-0 z-[30] mx-auto ">
         <NavBar>
           <Logo {...{ isMobileMenuOpen }} />
           <InOutTransitionContainer>
@@ -40,7 +38,7 @@ const Header: FC<HeaderProps> = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
             <LinkItems {...{ isHome, path, isMobileMenuOpen }} />
           </InOutTransitionContainer>
         </NavBar>
-      </motion.header>
+      </header>
     </>
   );
 };

@@ -39,7 +39,7 @@ const StickyHeader: FC<HeaderProps> = ({
         animate={"scroll"}
         initial="initial"
         css={[
-          tw`fixed  bg-[rgba(255,255,255,.97)] left-0  right-0 z-[30] mx-auto transition-colors`,
+          tw`fixed  bg-[rgba(255,255,255,.97)] left-0  right-0 z-[30] mx-auto transition-colors will-change[transform]`,
           !isHome && isBgBlack && tw`bg-[rgba(0,0,0,0.8)] overflow-hidden`,
           isMobileMenuOpen ? tw`bg-[rgba(0,0,0,0)]` : tw`delay-[300ms]`,
         ]}

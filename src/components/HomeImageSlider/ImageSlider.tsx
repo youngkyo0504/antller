@@ -18,8 +18,16 @@ const ImageSlider: FC<HomeSliderProps> = () => {
   const [containerRef, containerHeight] = useElementGeometry<HTMLDivElement>();
   const { scrollY } = useViewportScroll();
   const opacity = useTransform(scrollY, [0, containerHeight], [0, 0.66]);
-  const translateY = useTransform(scrollY, [0, containerHeight], [0, 300]);
-  const parallaxY = useTransform(scrollY, [0, containerHeight], [0, 500]);
+  const translateY = useTransform(
+    scrollY,
+    [0, containerHeight],
+    [0, containerHeight / 2]
+  );
+  const parallaxY = useTransform(
+    scrollY,
+    [0, containerHeight],
+    [0, containerHeight / 2]
+  );
   const { isBgBlack, setIsBgBlack } = useDarkBgContext();
 
   useEffect(() => {
@@ -32,6 +40,7 @@ const ImageSlider: FC<HomeSliderProps> = () => {
       }
     };
   }, [isBgBlack]);
+
   return (
     <>
       <SliderInfoProvider>
@@ -42,7 +51,7 @@ const ImageSlider: FC<HomeSliderProps> = () => {
             style={{ opacity, translateY }}
           />
           <motion.div
-            tw="absolute top-0 left-0 w-full h-full"
+            tw="absolute top-0 left-0 w-full h-full will-change[transform]"
             style={{ translateY: parallaxY }}
           >
             {sliderMediaInfo.map((media, index) => (

@@ -11,8 +11,9 @@ interface MaxXInfo {
   left: number;
   right: number;
 }
-
+const PADDING = 50;
 const VELOCITY = 2;
+const MAX_CONTENT_WIDTH = 1200;
 
 const useSlide = () => {
   const mouseXInfoRef = useRef<MouseXInfo>();
@@ -31,10 +32,19 @@ const useSlide = () => {
   }, []);
 
   useEffect(() => {
-    if (!slideRef.current) return;
+    if (!slideRef.current || !mouseXInfoRef.current) return;
+
+    let margin = (windowWidth - MAX_CONTENT_WIDTH) / 2;
+    margin = margin > 0 ? margin + PADDING : PADDING;
+
+    mouseXInfoRef.current = {
+      oldX: 0,
+      moveX: 0,
+      isDown: false,
+    };
 
     maxRef.current = {
-      left: windowWidth - slideRef.current.clientWidth - 10,
+      left: windowWidth - slideRef.current.clientWidth - margin,
       right: 0,
     };
   }, [windowWidth]);

@@ -2,7 +2,7 @@ import tw from "twin.macro";
 import React, { FC } from "react";
 import { motion } from "framer-motion";
 import profileData from "./profile.json";
-import { useSlide } from "@hooks";
+import { useSlide, useWindowGeometry } from "@hooks";
 import Image from "next/image";
 
 interface ProfileProps {}
@@ -14,10 +14,11 @@ const Container = tw(
 const Profile: FC<ProfileProps> = ({}) => {
   const { onPointerDown, onPointerMove, onPointerUp, onMouseLeave, slideRef } =
     useSlide();
-
+  const { windowWidth } = useWindowGeometry();
   return (
     <Container css={{ cursor: "grab" }}>
       <motion.div
+        key={windowWidth}
         ref={slideRef}
         draggable={false}
         tw="user-select[none] touch-action[pan-y] inline-block whitespace-nowrap transition-transform transition-duration[1s]  transition-timing-function[cubic-bezier(0, 0.55, 0.45, 1)]"
@@ -29,7 +30,7 @@ const Profile: FC<ProfileProps> = ({}) => {
         {profileData.map((member, index) => (
           <div
             draggable={false}
-            tw="user-select[none]  inline-block relative flex[0 0 auto] first-of-type:ml-0 mx-4 h-64 w-64 text-sm sm:text-base md:text-lg overflow-hidden "
+            tw="user-select[none]  inline-block relative flex[0 0 auto] first-of-type:ml-0 mx-4  sm:(h-96 w-96) w-64 h-64 text-sm sm:text-base md:text-lg overflow-hidden "
             key={member.name}
           >
             <Image

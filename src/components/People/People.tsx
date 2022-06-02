@@ -30,6 +30,7 @@ const People: FC<PeopleProps> = ({}) => {
       clamp: false,
     }
   );
+
   return (
     <>
       <motion.section

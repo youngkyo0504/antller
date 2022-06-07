@@ -43,6 +43,7 @@ const CardTitle = tw.p`text-5xl`;
 const CardSubTitle = tw.p`mt-3`;
 const CircleNumber = tw.div`rounded-full bg-white mr-2 w-6 h-6 border-2 border-[#231e1f] flex justify-center items-center `;
 const DiscList = tw.li`list-style-position[inside] list-disc text-xl mt-2`;
+
 interface CardProps {
   twProps?: string;
   colSpan?: CardContainerVariant;
@@ -99,8 +100,7 @@ const WorkDetail: FC<WorkDetailProps> = () => {
       </div>
       <div tw="flex justify-end my-16 font-bold text-4xl ">
         <span tw=" relative">
-          <span>&#8220;</span>한우와 관련된 새롭고 재미있는 뉴소레터
-          <span>&#8221;</span>
+          {'"한우와 관련된 새롭고 재미있는 뉴소레터"'}
           <span tw="absolute h-1/3 bg-yellow-300/30 -bottom-1 left-0 w-full"></span>
         </span>
       </div>

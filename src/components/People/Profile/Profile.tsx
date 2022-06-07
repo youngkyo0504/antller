@@ -21,7 +21,7 @@ const Profile: FC<ProfileProps> = ({}) => {
         key={windowWidth}
         ref={slideRef}
         draggable={false}
-        tw="user-select[none] touch-action[pan-y] inline-block whitespace-nowrap transition-transform transition-duration[1s]  transition-timing-function[cubic-bezier(0, 0.55, 0.45, 1)]"
+        tw="user-select[none] touch-action[pan-y] inline-block whitespace-nowrap transition-transform transition-duration[0.3s]  transition-timing-function[cubic-bezier(0, 0.55, 0.45, 1)]"
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
         onPointerMove={onPointerMove}

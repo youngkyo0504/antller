@@ -28,6 +28,7 @@ const WorkPage: NextPage<WorkPageProps> = ({ works }) => {
     </>
   );
 };
+
 export const getStaticProps = () => {
   const works = getWorks();
 

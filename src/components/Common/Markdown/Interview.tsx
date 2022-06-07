@@ -22,7 +22,7 @@ const Interview: FC<InterviewProps> = ({
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{
-        duration: 0.7,
+        duration: 0.5,
         ease: "easeOut",
       }}
       viewport={{ amount: 0.2, once: true }}
@@ -33,11 +33,12 @@ const Interview: FC<InterviewProps> = ({
         css={[
           tw` sm:(w-1/2)  flex items-center`, // Add base styles first
           reverseOrder && tw`sm:(order-2)`, // Then add conditional styles
+          reverseOrder ? tw`ml-4` : tw`mr-4`,
         ]}
       >
         <WhileInViewImage src={imgUrl} />
       </div>
-      <div tw="sm:(w-1/2 p-8 text-[1.2rem]) text-sm py-4 flex flex-col justify-center  font-semibold  leading-normal">
+      <div tw="sm:(w-1/2 text-[1.2rem]) text-sm py-4 flex flex-col justify-center  font-semibold  leading-normal">
         {content}
         <p tw="mt-4 pr-4 text-[#94A3B8] sm:(text-base) text-xs font-medium">
           <span>{name}</span> <span className="text-sm">{position}</span>

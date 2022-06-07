@@ -13,7 +13,7 @@ interface MaxXInfo {
 }
 
 const PADDING = 50;
-const VELOCITY = 2;
+const VELOCITY = 1.2;
 const MAX_CONTENT_WIDTH = 1200;
 
 const useSlide = () => {
@@ -22,18 +22,22 @@ const useSlide = () => {
   const { windowWidth } = useWindowGeometry();
   const maxRef = useRef<MaxXInfo>();
 
-  const isOverLimit = useCallback((x: number) => {
-    if (!maxRef.current) return false;
-    const { left, right } = maxRef.current;
-
-    if (x < right && x > left) {
-      return true;
-    }
-    return false;
-  }, []);
+  const isOverLimit = useCallback(
+    (x: number) => {
+      if (!maxRef.current) return false;
+      const { left, right } = maxRef.current;
+      console.log(left, right);
+      if (x < right && x > left) {
+        return true;
+      }
+      return false;
+    },
+    [maxRef]
+  );
 
   useEffect(() => {
-    if (!slideRef.current || !mouseXInfoRef.current) return;
+    console.log(slideRef.current, mouseXInfoRef.current);
+    if (!slideRef.current) return;
 
     let margin = (windowWidth - MAX_CONTENT_WIDTH) / 2;
     margin = margin > 0 ? margin + PADDING : PADDING;
@@ -48,6 +52,7 @@ const useSlide = () => {
       left: windowWidth - slideRef.current.clientWidth - margin,
       right: 0,
     };
+    console.log(maxRef.current);
 
     console.log(mouseXInfoRef.current, maxRef.current);
   }, [windowWidth]);
@@ -60,10 +65,8 @@ const useSlide = () => {
     };
   }, []);
 
-  useEffect(() => {}, []);
   const onPointerMove = useCallback((e: React.PointerEvent) => {
     if (!mouseXInfoRef.current || !slideRef.current) return;
-
     const { oldX, moveX, isDown } = mouseXInfoRef.current;
     if (!isDown) return;
 

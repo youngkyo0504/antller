@@ -36,7 +36,7 @@ const LinkItems: FC<MobileLinkItemsProps> = ({
           isActive={path === link}
         >
           <div>
-            <Link href={`/${link}`}>
+            <Link scroll={false} href={`/${link}`}>
               <a tw="uppercase cursor-pointer py-2  sm:p-4">{link}</a>
             </Link>
           </div>

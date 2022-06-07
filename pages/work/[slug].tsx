@@ -16,10 +16,12 @@ import Interview from "@components/Common/Markdown/Interview";
 import InterviewCol from "@components/Common/Markdown/InterViewCol";
 import MadeBy from "@components/Common/Markdown/MadeBy";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
+import BlockQuotation from "@components/Common/Markdown/BlockQuotation";
+import Intro from "@components/Common/Markdown/Intro";
 
-const Container = tw.div`max-w-content mx-auto sm:px-content px-5 mt-header `;
-const Title = tw.p`text-6xl font-bold tracking-wider`;
-const SubTitle = tw.p`text-xl pt-4 text-gray mb-12`;
+const Container = tw.article`max-w-[790px] mx-auto px-mo-content mt-mo-header sm:mt-header sm:px-content `;
+const Title = tw.h1` font-semibold tracking-wider sm:text-5xl text-3xl`;
+const SubTitle = tw.p`sm:text-xl text-lg sm:pt-2  text-gray mb-12 `;
 
 interface WorkDetailProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -39,12 +41,15 @@ const ElementImage = (props: any) => {
     />
   );
 };
+// 컴포넌트를 주입해서 MDX에서 사용할 수 있다. MDX에서 직접 Import 하는 방식도 있다.
 
 const components: MDXComponents | undefined = {
   img: ElementImage,
-  Interview: (props: any) => <Interview {...props} />,
-  MadeBy: (props: any) => <MadeBy {...props} />,
-  InterviewCol: (props: any) => <InterviewCol {...props} />,
+  Interview: (props) => <Interview {...props} />,
+  MadeBy: (props) => <MadeBy {...props} />,
+  InterviewCol: (props) => <InterviewCol {...props} />,
+  BlockQuotation: BlockQuotation,
+  Intro: Intro,
 };
 
 const WorkDetailPage: NextPage<WorkDetailProps> = ({ source, frontMatter }) => {
@@ -61,20 +66,27 @@ const WorkDetailPage: NextPage<WorkDetailProps> = ({ source, frontMatter }) => {
         <Layout>
           <InOutTransitionContainer>
             <Container>
-              <Title>{frontMatter.title}</Title>
-              <SubTitle>{frontMatter.subCategory}</SubTitle>
-              <Image
-                src={`/images/${frontMatter.id}.png`}
-                layout="responsive"
-                width={1280}
-                height={720}
-                alt="banner image"
-              />
-              <p tw="text-gray text-center mt-1">NEWSO ORIGINAL DOCUMENTARY</p>
+              <header>
+                <Title>{frontMatter.title}</Title>
+                <SubTitle>{frontMatter.subCategory}</SubTitle>
+                <Image
+                  src={`/images/works/${frontMatter.id}.png`}
+                  tw="rounded-xl"
+                  layout="responsive"
+                  width={1000}
+                  height={630}
+                  alt="banner image"
+                />
+                {/* <p tw="text-gray text-center mt-1">
+                  NEWSO ORIGINAL DOCUMENTARY
+                </p> */}
+              </header>
+
               <section
-                className="prose lg:prose-xl prose-img:rounded-xl mx-auto max-w-[900px] mt-20 overflow-auto"
                 style={{ wordBreak: "keep-all" }}
+                className="prose sm:prose-lg prose-img:rounded-xl mx-auto max-w-[900px] sm:mt-10 overflow-auto prose-h1:font-medium prose-h2:font-medium prose-h3:font-medium prose-h4:font-medium"
               >
+                {/* // source가 주입돼서 HTML로 변환 */}
                 <MDXRemote {...source} />
               </section>
             </Container>
@@ -94,6 +106,7 @@ interface IParams extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const works = getWorks();
   const { slug } = params as IParams;
+  // posts 폴더에 있는 mdx파일의 id와 [slug]가 같음
   const work = works
     .filter((work) => work !== undefined)
     .find((work) => work?.data.id === slug);

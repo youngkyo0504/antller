@@ -25,7 +25,7 @@ const WorksList: FC<worksListProps> = ({}) => {
         {chunk(items, 10).map((chunkedWorks) =>
           chunkedWorks.map((work, index) => (
             <GridItem key={work.id} index={index}>
-              <WorkItem index={index} {...work} />
+              <WorkItem isHome={true} index={index} {...work} />
             </GridItem>
           ))
         )}

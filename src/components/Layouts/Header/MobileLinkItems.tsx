@@ -36,7 +36,7 @@ const MobileLinkItems: FC<MobileLinkItemsProps> = ({
               initial={false}
               custom={index}
             >
-              <Link href={`/${link}`}>
+              <Link href={`/${link}`} scroll={false}>
                 <a tw="tracking-wider text-lg uppercase cursor-pointer  sm:p-4">
                   {link}
                 </a>

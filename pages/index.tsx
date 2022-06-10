@@ -5,10 +5,8 @@ import Head from "next/head";
 import tw from "twin.macro";
 import WorksList from "@components/Workslist";
 import ImageSlider from "@components/HomeImageSlider";
-import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import { useEffect } from "react";
-import sliderMediaInfo from "@components/HomeImageSlider/sliderMediaInfo";
-import { DarkBgProvider } from "@components/contexts/DarkBgContext/DarkBgProvider";
+
 const Home: NextPage = () => {
   return (
     <>

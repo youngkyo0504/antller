@@ -34,11 +34,11 @@ const Logo: FC<LogoProps> = ({ isMobileMenuOpen }) => {
   const { isBgBlack } = useDarkBgContext();
 
   return (
-    <Link href={"/"}>
+    <Link href={"/"} scroll={false}>
       <a tw=" cursor-pointer relative ">
         <svg
           css={[
-            tw` h-7 md:h-9 transition ease-in my-4 sm:my-0 delay-[0.2s] `,
+            tw` h-7 md:h-9 transition ease-in my-4 sm:my-0  `,
             ((!isHome && isBgBlack) || isMobileMenuOpen) && tw`fill-[white] `,
           ]}
           xmlns="http://www.w3.org/2000/svg"

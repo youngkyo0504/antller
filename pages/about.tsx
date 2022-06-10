@@ -13,6 +13,7 @@ import { useEffect } from "react";
 const AboutPage: NextPage = () => {
   const { setIsBgBlack } = useDarkBgContext(true);
   useColorScheme();
+
   return (
     <>
       <Head>

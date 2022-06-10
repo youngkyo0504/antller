@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import tw from "twin.macro";
+
 interface WorkItemProps {
   id: string;
   index: number;
@@ -21,7 +22,7 @@ const Container = tw.div` flex flex-col justify-between   mb-6 cursor-pointer z-
 
 function WorkItem({ isHome, id, title, subCategory, index }: WorkItemProps) {
   return (
-    <Link passHref href={`/work/${id}`}>
+    <Link passHref href={`/work/${id}`} scroll={false}>
       <a href="">
         <Container css={[isHome ? tw`h-full` : ""]} className="group">
           {/* Image Container */}

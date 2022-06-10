@@ -26,7 +26,6 @@ const useSlide = () => {
     (x: number) => {
       if (!maxRef.current) return false;
       const { left, right } = maxRef.current;
-      console.log(left, right);
       if (x < right && x > left) {
         return true;
       }
@@ -36,7 +35,6 @@ const useSlide = () => {
   );
 
   useEffect(() => {
-    console.log(slideRef.current, mouseXInfoRef.current);
     if (!slideRef.current) return;
 
     let margin = (windowWidth - MAX_CONTENT_WIDTH) / 2;
@@ -52,9 +50,6 @@ const useSlide = () => {
       left: windowWidth - slideRef.current.clientWidth - margin,
       right: 0,
     };
-    console.log(maxRef.current);
-
-    console.log(mouseXInfoRef.current, maxRef.current);
   }, [windowWidth]);
 
   useEffect(() => {

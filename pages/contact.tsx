@@ -1,6 +1,7 @@
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import Layout from "@components/Layouts/Layout";
 import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
+import { useColorScheme } from "@hooks";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useEffect } from "react";
@@ -16,6 +17,7 @@ const SocialLink = tw.a`hover:underline sm:(text-xl) `;
 
 const ContactPage: NextPage = () => {
   const { setIsBgBlack } = useDarkBgContext(true);
+  useColorScheme();
 
   return (
     <>

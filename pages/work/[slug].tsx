@@ -18,6 +18,7 @@ import MadeBy from "@components/Common/Markdown/MadeBy";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import BlockQuotation from "@components/Common/Markdown/BlockQuotation";
 import Intro from "@components/Common/Markdown/Intro";
+import imageMetadata from "plugins/image-metadata";
 
 const Container = tw.article`max-w-[790px] mx-auto px-mo-content mt-mo-header sm:mt-header sm:px-content `;
 const Title = tw.h1` font-semibold tracking-wider sm:text-5xl text-3xl`;
@@ -27,18 +28,30 @@ interface WorkDetailProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
   frontMatter: Work["data"];
 }
-
+{
+  /* <motion.img
+initial={{ opacity: 0, y: 50 }}
+whileInView={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.3 }}
+viewport={{ once: true }}
+src={src}
+alt={alt}
+/> */
+}
+const NextImage = motion(Image);
 const ElementImage = (props: any) => {
-  const { src, alt } = props;
-  return (
-    <motion.img
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      viewport={{ once: true }}
+  const { src, height, width, alt, ...rest } = props;
+
+  return height ? (
+    <Image
+      layout="responsive"
       src={src}
-      alt={alt}
+      height={height}
+      width={width}
+      {...rest}
     />
+  ) : (
+    <img src={src} alt={alt} />
   );
 };
 // 컴포넌트를 주입해서 MDX에서 사용할 수 있다. MDX에서 직접 Import 하는 방식도 있다.
@@ -113,7 +126,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const source = work ? work.content : "not found";
   const frontMatter = work ? work.data : {};
-  const mdxSource = await serialize(source);
+  const options = {
+    mdxOptions: {
+      rehypePlugins: [imageMetadata],
+    },
+  };
+  const mdxSource = await serialize(source, options);
   return { props: { source: mdxSource, frontMatter } };
 };
 

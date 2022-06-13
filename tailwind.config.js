@@ -39,6 +39,8 @@ module.exports = {
       margin: {
         header: "155px",
         "mo-header": "90px",
+        content: "2.8125rem",
+        "mo-content": "1.25rem",
         "about-item": "9rem",
         "mo-about-item": "2rem",
       },

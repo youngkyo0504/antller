@@ -126,12 +126,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const source = work ? work.content : "not found";
   const frontMatter = work ? work.data : {};
-  const options = {
-    mdxOptions: {
-      rehypePlugins: [imageMetadata],
-    },
-  };
-  const mdxSource = await serialize(source, options);
+  // const options = {
+  //   mdxOptions: {
+  //     rehypePlugins: [imageMetadata],
+  //   },
+  // };
+  const mdxSource = await serialize(source);
   return { props: { source: mdxSource, frontMatter } };
 };
 

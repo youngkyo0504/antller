@@ -6,7 +6,7 @@ import {
   FlagIcon,
 } from "@heroicons/react/outline";
 import React, { FC } from "react";
-import "twin.macro";
+import tw from "twin.macro";
 interface PaginationBtnProps {}
 export const PaginationBtns: FC<PaginationBtnProps> = ({}) => {
   const {
@@ -21,8 +21,8 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({}) => {
   return (
     <>
       <button
-        className="next group"
-        tw=""
+        className="next group hidden sm:flex"
+        tw="hidden sm:block"
         onClick={() => {
           if (isOnAnimation === true) return;
           setIsOnAnimation(true);
@@ -32,7 +32,7 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({}) => {
         <ChevronRightIcon tw="mr-6 h-10 transition-all ease-in group-hover:(opacity-100)  opacity-0" />
       </button>
       <button
-        tw=""
+        tw="hidden sm:block"
         className="prev group"
         onClick={() => {
           if (isOnAnimation === true) return;
@@ -47,7 +47,7 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({}) => {
         .prev {
           min-width: 120px;
           width: 13vw;
-          // top: calc(50% - 20px);
+
           top: 0;
 
           position: absolute;
@@ -59,7 +59,6 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({}) => {
 
           border-radius: 30px;
           height: 100%;
-          display: flex;
           align-items: center;
           user-select: none;
           cursor: pointer;

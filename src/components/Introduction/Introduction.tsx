@@ -58,13 +58,12 @@ const Introduction: FC<IntroductionProps> = () => {
         tw=" fixed top-0 translate-x-[-50%] left-[50%] h-screen w-full flex md:flex-row justify-center md:(justify-start) flex-col items-center max-w-content px-mo-content sm:(px-content )   opacity-0"
       >
         <motion.div tw="w-full md:w-1/2">
-          <AnimatedText titleOption={{ text: "Mission", color: "#D84624" }}>
-            다음 세대를 위한
-            <br />
-            단단한 축산
+          <AnimatedText titleOption={{ text: "", color: "#D84624" }}>
+            <p tw="sm:leading-relaxed leading-tight">다음 세대를 위한</p>
+            <p>단단한 축산</p>
           </AnimatedText>
         </motion.div>
-        <div tw="md:w-1/2 w-full margin-top[5vh] md:(margin-top[5vh])">
+        <div tw="md:w-1/2 w-full margin-top[5vh] md:margin-top[0px]">
           <ScrollAnimation
             messages={[
               "우리의 미션은 데이터를 통해 축산농가의 생산성과 경제성을 최적화하고 환경에 미치는 영향을 최소화시킴으로써",

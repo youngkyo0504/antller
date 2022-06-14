@@ -28,17 +28,11 @@ const childVariants: Variants = {
 const PartnersLogos: FC<PartnersLogoProps> = ({}) => {
   return (
     <div tw="hidden sm:block">
-      <motion.div
-        variants={parentVariants}
-        initial="hidden"
-        whileInView={"visible"}
-        tw=" max-w-content px-mo-content mx-auto sm:(px-content gap-y-14) gap-y-6 gap-x-4  grid  grid-cols-3  overflow-hidden items-center w-full"
-      >
+      <div tw=" max-w-content px-mo-content mx-auto sm:(px-content gap-y-14) gap-y-6 gap-x-4  grid  grid-cols-3  overflow-hidden items-center w-full">
         {Logos.map((logo) => (
           // 나눔고딕, 굵은고딕
-          <motion.div
+          <div
             key={logo.name}
-            variants={childVariants}
             tw=" relative w-full h-8 items-center inline-block"
           >
             <Image
@@ -48,10 +42,9 @@ const PartnersLogos: FC<PartnersLogoProps> = ({}) => {
               src={`/images/partnerLogo/${logo.src}`}
               layout="fill"
             ></Image>
-            {/* <span tw="text-white">{logo.title ?? logo.title}</span> */}
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

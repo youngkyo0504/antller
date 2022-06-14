@@ -30,7 +30,7 @@ const Profile: FC<ProfileProps> = ({}) => {
         {profileData.map((member, index) => (
           <div
             draggable={false}
-            tw="user-select[none]  inline-block relative flex[0 0 auto] first-of-type:ml-0 mx-4  sm:(h-96 w-96) w-64 h-64 text-sm sm:text-base md:text-lg overflow-hidden "
+            tw="user-select[none]  inline-block relative flex[0 0 auto] first-of-type:ml-0 mx-4  sm:(h-64 w-64) w-48 h-48 text-sm sm:text-base md:text-lg overflow-hidden "
             key={member.name}
           >
             <Image

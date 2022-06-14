@@ -17,7 +17,7 @@ interface WorkItemProps {
 const UnderLine = tw.span`absolute left-0 bottom-[-10%] w-full transition-colors duration-500 group-hover:bg-antller-black h-[1px]`;
 const ImageContainer = tw.div` h-auto  relative ease-out  overflow-hidden transition-all pb-[62.9032258065%] height[100%]`;
 const Title = tw.span`text-underline-offset[0.25rem] relative
-text-lg  font-semibold transition-all ease-in `;
+sm:text-[17px] text-base  font-semibold transition-all ease-in `;
 const Container = tw.div` flex flex-col justify-between    cursor-pointer z-0`;
 
 function WorkItem({ isHome, id, title, subCategory, index }: WorkItemProps) {

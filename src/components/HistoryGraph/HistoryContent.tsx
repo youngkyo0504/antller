@@ -30,7 +30,7 @@ const HistroyContent: FC<HistoryContentProps> = ({
             key={selectedYear}
           >
             {selectedHistory.monthContent
-              .sort((a, b) => Number(a.month) - Number(b.month))
+              .sort((a, b) => Number(b.month) - Number(a.month))
               .map((monthWork, index) => (
                 <motion.li key={monthWork.month + index} tw="mb-5 ">
                   <p tw="mb-0.5  font-bold  text-gray">
@@ -38,7 +38,7 @@ const HistroyContent: FC<HistoryContentProps> = ({
                   </p>
                   {monthWork.content.map((content, index) => (
                     <p tw="mb-1 text-white" key={index}>
-                      - {content}
+                      {content}
                     </p>
                   ))}
                 </motion.li>

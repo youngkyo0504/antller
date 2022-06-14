@@ -30,7 +30,7 @@ const historyData = [
     monthContent: [
       {
         month: "11",
-        content: ["육종회사 (주)진앱스 MOU (연구협력, 정보 및 인적교류 협력)"],
+        content: ["육종회사 (주)진앱스 MOU"],
       },
       {
         month: "10",
@@ -38,10 +38,7 @@ const historyData = [
       },
       {
         month: "09",
-        content: [
-          "건국대학교 농축대학원 축산학과 MOU(연구협력, 정보 및 인적교류 협력)",
-          "뉴소레터 발행",
-        ],
+        content: ["건국대학교 농축대학원 축산학과 MOU", "뉴소레터 발행"],
       },
       {
         month: "07",

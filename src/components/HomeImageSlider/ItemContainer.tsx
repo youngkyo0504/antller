@@ -1,5 +1,10 @@
-import { motion, MotionStyle } from "framer-motion";
-import React, { FC } from "react";
+import {
+  motion,
+  MotionStyle,
+  motionValue,
+  useMotionTemplate,
+} from "framer-motion";
+import React, { FC, useEffect } from "react";
 import "twin.macro";
 import Image from "next/image";
 import sliderMediaInfo from "./sliderMediaInfo";
@@ -7,6 +12,7 @@ import sliderVariants from "./Variants";
 import useSliderInfoContext from "@components/contexts/SliderContext/useSliderInfo";
 import tw from "twin.macro";
 import ProgressText from "./ProgressText";
+import ProjectDescription from "./ProjectDescription";
 
 interface ImageContainerProps {
   style?: MotionStyle | undefined;
@@ -14,39 +20,28 @@ interface ImageContainerProps {
   index: number;
 }
 const length = sliderMediaInfo.length;
-const initialAnimateState = {
+interface AnimateState {
+  [x: number]: "current" | "next" | "pre";
+}
+const initialAnimateState: AnimateState = {
   0: "current",
   1: "next",
   [length - 1]: "pre",
 };
+const animateXState = {
+  current: 0,
+  next: 100,
+  pre: -100,
+};
 
-export const ImageContainer: FC<ImageContainerProps> = ({
+export const ItemContainer: FC<ImageContainerProps> = ({
   style,
   duration,
   children,
   index,
 }) => {
-  const { setIsOnAnimation, isOnAnimation, imagePosition, direction } =
-    useSliderInfoContext();
-
   return (
-    <motion.div
-      onAnimationComplete={(definition) => {
-        if (definition.toString() === "current" && isOnAnimation === true) {
-          setIsOnAnimation(false);
-        }
-      }}
-      style={{ ...style }}
-      tw=" top-0 absolute h-full w-full bg-cover bg-no-repeat bg-center overflow-hidden"
-      custom={direction}
-      variants={sliderVariants}
-      animate={imagePosition[index] || ""}
-      initial={initialAnimateState[index] || ""}
-      transition={{
-        duration: duration,
-        ease: "easeInOut",
-      }}
-    >
+    <motion.div style={{}} tw="relative h-full w-full ">
       <Image
         tw=""
         layout="fill"
@@ -66,11 +61,8 @@ export const ImageContainer: FC<ImageContainerProps> = ({
           ></video>
         )}
       </div>
-      <ProgressText
-        pagesLength={sliderMediaInfo.length}
-        duration={0.3}
-        // style={{ translateY }}
-      />
+
+      <ProjectDescription index={index} delay={0.3} style={{}} />
     </motion.div>
   );
 };

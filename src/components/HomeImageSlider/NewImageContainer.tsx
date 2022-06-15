@@ -1,12 +1,16 @@
-import { motion, MotionStyle } from "framer-motion";
-import React, { FC } from "react";
+import {
+  motion,
+  MotionStyle,
+  motionValue,
+  useMotionTemplate,
+} from "framer-motion";
+import React, { FC, useEffect } from "react";
 import "twin.macro";
 import Image from "next/image";
 import sliderMediaInfo from "./sliderMediaInfo";
 import sliderVariants from "./Variants";
 import useSliderInfoContext from "@components/contexts/SliderContext/useSliderInfo";
 import tw from "twin.macro";
-import ProgressText from "./ProgressText";
 
 interface ImageContainerProps {
   style?: MotionStyle | undefined;
@@ -14,38 +18,49 @@ interface ImageContainerProps {
   index: number;
 }
 const length = sliderMediaInfo.length;
-const initialAnimateState = {
+interface AnimateState {
+  [x: number]: "current" | "next" | "pre";
+}
+const initialAnimateState: AnimateState = {
   0: "current",
   1: "next",
   [length - 1]: "pre",
 };
+const animateXState = {
+  current: 0,
+  next: 100,
+  pre: -100,
+};
 
-export const ImageContainer: FC<ImageContainerProps> = ({
+export const NewImageContainer: FC<ImageContainerProps> = ({
   style,
   duration,
   children,
   index,
 }) => {
-  const { setIsOnAnimation, isOnAnimation, imagePosition, direction } =
+  const x = motionValue<number>(0);
+  const { setIsOnAnimation, isOnAnimation, imagePosition, direction, page } =
     useSliderInfoContext();
 
+  const pos = motionValue<number>(0);
+  const transform = useMotionTemplate`translateX(${pos}%)`;
+
+  useEffect(() => {
+    console.log(index);
+    const num = animateXState[imagePosition[index]];
+    pos.set(num);
+    console.log(index);
+    // pos.set(animateXState[imagePosition[index]]);
+    // console.log(animateXState[imagePosition[index]]);
+  }, [page]);
+
+  console.log(transform.get());
   return (
     <motion.div
-      onAnimationComplete={(definition) => {
-        if (definition.toString() === "current" && isOnAnimation === true) {
-          setIsOnAnimation(false);
-        }
+      style={{
+        transform: transform,
       }}
-      style={{ ...style }}
       tw=" top-0 absolute h-full w-full bg-cover bg-no-repeat bg-center overflow-hidden"
-      custom={direction}
-      variants={sliderVariants}
-      animate={imagePosition[index] || ""}
-      initial={initialAnimateState[index] || ""}
-      transition={{
-        duration: duration,
-        ease: "easeInOut",
-      }}
     >
       <Image
         tw=""
@@ -66,11 +81,6 @@ export const ImageContainer: FC<ImageContainerProps> = ({
           ></video>
         )}
       </div>
-      <ProgressText
-        pagesLength={sliderMediaInfo.length}
-        duration={0.3}
-        // style={{ translateY }}
-      />
     </motion.div>
   );
 };

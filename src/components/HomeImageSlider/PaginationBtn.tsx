@@ -1,11 +1,20 @@
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import useSliderInfoContext from "@components/contexts/SliderContext/useSliderInfo";
+import { ImageSliderHandle } from "@components/ImageSlider/ImageSlider";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import React, { FC } from "react";
 import tw from "twin.macro";
 
-interface PaginationBtnProps {}
-export const PaginationBtns: FC<PaginationBtnProps> = ({}) => {
+interface PaginationBtnProps {
+  onRightClick: any;
+  onLeftClick: any;
+  carousel: React.RefObject<ImageSliderHandle>;
+}
+export const PaginationBtns: FC<PaginationBtnProps> = ({
+  onLeftClick,
+  onRightClick,
+  carousel,
+}) => {
   const { setIsOnAnimation, paginate, isOnAnimation } = useSliderInfoContext();
   const { isBgBlack } = useDarkBgContext();
 
@@ -17,7 +26,11 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({}) => {
         onClick={() => {
           if (isOnAnimation === true) return;
           setIsOnAnimation(true);
-          paginate(1);
+          // paginate(1);
+          carousel.current?.slideNext(() => {
+            setIsOnAnimation(false);
+          });
+          // onRightClick();
         }}
       >
         <ChevronRightIcon tw=" h-10 transition-all ease-in group-hover:(opacity-100)  opacity-0" />
@@ -27,8 +40,12 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({}) => {
         className="prev group"
         onClick={() => {
           if (isOnAnimation === true) return;
-          setIsOnAnimation(true);
+          carousel.current?.slidePrev(() => {
+            setIsOnAnimation(false);
+          });
           paginate(-1);
+          setIsOnAnimation(true);
+          // onLeftClick();
         }}
       >
         <ChevronLeftIcon tw=" h-10  transition-all ease-in group-hover:(opacity-100)  opacity-0" />

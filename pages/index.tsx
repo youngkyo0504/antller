@@ -6,6 +6,9 @@ import tw from "twin.macro";
 import WorksList from "@components/Workslist";
 import ImageSlider from "@components/HomeImageSlider";
 import { useEffect } from "react";
+import { SliderInfoProvider } from "@components/contexts/SliderContext/SliderInfoProvider";
+import NewImageSlider from "@components/HomeImageSlider/NewImageSlider";
+import HomeSlider from "@components/HomeImageSlider/HomeSlider";
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +20,9 @@ const Home: NextPage = () => {
       </Head>
       <Layout stickyHeaderOption={{ stickyHeaderThreshold: 1400 }}>
         <InOutTransitionContainer>
-          <ImageSlider />
+          <SliderInfoProvider>
+            <HomeSlider />
+          </SliderInfoProvider>
           <WorksList />
         </InOutTransitionContainer>
       </Layout>

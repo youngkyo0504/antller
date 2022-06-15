@@ -5,29 +5,34 @@ import "twin.macro";
 import useSliderInfoContext from "@components/contexts/SliderContext/useSliderInfo";
 interface ProjectDescriptionProps {
   delay: number;
+  index: number;
   style?: MotionStyle;
 }
 import sliderMediaInfo from "./sliderMediaInfo";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import tw from "twin.macro";
-function ProjectDescription({ style }: ProjectDescriptionProps) {
+function ProjectDescription({ style, index }: ProjectDescriptionProps) {
   const { isOnAnimation, page } = useSliderInfoContext();
   const [imageInfo, setImageInfo] = useState({ title: "", desc: "" });
   const { isBgBlack } = useDarkBgContext();
+
   useEffect(() => {
-    const { title, desc } = sliderMediaInfo[page];
+    const { title, desc } = sliderMediaInfo[index];
     if (!isOnAnimation) setImageInfo({ title, desc });
-  }, [isOnAnimation]);
+  }, [isOnAnimation, page]);
 
   return (
-    <motion.div tw="px-mo-content  max-w-sliderDescription h-full leading-normal  w-full sm:pb-10 pb-5  text-xl font-medium sm:text-3xl flex justify-between  mx-auto items-end z-[12] ">
+    <motion.div tw="absolute top-0 px-mo-content pointer-events-none  max-w-sliderDescription h-full leading-normal  w-full sm:pb-10 pb-5  text-xl font-medium sm:text-3xl flex justify-between  mx-auto items-end z-[12] ">
       <motion.div
         style={{ ...style }}
         variants={onVariants}
         custom={""}
-        animate={isOnAnimation ? "hidden" : "visible"}
+        whileInView={"visible"}
+        initial={"hidden"}
+        // animate={isOnAnimation ? "hidden" : "visible"}
         transition={{
-          duration: 0.2,
+          delay: 0.3,
+          duration: 0.5,
           ease: "easeInOut",
           type: "tween",
         }}
@@ -39,11 +44,12 @@ function ProjectDescription({ style }: ProjectDescriptionProps) {
             tw`delay-[0.2s]`,
           ]}
         >
-          <h2>{imageInfo.title}</h2>
-          <h3 tw="hidden sm:block text-2xl text-gray">{imageInfo.desc}</h3>
+          <p>{imageInfo.title}</p>
+          <p tw="hidden sm:block text-2xl text-gray">{imageInfo.desc}</p>
         </div>
       </motion.div>
     </motion.div>
   );
 }
+
 export default ProjectDescription;

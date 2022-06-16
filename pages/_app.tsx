@@ -5,7 +5,8 @@ import { AnimatePresence } from "framer-motion";
 import Layout from "../src/components/Layouts/Layout";
 import { createContext, useEffect, useState } from "react";
 import { DarkBgProvider } from "@components/contexts/DarkBgContext/DarkBgProvider";
-
+import { DefaultSeo } from "next-seo";
+import SeoConfig from "../next-seo.config";
 function MyApp({ Component, pageProps, router }: AppProps) {
   const AnyComponent = Component as any;
   const AyComponent = () => {
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   return (
     <>
+      <DefaultSeo {...SeoConfig} />
       <GlobalStyles />
       <DarkBgProvider>
         <AnimatePresence exitBeforeEnter>

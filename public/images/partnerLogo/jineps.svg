@@ -1,24 +1,23 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-
- width="149.000000pt" height="181.000000pt" viewBox="0 0 149.000000 181.000000"
- preserveAspectRatio="xMidYMid meet">
-
-<g transform="translate(0.000000,181.000000) scale(0.100000,-0.100000)"
-fill="#fff" stroke="none">
-<path d="M870 1798 c-95 -13 -264 -73 -350 -123 -281 -165 -467 -474 -511
--848 -14 -119 -7 -286 16 -372 56 -216 206 -368 422 -427 104 -28 351 -31 458
--5 238 59 401 226 464 472 24 98 91 405 91 423 0 22 -31 12 -73 -23 -53 -46
--131 -69 -232 -69 -99 0 -180 24 -235 71 -22 19 -46 33 -54 30 -10 -4 -46
--143 -46 -179 0 -5 88 -8 195 -8 118 0 195 -4 195 -10 0 -20 -40 -178 -60
--234 -69 -200 -228 -306 -460 -306 -240 0 -394 116 -446 336 -13 54 -15 101
--11 219 8 223 51 363 162 531 158 237 404 355 710 341 106 -5 257 -34 327 -62
-13 -5 19 -1 23 17 43 186 48 167 -54 193 -160 40 -384 54 -531 33z"/>
-<path d="M1054 1202 c-53 -34 -39 -162 17 -162 29 0 53 62 42 108 -9 37 -41
-66 -59 54z"/>
-<path d="M1280 1190 c-14 -14 -20 -34 -20 -66 0 -56 14 -84 42 -84 30 0 47 28
-48 78 0 74 -34 108 -70 72z"/>
-</g>
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1201 186" width="1201" height="186">
+	<title>자산 5-svg</title>
+	<defs>
+		<image width="149" height="181" id="img1" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAyMDAxMDkwNC8vRU4iDQogImh0dHA6Ly93d3cudzMub3JnL1RSLzIwMDEvUkVDLVNWRy0yMDAxMDkwNC9EVEQvc3ZnMTAuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciDQoNCiB3aWR0aD0iMTQ5LjAwMDAwMHB0IiBoZWlnaHQ9IjE4MS4wMDAwMDBwdCIgdmlld0JveD0iMCAwIDE0OS4wMDAwMDAgMTgxLjAwMDAwMCINCiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij4NCg0KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsMTgxLjAwMDAwMCkgc2NhbGUoMC4xMDAwMDAsLTAuMTAwMDAwKSINCmZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSI+DQo8cGF0aCBkPSJNODcwIDE3OTggYy05NSAtMTMgLTI2NCAtNzMgLTM1MCAtMTIzIC0yODEgLTE2NSAtNDY3IC00NzQgLTUxMQ0KLTg0OCAtMTQgLTExOSAtNyAtMjg2IDE2IC0zNzIgNTYgLTIxNiAyMDYgLTM2OCA0MjIgLTQyNyAxMDQgLTI4IDM1MSAtMzEgNDU4DQotNSAyMzggNTkgNDAxIDIyNiA0NjQgNDcyIDI0IDk4IDkxIDQwNSA5MSA0MjMgMCAyMiAtMzEgMTIgLTczIC0yMyAtNTMgLTQ2DQotMTMxIC02OSAtMjMyIC02OSAtOTkgMCAtMTgwIDI0IC0yMzUgNzEgLTIyIDE5IC00NiAzMyAtNTQgMzAgLTEwIC00IC00Ng0KLTE0MyAtNDYgLTE3OSAwIC01IDg4IC04IDE5NSAtOCAxMTggMCAxOTUgLTQgMTk1IC0xMCAwIC0yMCAtNDAgLTE3OCAtNjANCi0yMzQgLTY5IC0yMDAgLTIyOCAtMzA2IC00NjAgLTMwNiAtMjQwIDAgLTM5NCAxMTYgLTQ0NiAzMzYgLTEzIDU0IC0xNSAxMDENCi0xMSAyMTkgOCAyMjMgNTEgMzYzIDE2MiA1MzEgMTU4IDIzNyA0MDQgMzU1IDcxMCAzNDEgMTA2IC01IDI1NyAtMzQgMzI3IC02Mg0KMTMgLTUgMTkgLTEgMjMgMTcgNDMgMTg2IDQ4IDE2NyAtNTQgMTkzIC0xNjAgNDAgLTM4NCA1NCAtNTMxIDMzeiIvPg0KPHBhdGggZD0iTTEwNTQgMTIwMiBjLTUzIC0zNCAtMzkgLTE2MiAxNyAtMTYyIDI5IDAgNTMgNjIgNDIgMTA4IC05IDM3IC00MQ0KNjYgLTU5IDU0eiIvPg0KPHBhdGggZD0iTTEyODAgMTE5MCBjLTE0IC0xNCAtMjAgLTM0IC0yMCAtNjYgMCAtNTYgMTQgLTg0IDQyIC04NCAzMCAwIDQ3IDI4DQo0OCA3OCAwIDc0IC0zNCAxMDggLTcwIDcyeiIvPg0KPC9nPg0KPC9zdmc+DQo="/>
+	</defs>
+	<style>
+		tspan { white-space:pre } 
+		.s0 { fill: #ffffff } 
+		.t1 { font-size: 140px;fill: #ffffff;font-weight: 600;font-family: "NanumGothicBold", "NanumGothic" } 
+	</style>
+	<g id="_이어_1-2">
+		<g id="Layer">
+			<path id="Layer" class="s0" d="m1087.7 767.4c-1-0.1-2.7-0.7-3.5-1.2-2.8-1.7-4.7-4.8-5.1-8.5-0.2-1.2-0.1-2.9 0.1-3.7 0.6-2.2 2.1-3.7 4.3-4.3 1-0.3 3.5-0.3 4.5-0.1 2.4 0.6 4 2.3 4.7 4.8 0.2 0.9 0.9 4 0.9 4.2 0 0.2-0.3 0.1-0.7-0.2q-0.8-0.7-2.4-0.7-1.5 0-2.3 0.7c-0.2 0.2-0.5 0.3-0.6 0.3-0.1-0.1-0.4-1.5-0.4-1.8 0-0.1 0.9-0.1 1.9-0.1 1.2 0 2 0 2-0.1 0-0.2-0.4-1.8-0.6-2.3-0.7-2-2.3-3.1-4.6-3.1-2.3 0-4 1.2-4.5 3.4-0.1 0.5-0.1 1-0.1 2.2 0.1 2.2 0.5 3.6 1.6 5.3 1.6 2.3 4.1 3.5 7.1 3.4 1.1-0.1 2.6-0.4 3.3-0.6 0.1-0.1 0.2-0.1 0.2 0.1 0.5 1.9 0.5 1.7-0.5 2-1.6 0.4-3.8 0.5-5.3 0.3z"/>
+			<path id="Layer" class="s0" d="m1089.5 761.4c-0.5-0.3-0.4-1.6 0.2-1.6 0.3 0 0.5 0.6 0.4 1.1-0.1 0.4-0.4 0.6-0.6 0.5z"/>
+			<path id="Layer" class="s0" d="m1091.8 761.3q-0.2-0.2-0.2-0.7 0-0.8 0.4-0.8c0.3 0 0.5 0.3 0.5 0.8 0 0.7-0.4 1.1-0.7 0.7z"/>
+		</g>
+		<text id="주식회사 진앱스" style="transform: matrix(1,0,0,1.1,215.04,140.74)" >
+			<tspan x="0" y="0" class="t1">주식회사 진앱스
+</tspan>
+		</text>
+		<use id="jineps" href="#img1" transform="matrix(1,0,0,1,25,0)"/>
+	</g>
 </svg>

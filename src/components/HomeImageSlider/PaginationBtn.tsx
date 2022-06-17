@@ -1,55 +1,38 @@
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
-import useSliderInfoContext from "@components/contexts/SliderContext/useSliderInfo";
 import { ImageSliderHandle } from "@components/ImageSlider/ImageSlider";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
 import tw from "twin.macro";
 
 interface PaginationBtnProps {
-  onRightClick: any;
-  onLeftClick: any;
   carousel: React.RefObject<ImageSliderHandle>;
 }
-export const PaginationBtns: FC<PaginationBtnProps> = ({
-  onLeftClick,
-  onRightClick,
-  carousel,
-}) => {
-  const { setIsOnAnimation, paginate, isOnAnimation } = useSliderInfoContext();
+export const PaginationBtns: FC<PaginationBtnProps> = ({ carousel }) => {
   const { isBgBlack } = useDarkBgContext();
+
+  const slideNext = useCallback(() => {
+    if (carousel.current?.isAnimating() === true) return;
+    carousel.current?.slideNext();
+  }, [carousel]);
+
+  const slidePrev = useCallback(() => {
+    if (carousel.current?.isAnimating() === true) return;
+    carousel.current?.slidePrev();
+  }, [carousel]);
 
   return (
     <>
       <div
         className="next group hidden "
         tw="hidden sm:flex"
-        onClick={() => {
-          if (isOnAnimation === true) return;
-          setIsOnAnimation(true);
-          // paginate(1);
-          carousel.current?.slideNext(() => {
-            setIsOnAnimation(false);
-          });
-          // onRightClick();
-        }}
+        onClick={slideNext}
       >
         <ChevronRightIcon tw=" h-10 transition-all ease-in group-hover:(opacity-100)  opacity-0" />
       </div>
-      <div
-        tw="hidden sm:flex"
-        className="prev group"
-        onClick={() => {
-          if (isOnAnimation === true) return;
-          carousel.current?.slidePrev(() => {
-            setIsOnAnimation(false);
-          });
-          paginate(-1);
-          setIsOnAnimation(true);
-          // onLeftClick();
-        }}
-      >
+      <div tw="hidden sm:flex" className="prev group" onClick={slidePrev}>
         <ChevronLeftIcon tw=" h-10  transition-all ease-in group-hover:(opacity-100)  opacity-0" />
       </div>
+
       <style jsx>{`
         .next,
         .prev {

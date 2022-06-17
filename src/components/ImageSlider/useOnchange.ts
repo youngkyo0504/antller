@@ -10,8 +10,8 @@ interface Config {
 
 export function useOnChange({ childrenCount, index, onChange }: Config): void {
   useEffect(() => {
-    let prevIndex = -1;
-
+    let prevIndex = 0;
+    console.log("useEffect시작");
     const unsubscribe = index.onChange((value) => {
       if (!onChange) {
         return;
@@ -20,9 +20,6 @@ export function useOnChange({ childrenCount, index, onChange }: Config): void {
       const newIndex =
         // 나누면 음수일 수도 있기 때문에 이렇게한다.
         ((Math.round(value) % childrenCount) + childrenCount) % childrenCount;
-      // prevIndex 0 이면?
-      console.log({ prevIndex });
-      // console.log(newIndex === 0);
       if (newIndex === prevIndex) {
         // console.log("0인가?", newIndex);
         return;
@@ -36,5 +33,5 @@ export function useOnChange({ childrenCount, index, onChange }: Config): void {
     return () => {
       unsubscribe();
     };
-  }, [index, childrenCount, onChange]);
+  }, [childrenCount]);
 }

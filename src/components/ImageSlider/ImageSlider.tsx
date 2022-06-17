@@ -1,20 +1,30 @@
 import {
   AnimationPlaybackControls,
   motion,
+  MotionStyle,
+  PanHandlers,
+  PanInfo,
   useMotionValue,
 } from "framer-motion";
-import React, { useImperativeHandle } from "react";
+import React, { useCallback, useImperativeHandle } from "react";
 import ImageSliderContainer from "./ImageSliderContainer";
 import { useAutoplay } from "./useAutoPlay";
 import { useOnChange } from "./useOnchange";
+import { usePan } from "./usePan";
 import { animateSpring } from "./utils";
 
 const MotionSlider = motion(ImageSliderContainer);
+
+export type OnPan = (
+  event: MouseEvent | TouchEvent | PointerEvent,
+  info: PanInfo
+) => void;
 
 export interface ImageSliderHandle {
   slideNext: (onComplete?: Function) => AnimationPlaybackControls;
   slidePrev: (onComplete?: Function) => AnimationPlaybackControls;
   slideTo: (index: number) => void;
+  isAnimating: () => boolean;
 }
 
 interface Props {
@@ -24,7 +34,8 @@ interface Props {
   count?: number;
   draggable?: boolean;
   margin?: number;
-  style?: React.CSSProperties;
+  // style?: React.CSSProperties;
+  style?: MotionStyle | undefined;
   onChange?: (index: number) => void;
   onComplete?: () => void;
 }
@@ -38,6 +49,7 @@ const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
     draggable = true,
     margin = 0,
     onChange,
+    style,
 
     ...props
   },
@@ -46,7 +58,6 @@ const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
   const sliderRef = React.useRef<HTMLDivElement>(null);
   const index = useMotionValue(0);
   const autoplay = useAutoplay(index, autoplayInterval, onComplete);
-
   useImperativeHandle(
     ref,
     () => ({
@@ -71,7 +82,9 @@ const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
 
         animateSpring(index, newIndex);
       },
+      isAnimating: () => index.isAnimating(),
     }),
+
     [autoplay, index]
   );
 
@@ -81,13 +94,49 @@ const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
     onChange,
   });
 
+  const panHandlers = usePan({
+    count,
+    index,
+    margin,
+    ref: sliderRef,
+  });
+
+  const onPanStart: OnPan = useCallback(
+    (...args) => {
+      autoplay.stop();
+
+      panHandlers.onPanStart(...args);
+    },
+    [autoplay, panHandlers]
+  );
+
+  const onPanEnd: OnPan = useCallback(
+    (...args) => {
+      autoplay.start();
+
+      panHandlers.onPanEnd(...args, onComplete);
+    },
+    [autoplay, panHandlers]
+  );
+
+  let panProps: PanHandlers = {};
+
+  if (draggable) {
+    panProps = {
+      onPanStart,
+      onPan: panHandlers.onPan,
+      onPanEnd,
+    };
+  }
+
   return (
     <MotionSlider
+      style={style}
       ref={sliderRef}
       index={index}
       count={count}
       margin={margin}
-      //   {...panProps}
+      {...panProps}
       {...props}
     >
       {children}

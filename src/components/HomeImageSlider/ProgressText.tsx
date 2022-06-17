@@ -1,25 +1,45 @@
-import { motion, MotionStyle } from "framer-motion";
-import { FC } from "react";
-import { rotateVariants } from "../../datas/variants";
-
+import {
+  AnimationPlaybackControls,
+  motion,
+  MotionStyle,
+  MotionValue,
+  useMotionValue,
+} from "framer-motion";
+import { FC, useEffect, useRef, useState } from "react";
 interface ProgressTextProps {
   style?: MotionStyle | undefined;
-  duration: any;
+  page: number;
   pagesLength: number;
+  rotate?: MotionValue | undefined;
 }
 
 import "twin.macro";
-import useSliderInfoContext from "@components/contexts/SliderContext/useSliderInfo";
 import tw from "twin.macro";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
+import { SLIDER_DURATION } from "styles/globalStyleComponent";
+import { animateSpring } from "@components/ImageSlider/utils";
 
-const ProgressText: FC<ProgressTextProps> = ({
-  duration,
-  style,
-  pagesLength,
-}) => {
-  const { page, isOnAnimation } = useSliderInfoContext();
+const ProgressText: FC<ProgressTextProps> = ({ style, pagesLength, page }) => {
   const { isBgBlack } = useDarkBgContext();
+  const [count, _] = useState({ value: 1 });
+  const rotate = useMotionValue(0);
+  const barControl = useRef<AnimationPlaybackControls>();
+
+  useEffect(() => {
+    if (barControl.current?.isAnimating()) {
+      count.value++;
+      barControl.current = animateSpring(rotate, count.value * 360, () => {
+        rotate.set(0);
+      });
+    } else {
+      count.value = 1;
+      barControl.current = animateSpring(rotate, 360, () => {
+        rotate.set(0);
+      });
+    }
+  }, [page]);
+
+  useEffect(() => {}, [page]);
 
   return (
     <motion.div
@@ -29,20 +49,14 @@ const ProgressText: FC<ProgressTextProps> = ({
     >
       <div
         css={{
-          transitionDuration: `${duration * 1000}ms`,
+          transitionDuration: `${SLIDER_DURATION * 1000}ms`,
         }}
         tw="font-semibold  text-xl sm:text-2xl max-w-sliderDescription mx-auto justify-end text-right flex items-center "
       >
         <span tw="align-top inline-block origin-center w-4  ">{page + 1}</span>
         <motion.span
-          transition={{
-            duration: duration,
-            ease: "easeOut",
-          }}
-          variants={rotateVariants}
-          initial={false}
-          animate={isOnAnimation ? "rotate" : "stop"}
-          tw="font-light inline-block origin-[center center 0] leading-none text-2xl mx-[0.7rem]  "
+          style={{ rotate: rotate }}
+          tw="font-light inline-block origin-[center center 0] leading-none text-lg  sm:text-xl mx-[0.7rem]  "
         >
           /
         </motion.span>

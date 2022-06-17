@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
-import { LinkItem } from "styles/globalStyleComponent";
+import { LinkItem, SLIDER_DURATION } from "styles/globalStyleComponent";
 import { links } from "./header.data";
 
 interface MobileLinkItemsProps {
@@ -23,7 +23,7 @@ const LinkItems: FC<MobileLinkItemsProps> = ({
     <ul
       tw=" font-semibold hidden sm:flex tracking-wide text-gray transition-colors"
       css={[
-        { transitionDuration: "1000ms" },
+        { transitionDuration: `${SLIDER_DURATION * 1000}ms` },
         isHome && (isBgBlack ? tw`text-white` : tw`text-antller-black`),
         isHome && isSticky && tw`text-antller-black`,
       ]}

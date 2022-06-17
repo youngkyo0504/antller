@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { MotionValue } from "framer-motion";
 
 import { animateSpring } from "./utils";
-import { ImageSliderHandle } from "./ImageSlider";
 
 interface Controls {
   stop: () => void;
@@ -39,19 +38,6 @@ export function useAutoplay(
     }, interval);
   }, [index, interval, timer, stop]);
 
-  // const starts = React.useCallback(() => {
-  //   stop();
-
-  //   if (!interval) {
-  //     return;
-  //   }
-
-  //   timer.current = window.setTimeout(() => {
-  //     // paginate
-
-  //     animateSpring(index, Math.floor(index.get() + 1), onComplete);
-  //   }, interval);
-  // }, [index, interval, timer, stop]);
   function setActionByVisibility() {
     if (document.hidden) {
       console.log("not visible");
@@ -70,7 +56,7 @@ export function useAutoplay(
   }, []);
 
   React.useEffect(() => {
-    start();
+    // start();
 
     return (): void => {
       stop();

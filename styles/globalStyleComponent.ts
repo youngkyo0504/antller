@@ -1,4 +1,8 @@
 import tw, { styled } from "twin.macro";
+
+// animation
+export const SLIDER_DURATION = 0.3;
+
 // common
 export const Container = tw.div`sm:mt-header mt-mo-header`;
 export const ContentContainer = tw.div`max-w-content sm:px-content mx-auto w-full px-mo-content`;

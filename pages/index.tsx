@@ -4,10 +4,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import tw from "twin.macro";
 import WorksList from "@components/Workslist";
-import ImageSlider from "@components/HomeImageSlider";
-import { useEffect } from "react";
-import { SliderInfoProvider } from "@components/contexts/SliderContext/SliderInfoProvider";
-import NewImageSlider from "@components/HomeImageSlider/NewImageSlider";
 import HomeSlider from "@components/HomeImageSlider/HomeSlider";
 
 const Home: NextPage = () => {
@@ -20,9 +16,7 @@ const Home: NextPage = () => {
       </Head>
       <Layout stickyHeaderOption={{ stickyHeaderThreshold: 1400 }}>
         <InOutTransitionContainer>
-          <SliderInfoProvider>
-            <HomeSlider />
-          </SliderInfoProvider>
+          <HomeSlider />
           <WorksList />
         </InOutTransitionContainer>
       </Layout>

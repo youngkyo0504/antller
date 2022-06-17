@@ -17,7 +17,7 @@ type ImageSliderProps = {
   count: number;
   index: MotionValue<number>;
   margin: number;
-  style?: React.CSSProperties;
+  style?: MotionStyle | undefined;
 };
 
 const ImageSliderContainer = React.forwardRef<HTMLDivElement, ImageSliderProps>(
@@ -83,7 +83,12 @@ const ImageSliderContainer = React.forwardRef<HTMLDivElement, ImageSliderProps>(
     };
 
     return (
-      <div ref={ref} style={containerStyle} {...props} tw="h-full w-full">
+      <motion.div
+        ref={ref}
+        style={containerStyle}
+        {...props}
+        tw="h-full w-full"
+      >
         <motion.div
           tw="absolute flex top-0 left-0 w-full h-full will-change[transform]"
           style={sliderStyle}
@@ -99,7 +104,7 @@ const ImageSliderContainer = React.forwardRef<HTMLDivElement, ImageSliderProps>(
             </ItemWrapper>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     );
   }
 );

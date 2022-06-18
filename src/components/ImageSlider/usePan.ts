@@ -40,10 +40,10 @@ export function usePan({ count, index, margin, ref }: Config): Result {
     itemWidth: calcItemWidth(ref, count, margin),
   }));
 
-  const onTouchMove = useCallback((event: TouchEvent) => {
-    // 수직 스크롤 방지
-    event.preventDefault();
-  }, []);
+  // const onTouchMove = useCallback((event: TouchEvent) => {
+  //   // 수직 스크롤 방지
+  //   event.preventDefault();
+  // }, []);
 
   const onPanStart = useCallback(() => {
     // Stop active animation
@@ -53,10 +53,10 @@ export function usePan({ count, index, margin, ref }: Config): Result {
     initial.index = index.get();
     initial.itemWidth = calcItemWidth(ref, count, margin);
 
-    document.documentElement.addEventListener("touchmove", onTouchMove, {
-      passive: false,
-    });
-  }, [ref, count, index, initial, margin, onTouchMove]);
+    // document.documentElement.addEventListener("touchmove", onTouchMove, {
+    //   passive: false,
+    // });
+  }, [ref, count, index, initial, margin]);
 
   const onPan = useCallback(
     (_, info: PanInfo) => {
@@ -99,9 +99,9 @@ export function usePan({ count, index, margin, ref }: Config): Result {
 
       animateSpring(index, newIndex, onComplete);
 
-      document.documentElement.removeEventListener("touchmove", onTouchMove);
+      // document.documentElement.removeEventListener("touchmove", onTouchMove);
     },
-    [index, initial, onTouchMove]
+    [index, initial]
   );
 
   return useMemo(

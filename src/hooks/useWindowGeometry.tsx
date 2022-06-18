@@ -15,7 +15,7 @@ const useWindowGeometry = () => {
   useEffect(() => {
     setWindowHeight(window.innerHeight);
     setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize, { passive: false });
 
     return () => {
       window.removeEventListener("resize", resize);

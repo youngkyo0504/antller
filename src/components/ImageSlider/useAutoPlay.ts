@@ -40,10 +40,8 @@ export function useAutoplay(
 
   function setActionByVisibility() {
     if (document.hidden) {
-      console.log("not visible");
       stop();
     } else {
-      console.log("is visible");
       start();
     }
   }

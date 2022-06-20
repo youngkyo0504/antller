@@ -2,7 +2,6 @@ import tw from "twin.macro";
 import React, { FC } from "react";
 import { motion } from "framer-motion";
 import profileData from "./profile.json";
-import { useSlide, useWindowGeometry } from "@hooks";
 import Image from "next/image";
 import usePanSlide from "./useSlide";
 
@@ -13,10 +12,7 @@ const Container = tw(
 )`relative z-index[3] flex mt-mo-about-item sm:(mt-about-item pt-0 px-content)  max-w-content w-full pt-3 px-mo-content mx-auto `;
 
 const Profile: FC<ProfileProps> = ({}) => {
-  // const { onPointerDown, onPointerMove, onPointerUp, onMouseLeave, slideRef } =
-  //   useSlide();
   const { x, panProps, slideRef } = usePanSlide();
-  const { windowWidth } = useWindowGeometry();
 
   return (
     <Container css={{ cursor: "grab" }}>

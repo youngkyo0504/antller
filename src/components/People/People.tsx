@@ -1,5 +1,5 @@
 import tw from "twin.macro";
-import React, { FC } from "react";
+import React, { FC, useCallback, useEffect } from "react";
 import Profile from "./Profile";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import { useElementGeometry } from "@hooks";

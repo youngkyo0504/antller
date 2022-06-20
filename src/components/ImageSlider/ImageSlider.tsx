@@ -6,7 +6,7 @@ import {
   PanInfo,
   useMotionValue,
 } from "framer-motion";
-import React, { useCallback, useImperativeHandle } from "react";
+import React, { useCallback, useEffect, useImperativeHandle } from "react";
 import ImageSliderContainer from "./ImageSliderContainer";
 import { useAutoplay } from "./useAutoPlay";
 import { useOnChange } from "./useOnchange";
@@ -128,6 +128,10 @@ const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
       onPanEnd,
     };
   }
+
+  useEffect(() => {
+    autoplay.start();
+  }, []);
 
   return (
     <MotionSlider

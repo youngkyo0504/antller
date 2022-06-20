@@ -11,7 +11,6 @@ interface Config {
 export function useOnChange({ childrenCount, index, onChange }: Config): void {
   useEffect(() => {
     let prevIndex = 0;
-    console.log("useEffect시작");
     const unsubscribe = index.onChange((value) => {
       if (!onChange) {
         return;
@@ -21,7 +20,6 @@ export function useOnChange({ childrenCount, index, onChange }: Config): void {
         // 나누면 음수일 수도 있기 때문에 이렇게한다.
         ((Math.round(value) % childrenCount) + childrenCount) % childrenCount;
       if (newIndex === prevIndex) {
-        // console.log("0인가?", newIndex);
         return;
       }
 

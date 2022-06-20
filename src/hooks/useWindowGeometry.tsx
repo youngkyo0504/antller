@@ -4,13 +4,10 @@ const useWindowGeometry = () => {
   const [windowHeight, setWindowHeight] = useState(600);
   const [windowWidth, setWindowWidth] = useState(500);
   const resize = useCallback(() => {
-    if (windowHeight !== window.innerHeight) {
-      setWindowHeight(window.innerHeight);
-    }
-    if (windowWidth !== window.innerWidth) {
-      setWindowWidth(window.innerWidth);
-    }
-  }, []);
+    const { innerWidth, innerHeight } = window;
+    setWindowHeight(innerHeight);
+    setWindowWidth(innerWidth);
+  }, [setWindowHeight, setWindowWidth]);
 
   useEffect(() => {
     setWindowHeight(window.innerHeight);

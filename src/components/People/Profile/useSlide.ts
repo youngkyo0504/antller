@@ -5,9 +5,9 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { angle, angleIsVertical } from "src/util";
 
 const PADDING = 50;
-const VELOCITY = 0.9;
+const VELOCITY = 1;
 const MAX_CONTENT_WIDTH = 1200;
-
+const WHEELVELOCITY = 0.9;
 const usePanSlide = () => {
   const x = useMotionValue(0);
 
@@ -23,6 +23,16 @@ const usePanSlide = () => {
     moveX: 0,
   }));
 
+  useEffect(() => {
+    if (!slideRef.current) return;
+    const constraint = getConstraint();
+    if (!constraint) return;
+
+    animate(x, 0, {});
+    setMaxInfo({ ...constraint });
+    console.log(constraint);
+  }, [windowWidth]);
+
   const getMaxValus = useCallback(
     (x: number) => {
       // if (!maxRef.current) return false;
@@ -34,28 +44,27 @@ const usePanSlide = () => {
         return left;
       }
     },
-    [maxInfo]
+    [maxInfo, windowWidth]
   );
 
   const isOverLimit = useCallback(
     (x: number) => {
       const { left, right } = maxInfo;
-      console.log({ left, right, x });
-
+      console.log({ left, right });
       if (x < right && x > left) {
         return false;
       }
 
       return true;
     },
-    [maxInfo]
+    [maxInfo, windowWidth]
   );
 
   const getAdjustedValue = useCallback(
     (x: number) => {
       return isOverLimit(x) ? getMaxValus(x) : x;
     },
-    [maxInfo]
+    [maxInfo, windowWidth]
   );
 
   const getConstraint = useCallback(() => {
@@ -69,16 +78,6 @@ const usePanSlide = () => {
       left: left < 0 ? left : 0,
       right: 0,
     };
-  }, [windowWidth]);
-
-  useEffect(() => {
-    console.log(slideRef.current);
-    if (!slideRef.current) return;
-    const constraint = getConstraint();
-    if (!constraint) return;
-
-    animate(x, 0, {});
-    setMaxInfo({ ...constraint });
   }, [windowWidth]);
 
   const onPanStart = useCallback(
@@ -95,8 +94,7 @@ const usePanSlide = () => {
     (_, info: PanInfo) => {
       const { moveX, isDown } = mouseXInfo;
       if (!isDown) return;
-
-      let newMoveX = moveX + info.offset.x * VELOCITY;
+      let newMoveX = moveX + info.delta.x * VELOCITY;
       newMoveX = getAdjustedValue(newMoveX);
 
       // translateX변경
@@ -109,7 +107,7 @@ const usePanSlide = () => {
 
   const onPanEnd = useCallback(
     (_, info: PanInfo) => {
-      let newMoveX = x.getVelocity() / 10 + mouseXInfo.moveX;
+      let newMoveX = x.getVelocity() / 5 + mouseXInfo.moveX;
       newMoveX = getAdjustedValue(newMoveX);
 
       mouseXInfo = { ...mouseXInfo, isDown: false };
@@ -131,30 +129,49 @@ const usePanSlide = () => {
     [maxInfo]
   );
 
-  const onWheel = useCallback(() => {
-    (e: React.WheelEvent) => {
+  const onWheel = useCallback(
+    (e: WheelEvent) => {
       const wheelAngle = angle({
         x: e.deltaX,
         y: e.deltaY,
       });
-
       if (angleIsVertical(wheelAngle)) return;
 
       e.stopPropagation();
       e.preventDefault();
 
-      let newMoveX = x.get() - e.deltaX;
+      let newMoveX = x.get() - e.deltaX * WHEELVELOCITY;
       newMoveX = getAdjustedValue(newMoveX);
       x.set(newMoveX);
-    };
-  }, [maxInfo]);
+    },
+    [maxInfo, windowWidth]
+  );
+
+  // event passive 처리하기
+  const LastOnWheeleventHandler = useRef<(e: any) => void>();
+
+  useEffect(() => {
+    if (LastOnWheeleventHandler.current) {
+      slideRef.current?.removeEventListener(
+        "wheel",
+        LastOnWheeleventHandler.current
+      );
+    }
+
+    slideRef.current?.addEventListener("wheel", onWheel, {
+      passive: false,
+    });
+
+    LastOnWheeleventHandler.current = onWheel;
+
+    return () => {};
+  }, [onWheel]);
 
   const panProps = {
     onPanEnd,
     onPanStart,
     onPan,
     onMouseLeave,
-    onWheel,
   };
   return { panProps, x, slideRef };
 };

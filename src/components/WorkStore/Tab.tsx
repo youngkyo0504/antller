@@ -29,7 +29,6 @@ const Tab = ({ selectedTab, setSelectedTab }: TabProps) => {
   useEffect(() => {
     // scrollRef?.current?.scroll(1000, 0);
     if (scrollRef.current) {
-      console.log(scrollRef.current);
       scrollRef.current.scroll(100, 0);
     }
     return () => {};
@@ -40,9 +39,8 @@ const Tab = ({ selectedTab, setSelectedTab }: TabProps) => {
     const selectedTabElement = document.querySelector<HTMLLIElement>(
       `[data-id=${selectedTab}]`
     );
-    console.log(selectedTabElement);
+
     if (scrollRef.current && selectedTabElement) {
-      console.log(selectedTabElement?.offsetLeft);
       scrollRef.current.scroll(selectedTabElement?.offsetLeft - LEFTMARGIN, 0);
     }
   }, [selectedTab]);

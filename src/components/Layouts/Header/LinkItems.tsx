@@ -21,9 +21,9 @@ const LinkItems: FC<MobileLinkItemsProps> = ({
 
   return (
     <ul
-      tw=" font-semibold hidden sm:flex tracking-wide text-gray transition-colors"
+      tw=" font-semibold hidden sm:flex tracking-wide text-gray "
       css={[
-        { transitionDuration: `${SLIDER_DURATION * 1000}ms` },
+        // { transitionDuration: `${SLIDER_DURATION * 1000}ms` },
         isHome && (isBgBlack ? tw`text-white` : tw`text-antller-black`),
         isHome && isSticky && tw`text-antller-black`,
       ]}

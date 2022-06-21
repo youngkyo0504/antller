@@ -18,7 +18,8 @@ export function useOnChange({ childrenCount, index, onChange }: Config): void {
 
       const newIndex =
         // 나누면 음수일 수도 있기 때문에 이렇게한다.
-        ((Math.round(value) % childrenCount) + childrenCount) % childrenCount;
+        // round로 하면 병목현상이 일어난다.
+        ((Math.ceil(value) % childrenCount) + childrenCount) % childrenCount;
       if (newIndex === prevIndex) {
         return;
       }

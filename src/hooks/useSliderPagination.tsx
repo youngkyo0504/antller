@@ -12,7 +12,7 @@ const useSliderPagination = (sliderInfos: SliderMediaInfo) => {
 
   useEffect(() => {
     setIsBgBlack(sliderInfos[page].isBgBlack);
-  }, [page]);
+  }, []);
 
   return { page, goto };
 };

@@ -24,7 +24,7 @@ const HomeSlider: FC<HomeSliderProps> = () => {
     [0, containerHeight],
     [0, containerHeight / 2]
   );
-  const { isBgBlack } = useDarkBgContext();
+  const { isBgBlack, setIsBgBlack } = useDarkBgContext();
 
   // const { paginate, goto, page, direction } = useSliderInfoContext();
   const { goto, page } = useSliderPagination(sliderMediaInfo);
@@ -57,9 +57,12 @@ const HomeSlider: FC<HomeSliderProps> = () => {
           count={1}
           margin={0}
           autoplayInterval={3000}
-          onComplete={() => {}}
+          onComplete={() => {
+            // setIsBgBlack(sliderMediaInfo[page].isBgBlack);
+          }}
           draggable={isTouchDevice ? true : false}
           onChange={(newIndex: number): void => {
+            setIsBgBlack(sliderMediaInfo[newIndex].isBgBlack);
             goto(newIndex);
           }}
         >

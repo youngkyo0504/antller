@@ -1,14 +1,5 @@
 import tw from "twin.macro";
-import React, {
-  createContext,
-  FC,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import useHomePath from "src/hooks/useHomePath";
-import { useRouter } from "next/router";
+import React, { createContext, FC, useEffect, useRef, useState } from "react";
 
 interface DarkBgProviderProps {}
 interface DarkBgContextProps {

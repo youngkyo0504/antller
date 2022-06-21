@@ -73,3 +73,43 @@ export const angleIsVertical = (angle: number) => {
 
   return isUp || isDown;
 };
+
+export const debounce = (callback: Function, delay: number) => {
+  let timeoutId: number | undefined;
+
+  return (...args: any) => {
+    window.clearTimeout(timeoutId);
+
+    timeoutId = window.setTimeout(() => {
+      callback.apply(null, args);
+    }, delay);
+  };
+};
+
+/**
+ * fps를 숫자로 return 해주는 함수
+ *
+ * @param value
+ * @returns
+ *
+ * @example
+ * setTimeOut(()=>{
+ *  // function
+ * },getFPS(60))
+ */
+export const getFPS = (value: number) => {
+  return 1000 / value;
+};
+
+export const throttle = (callback: Function, limit: number = 100) => {
+  let waiting = false;
+  return (...arg: any) => {
+    if (!waiting) {
+      callback.apply(null, arg);
+      waiting = true;
+      setTimeout(() => {
+        waiting = false;
+      }, limit);
+    }
+  };
+};

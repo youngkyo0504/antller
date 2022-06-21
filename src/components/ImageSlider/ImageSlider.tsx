@@ -34,10 +34,12 @@ interface Props {
   count?: number;
   draggable?: boolean;
   margin?: number;
-  // style?: React.CSSProperties;
   style?: MotionStyle | undefined;
   onChange?: (index: number) => void;
+  /** animation 끝날 때 실행 */
   onComplete?: () => void;
+  /** animation 시작할 때 실행 */
+  onPlay?: (index: number) => void;
 }
 
 const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
@@ -49,6 +51,7 @@ const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
     draggable = true,
     margin = 0,
     onChange,
+    onPlay,
     style,
 
     ...props
@@ -57,7 +60,16 @@ const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
 ) {
   const sliderRef = React.useRef<HTMLDivElement>(null);
   const index = useMotionValue(0);
-  const autoplay = useAutoplay(index, autoplayInterval, onComplete);
+
+  const animateSliderTo = useCallback(
+    (newIndex: number) => {
+      return animateSpring(index, newIndex, onComplete, onPlay);
+    },
+    [onComplete, onPlay]
+  );
+
+  const autoplay = useAutoplay(index, autoplayInterval, animateSliderTo);
+
   useImperativeHandle(
     ref,
     () => ({
@@ -65,8 +77,7 @@ const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
         autoplay.start();
 
         const roundIndex = Number(index.get().toFixed(4));
-
-        return animateSpring(index, Math.ceil(roundIndex + 1), onComplete);
+        return animateSliderTo(Math.ceil(roundIndex + 1));
       },
 
       slidePrev: () => {
@@ -74,13 +85,13 @@ const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
 
         const roundIndex = Number(index.get().toFixed(4));
 
-        return animateSpring(index, Math.floor(roundIndex - 1), onComplete);
+        return animateSliderTo(Math.floor(roundIndex - 1));
       },
 
       slideTo: (newIndex: number): void => {
         autoplay.start();
 
-        animateSpring(index, newIndex);
+        animateSliderTo(newIndex);
       },
       isAnimating: () => index.isAnimating(),
     }),
@@ -99,6 +110,7 @@ const ImageSlider = React.forwardRef<ImageSliderHandle, Props>(function Slider(
     index,
     margin,
     ref: sliderRef,
+    animateSliderTo,
   });
 
   const onPanStart: OnPan = useCallback(

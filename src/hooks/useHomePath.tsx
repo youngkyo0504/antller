@@ -8,7 +8,8 @@ const useHomePath = () => {
 
   useEffect(() => {
     setIsHome(path === "");
-  }, []);
+  }, [pathname]);
+
   return { isHome, path };
 };
 export default useHomePath;

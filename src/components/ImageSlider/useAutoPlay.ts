@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 
-import { MotionValue } from "framer-motion";
-
-import { animateSpring } from "./utils";
+import { AnimationPlaybackControls, MotionValue } from "framer-motion";
 
 interface Controls {
   stop: () => void;
@@ -12,7 +10,7 @@ interface Controls {
 export function useAutoplay(
   index: MotionValue<number>,
   interval: number,
-  onComplete?: Function
+  animateSlideTo: (newIndex: number) => AnimationPlaybackControls
 ): Controls {
   const timer = React.useRef<number>(0);
 
@@ -33,7 +31,8 @@ export function useAutoplay(
     }
 
     timer.current = window.setTimeout(() => {
-      animateSpring(index, Math.floor(index.get() + 1), onComplete);
+      animateSlideTo(Math.floor(index.get() + 1));
+      // animateSpring(index, Math.floor(index.get() + 1), onComplete);
       start();
     }, interval);
   }, [index, interval, timer, stop]);

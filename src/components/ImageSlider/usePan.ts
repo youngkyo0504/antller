@@ -1,4 +1,4 @@
-import { MotionValue, PanInfo } from "framer-motion";
+import { AnimationPlaybackControls, MotionValue, PanInfo } from "framer-motion";
 import React, { useCallback, useMemo, useState } from "react";
 import { animateSpring } from "./utils";
 
@@ -12,6 +12,7 @@ interface Config {
   count: number;
   index: MotionValue<number>;
   margin: number;
+  animateSliderTo: (newIndex: number) => AnimationPlaybackControls;
   ref: React.RefObject<HTMLElement>;
 }
 
@@ -30,7 +31,13 @@ function calcItemWidth(
   return (width - margin * (count - 1)) / count + margin;
 }
 
-export function usePan({ count, index, margin, ref }: Config): Result {
+export function usePan({
+  count,
+  index,
+  margin,
+  ref,
+  animateSliderTo,
+}: Config): Result {
   /**
    * rerender 되지 않음 setState를 사용하지 않기 때문에
    */
@@ -97,7 +104,8 @@ export function usePan({ count, index, margin, ref }: Config): Result {
         newIndex = Math.round(index.get());
       }
 
-      animateSpring(index, newIndex, onComplete);
+      animateSliderTo(newIndex);
+      // animateSpring(index, newIndex, onComplete);
 
       // document.documentElement.removeEventListener("touchmove", onTouchMove);
     },

@@ -10,6 +10,7 @@ import ImageSlider from "@components/ImageSlider";
 import { ImageSliderHandle } from "@components/ImageSlider/ImageSlider";
 import { ItemContainer } from "./ItemContainer";
 import useIsTouchDevice from "src/hooks/useIsTouchDevice";
+import { circle } from "src/util";
 
 interface HomeSliderProps {}
 
@@ -26,14 +27,10 @@ const HomeSlider: FC<HomeSliderProps> = () => {
   );
   const { isBgBlack, setIsBgBlack } = useDarkBgContext();
 
-  // const { paginate, goto, page, direction } = useSliderInfoContext();
-  const { goto, page } = useSliderPagination(sliderMediaInfo);
+  const { page, onPlay } = useSliderPagination(sliderMediaInfo);
   const carousel = useRef<ImageSliderHandle>(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      document.body.style.background = "white";
-    }, 0);
     return () => {
       if (isBgBlack) {
         document.body.style.backgroundColor = "black";
@@ -57,14 +54,9 @@ const HomeSlider: FC<HomeSliderProps> = () => {
           count={1}
           margin={0}
           autoplayInterval={3000}
-          onComplete={() => {
-            // setIsBgBlack(sliderMediaInfo[page].isBgBlack);
-          }}
+          onComplete={() => {}}
           draggable={isTouchDevice ? true : false}
-          onChange={(newIndex: number): void => {
-            setIsBgBlack(sliderMediaInfo[newIndex].isBgBlack);
-            goto(newIndex);
-          }}
+          onPlay={onPlay}
         >
           {sliderMediaInfo.map((media, index) => (
             <ItemContainer key={media.title} index={index} />

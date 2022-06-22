@@ -1,16 +1,14 @@
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useRef } from "react";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import tw from "twin.macro";
 import { useElementGeometry, useSliderPagination } from "@hooks";
 import PaginationBtn from "./PaginationBtn";
 import ProgressText from "./ProgressText";
 import sliderMediaInfo from "./sliderMediaInfo";
-import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import ImageSlider from "@components/ImageSlider";
 import { ImageSliderHandle } from "@components/ImageSlider/ImageSlider";
 import { ItemContainer } from "./ItemContainer";
 import useIsTouchDevice from "src/hooks/useIsTouchDevice";
-import { circle } from "src/util";
 
 interface HomeSliderProps {}
 
@@ -25,18 +23,9 @@ const HomeSlider: FC<HomeSliderProps> = () => {
     [0, containerHeight],
     [0, containerHeight / 2]
   );
-  const { isBgBlack, setIsBgBlack } = useDarkBgContext();
 
   const { page, onPlay } = useSliderPagination(sliderMediaInfo);
   const carousel = useRef<ImageSliderHandle>(null);
-
-  useEffect(() => {
-    return () => {
-      if (isBgBlack) {
-        document.body.style.backgroundColor = "black";
-      }
-    };
-  }, [isBgBlack]);
 
   return (
     <>

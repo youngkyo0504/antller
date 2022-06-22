@@ -27,10 +27,10 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({ carousel }) => {
         tw="hidden sm:flex"
         onClick={slideNext}
       >
-        <ChevronRightIcon tw=" h-10 transition-all ease-in group-hover:(opacity-100)  opacity-0" />
+        <ChevronRightIcon tw=" h-10  group-hover:(opacity-100)  opacity-0" />
       </div>
       <div tw="hidden sm:flex" className="prev group" onClick={slidePrev}>
-        <ChevronLeftIcon tw=" h-10  transition-all ease-in group-hover:(opacity-100)  opacity-0" />
+        <ChevronLeftIcon tw=" h-10   group-hover:(opacity-100)  opacity-0" />
       </div>
 
       <style jsx>{`
@@ -44,9 +44,6 @@ export const PaginationBtns: FC<PaginationBtnProps> = ({ carousel }) => {
           position: absolute;
           // background: black;
           color: ${isBgBlack ? "white" : "black"};
-          transition-property: background-color, border-color, color, fill,
-            stroke;
-          transition-duration: 1000ms;
 
           border-radius: 30px;
           height: 100%;

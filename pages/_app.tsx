@@ -2,14 +2,15 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import GlobalStyles from "../styles/GlobalStyles";
 import { AnimatePresence } from "framer-motion";
-import Layout from "../src/components/Layouts/Layout";
-import { createContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { DarkBgProvider } from "@components/contexts/DarkBgContext/DarkBgProvider";
 import { DefaultSeo } from "next-seo";
 import SeoConfig from "../next-seo.config";
+
 function MyApp({ Component, pageProps, router }: AppProps) {
   const AnyComponent = Component as any;
-  const AyComponent = () => {
+  const PageComponent = () => {
+    // 로드되면 맨 위로 스크롤
     useEffect(() => {
       scrollTo(0, 0);
     }, []);
@@ -22,7 +23,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <GlobalStyles />
       <DarkBgProvider>
         <AnimatePresence exitBeforeEnter>
-          <AyComponent key={router.route} {...pageProps} />
+          <PageComponent key={router.route} {...pageProps} />
         </AnimatePresence>
       </DarkBgProvider>
     </>

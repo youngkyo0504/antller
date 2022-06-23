@@ -1,3 +1,4 @@
+import tw from "twin.macro";
 import Layout from "@components/Layouts/Layout";
 import InOutTransitionContainer from "@components/Layouts/TransitionContainer";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
@@ -7,10 +8,8 @@ import { MDXProvider } from "@mdx-js/react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { ParsedUrlQuery } from "querystring";
-import tw from "twin.macro";
 import { Work } from "@types";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { MDXComponents } from "mdx/types";
 import Interview from "@components/Common/Markdown/Interview";
 import InterviewCol from "@components/Common/Markdown/InterViewCol";
@@ -18,7 +17,6 @@ import MadeBy from "@components/Common/Markdown/MadeBy";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import BlockQuotation from "@components/Common/Markdown/BlockQuotation";
 import Intro from "@components/Common/Markdown/Intro";
-import imageMetadata from "plugins/image-metadata";
 
 const Container = tw.article`max-w-[790px] mx-auto px-mo-content mt-mo-header sm:mt-header sm:px-content `;
 const Title = tw.h1` font-semibold tracking-wider sm:text-5xl text-3xl`;
@@ -28,28 +26,12 @@ interface WorkDetailProps {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
   frontMatter: Work["data"];
 }
-{
-  /* <motion.img
-initial={{ opacity: 0, y: 50 }}
-whileInView={{ opacity: 1, y: 0 }}
-transition={{ duration: 0.3 }}
-viewport={{ once: true }}
-src={src}
-alt={alt}
-/> */
-}
-const NextImage = motion(Image);
-const ElementImage = (props: any) => {
+
+const NextImage = (props: any) => {
   const { src, height, width, alt, ...rest } = props;
 
-  return height ? (
-    <Image
-      layout="responsive"
-      src={src}
-      height={height}
-      width={width}
-      {...rest}
-    />
+  return height && width ? (
+    <Image {...props} layout="responsive" loading="lazy" />
   ) : (
     <img src={src} alt={alt} />
   );
@@ -57,7 +39,7 @@ const ElementImage = (props: any) => {
 // 컴포넌트를 주입해서 MDX에서 사용할 수 있다. MDX에서 직접 Import 하는 방식도 있다.
 
 const components: MDXComponents | undefined = {
-  img: ElementImage,
+  NextImage,
   Interview: (props) => <Interview {...props} />,
   MadeBy: (props) => <MadeBy {...props} />,
   InterviewCol: (props) => <InterviewCol {...props} />,
@@ -66,7 +48,7 @@ const components: MDXComponents | undefined = {
 };
 
 const WorkDetailPage: NextPage<WorkDetailProps> = ({ source, frontMatter }) => {
-  const { setIsBgBlack, isBgBlack } = useDarkBgContext(false);
+  useDarkBgContext(false);
 
   return (
     <>
@@ -90,9 +72,6 @@ const WorkDetailPage: NextPage<WorkDetailProps> = ({ source, frontMatter }) => {
                   height={630}
                   alt="banner image"
                 />
-                {/* <p tw="text-gray text-center mt-1">
-                  NEWSO ORIGINAL DOCUMENTARY
-                </p> */}
               </header>
 
               <section
@@ -126,11 +105,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const source = work ? work.content : "not found";
   const frontMatter = work ? work.data : {};
-  // const options = {
-  //   mdxOptions: {
-  //     rehypePlugins: [imageMetadata],
-  //   },
-  // };
   const mdxSource = await serialize(source);
   return { props: { source: mdxSource, frontMatter } };
 };

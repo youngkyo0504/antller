@@ -1,4 +1,3 @@
-import { Children, FC, PropsWithChildren } from "react";
 import tw from "twin.macro";
 
 interface IntroProps {
@@ -7,7 +6,7 @@ interface IntroProps {
 }
 const Intro = ({ content, color }: IntroProps) => {
   return (
-    <div className="sm:my-[1.333em] my-[1.25em]  justify-end  font-bold text-xl sm:text-2xl not-prose mb-5 ">
+    <div className="leading-6 tracking-wide sm:my-[1.333em] my-[1.25em]  justify-end  font-bold text-xl sm:text-2xl not-prose mb-5 ">
       <p
         style={{
           backgroundImage: color ? `linear-gradient(${color}, ${color})` : "",

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import InOutTransitionContainer from "../TransitionContainer";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
 import Hamburger from "./Hamburger";
-import { NavBar } from "styles/globalStyleComponent";
+import { NavBar } from "@components/Common/globalStyleComponent";
 import useHomePath from "src/hooks/useHomePath";
 import useIsMobile from "src/hooks/useIsMobile";
 import LinkItems from "./LinkItems";

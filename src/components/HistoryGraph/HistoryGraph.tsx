@@ -5,7 +5,7 @@ import {
   AboutSubTitle,
   ContentContainer,
   SubTitleDescription,
-} from "styles/globalStyleComponent";
+} from "@components/Common/globalStyleComponent";
 import tw from "twin.macro";
 import HistroyContent from "./HistoryContent";
 import YearPicker from "./YearPicker";

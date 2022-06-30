@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
-import { LinkItem } from "styles/globalStyleComponent";
+import { LinkItem } from "@components/Common/globalStyleComponent";
 import { links } from "./header.data";
 import { itemVariants } from "./headervariants";
 import { calcAxisDelta } from "framer-motion/types/projection/geometry/delta-calc";

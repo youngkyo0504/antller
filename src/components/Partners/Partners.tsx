@@ -5,7 +5,7 @@ import { useElementGeometry } from "@hooks";
 import {
   AboutSubTitle,
   SubTitleDescription,
-} from "styles/globalStyleComponent";
+} from "@components/Common/globalStyleComponent";
 import MobilePartners from "./MobilePartners";
 import useIsMobile from "src/hooks/useIsMobile";
 import PartnersLogos from "./PartnersLogos";

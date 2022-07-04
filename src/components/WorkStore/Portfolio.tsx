@@ -1,6 +1,6 @@
 import { TabId, Work } from "@types";
 import React, { FC, useState } from "react";
-import { Container } from "styles/globalStyleComponent";
+import { Container } from "@components/Common/globalStyleComponent";
 import tw, { css } from "twin.macro";
 import PortfolioList from "./PortfolioList";
 import Tab from "./Tab";

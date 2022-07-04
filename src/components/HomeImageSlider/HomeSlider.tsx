@@ -1,6 +1,6 @@
+import tw from "twin.macro";
 import React, { FC, useRef } from "react";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
-import tw from "twin.macro";
 import { useElementGeometry, useSliderPagination } from "@hooks";
 import PaginationBtn from "./PaginationBtn";
 import ProgressText from "./ProgressText";

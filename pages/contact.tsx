@@ -5,7 +5,10 @@ import { useColorScheme } from "@hooks";
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
-import { Container, ContentContainer } from "styles/globalStyleComponent";
+import {
+  Container,
+  ContentContainer,
+} from "@components/Common/globalStyleComponent";
 import tw from "twin.macro";
 const seoConfig = { title: "Contact" };
 

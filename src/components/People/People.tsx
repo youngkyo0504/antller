@@ -6,7 +6,7 @@ import { useElementGeometry } from "@hooks";
 import {
   AboutSubTitle,
   SubTitleDescription,
-} from "styles/globalStyleComponent";
+} from "@components/Common/globalStyleComponent";
 
 interface PeopleProps {}
 

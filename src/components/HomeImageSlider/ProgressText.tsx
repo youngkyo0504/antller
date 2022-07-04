@@ -16,7 +16,7 @@ interface ProgressTextProps {
 import "twin.macro";
 import tw from "twin.macro";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
-import { SLIDER_DURATION } from "styles/globalStyleComponent";
+import { SLIDER_DURATION } from "@components/Common/globalStyleComponent";
 import { animateSpring } from "@components/ImageSlider/utils";
 
 const ProgressText: FC<ProgressTextProps> = ({ style, pagesLength, page }) => {

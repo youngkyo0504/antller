@@ -3,7 +3,10 @@ import React, { FC } from "react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import useDarkBgContext from "@components/contexts/DarkBgContext/useDarkBgContext";
-import { LinkItem, SLIDER_DURATION } from "styles/globalStyleComponent";
+import {
+  LinkItem,
+  SLIDER_DURATION,
+} from "@components/Common/globalStyleComponent";
 import { links } from "./header.data";
 
 interface MobileLinkItemsProps {

@@ -13,7 +13,7 @@ const GridItem = styled.li(({ index }: { index: number }) => [
     ? tw`lg:(col-span-2  col-start-3 row-span-2)`
     : "",
 ]);
-const Title = tw.h2`text-antller-black  text-3xl  sm:text-4xl md:( text-5xl) font-bold `;
+const Title = tw.h2`text-antller-black  text-3xl max-w-[100rem] mx-auto   sm:text-4xl md:( text-5xl) font-bold `;
 const WorkGrid = tw.ul`grid lg:(grid-cols-4   )  //
 sm:grid-cols-2
  grid-cols-1  grid-flow-row-dense auto-cols-max max-w-[100rem] mx-auto gap-y-[2.2rem] lg:gap-y-[3.125rem] gap-x-[1.25rem] w-full overflow-hidden`;
